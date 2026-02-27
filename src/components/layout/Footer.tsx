@@ -9,7 +9,7 @@ export function Footer() {
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Terminal className="h-3.5 w-3.5 text-cyan" />
           <span className="font-mono">
-            AI와 함께 만든 사이트 —{" "}
+            이 사이트도 AI와 함께 만들었습니다 —{" "}
             <a
               href="https://claude.ai/claude-code"
               target="_blank"

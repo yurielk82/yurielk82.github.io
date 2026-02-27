@@ -35,10 +35,10 @@ export function ContactSection() {
             {"// "}연락
           </span>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            만들고 싶은 서비스가 있으신가요?
+            만들고 싶은 게 있으신가요?
           </h2>
           <p className="text-muted-foreground text-lg mb-12 max-w-lg mx-auto">
-            아이디어만 알려주세요. 어떻게 만들 수 있는지 함께 이야기해 봅시다.
+            아이디어만 알려주세요. 어떻게 만들지 함께 얘기해 봅시다.
           </p>
         </motion.div>
 

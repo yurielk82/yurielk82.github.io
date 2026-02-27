@@ -230,8 +230,8 @@ export function ProjectsSection() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           tag="프로젝트"
-          title="실제로 사용 중인 서비스들"
-          description="시연용 데모가 아닙니다. 실무에서 매일 사용되고 있는 서비스들입니다."
+          title="진짜 돌아가는 서비스들"
+          description="발표용 데모가 아닙니다. 실제 사용자가 매일 쓰고 있는 서비스들입니다."
         />
 
         {/* Filter */}

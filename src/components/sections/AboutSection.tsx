@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageSquare, Code2, Rocket } from "lucide-react";
+import { MessageSquare, Shield, Rocket } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { GlassCard } from "@/components/shared/GlassCard";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
@@ -10,25 +10,25 @@ const PARADIGM_CARDS = [
   {
     icon: MessageSquare,
     phase: "01",
-    title: "대화로 설계합니다",
+    title: "말로 시작합니다",
     description:
-      "필요한 서비스를 말하면, AI가 아키텍처를 제안하고 도메인 모델을 함께 설계합니다. 화면 구성, 데이터 구조, API 설계까지 — 대화만으로 큰 그림을 완성합니다.",
+      "\"이런 게 필요해요\" 한마디면 됩니다. 어떤 화면이 필요하고 데이터는 어떻게 흘러야 하는지, AI와 대화하면서 전체 그림을 그립니다.",
     accent: "from-cyan to-teal",
   },
   {
-    icon: Code2,
+    icon: Shield,
     phase: "02",
-    title: "빠르게, 그리고 제대로",
+    title: "안 보이는 곳이 진짜입니다",
     description:
-      "AI가 생성한 코드를 그대로 쓰지 않습니다. Repository 패턴, 테스트 자동화, 확장 가능한 구조 — 나중에 기능을 추가하거나 수정하기 쉬운 코드를 엔지니어링합니다.",
+      "로그인하면 내 데이터만 보이는지. 동시에 접속해도 버티는지. 기능 하나 추가할 때 다른 게 안 깨지는지. 사용자는 모르지만, 서비스 품질을 결정하는 건 이런 부분입니다.",
     accent: "from-teal to-emerald",
   },
   {
     icon: Rocket,
     phase: "03",
-    title: "바로 쓸 수 있는 완성품",
+    title: "데모가 아닌 실서비스",
     description:
-      "시연용 데모가 아닙니다. 이메일 자동 발송, 사업자 인증, 실시간 진행률 표시, CI/CD 파이프라인까지 — 운영 환경에 바로 투입 가능한 서비스를 만듭니다.",
+      "발표용 프로토타입이 아닙니다. 실제 사용자가 매일 접속하고, 데이터가 쌓이고, 이메일이 발송되는 — 진짜 돌아가는 서비스를 만듭니다.",
     accent: "from-emerald to-cyan",
   },
 ];
@@ -39,8 +39,8 @@ export function AboutSection() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           tag="소개"
-          title="이런 방식으로 만듭니다"
-          description="AI는 단순한 코드 생성기가 아닙니다. 기획부터 완성까지 모든 과정에서 AI와 대화하며 서비스를 만듭니다."
+          title="겉만 만들지 않습니다"
+          description="예쁜 화면 뒤에 탄탄한 구조가 없으면, 서비스는 오래 못 갑니다. 보이지 않는 곳까지 신경 쓰는 게 제가 일하는 방식입니다."
         />
 
         <motion.div
@@ -59,7 +59,7 @@ export function AboutSection() {
               <GlassCard className="h-full relative overflow-hidden group">
                 {/* Phase number */}
                 <div className="absolute top-4 right-4 font-mono text-[10px] tracking-[0.3em] text-muted-foreground/40">
-                  STEP {card.phase}
+                  {card.phase}
                 </div>
 
                 {/* Icon */}

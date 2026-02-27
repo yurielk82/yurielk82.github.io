@@ -65,10 +65,10 @@ function useTypewriter(lines: typeof TERMINAL_LINES) {
 }
 
 const STATS = [
-  { value: "5+", label: "완성된 서비스" },
-  { value: "2주", label: "기업용 시스템 완성" },
-  { value: "3곳", label: "동시 배포 (PC·웹·모바일)" },
-  { value: "₩0", label: "서버 비용" },
+  { value: "5+", label: "운영 중인 서비스" },
+  { value: "171", label: "자동화 테스트" },
+  { value: "2주", label: "→ 프로덕션 배포" },
+  { value: "₩0", label: "서버 비용 달성" },
 ];
 
 export function HeroSection() {
@@ -113,7 +113,7 @@ export function HeroSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan/20 bg-cyan/5 text-cyan text-xs font-mono tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan animate-pulse" />
-            아이디어 → 완성품
+            AI × FULL-STACK BUILDER
           </span>
         </motion.div>
 
@@ -126,9 +126,9 @@ export function HeroSection() {
           transition={{ ...defaultTransition, delay: 0.3 }}
         >
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-7xl leading-[1.1]">
-            <span className="text-foreground">AI로 만드는</span>
+            <span className="text-foreground">보이는 것도,</span>
             <br />
-            <span className="gradient-text">진짜 서비스</span>
+            <span className="gradient-text">보이지 않는 것도.</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
             {siteConfig.author.bio}

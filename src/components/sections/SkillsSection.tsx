@@ -21,8 +21,8 @@ export function SkillsSection() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           tag="역량"
-          title="이런 것들을 만들 수 있습니다"
-          description="기술 나열이 아닌, 프로젝트에서 달성한 실제 성과로 역량을 보여드립니다."
+          title="숫자로 말합니다"
+          description="기술 목록보다 중요한 건, 그 기술로 실제로 뭘 만들었는가."
         />
 
         {/* Capabilities */}
