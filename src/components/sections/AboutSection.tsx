@@ -9,23 +9,23 @@ import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations"
 const PILLARS = [
   {
     icon: Layers,
-    title: "처음부터 끝까지 혼자",
+    title: "처음부터 끝까지, 한 사람이",
     description:
-      "기획, 디자인, 개발, 테스트, 배포. 각각 다른 사람에게 맡길 필요 없이 한 사람이 전부 해냅니다. AI가 팀원이 되어주기 때문에 가능합니다.",
+      "여러 사람에게 전달하다 흐려지는 의도, 경험해 보셨나요? 기획부터 배포까지 한 사람이 관통하면, 당신의 아이디어가 그대로 살아 숨 쉽니다.",
     accent: "from-cyan to-teal",
   },
   {
     icon: Cpu,
-    title: "기술에 갇히지 않습니다",
+    title: "당신의 아이디어가 먼저입니다",
     description:
-      "보통 개발자는 자기가 아는 기술로만 만듭니다. 풀스택 빌더는 아이디어를 먼저 듣고, 거기에 맞는 최적의 기술을 선택합니다. React든 Python이든 Electron이든.",
+      "\"이 기술로는 안 돼요\"라는 말, 저에게는 없습니다. 아이디어를 먼저 듣고, 거기에 딱 맞는 기술을 골라 씁니다. 기술이 아이디어를 가두지 않도록.",
     accent: "from-teal to-emerald",
   },
   {
     icon: Shield,
-    title: "보이지 않는 곳까지 제대로",
+    title: "오래 쓸 수 있도록, 꼼꼼하게",
     description:
-      "화면은 당연히 깔끔하게. 하지만 데이터 구조, 보안, 테스트, 확장성 — 눈에 안 보이는 이 부분까지 제대로 만드는 게 서비스의 수명을 결정합니다.",
+      "예쁜 화면은 기본이에요. 하지만 진짜 중요한 건, 그 뒤에 있습니다. 데이터가 안전한지, 사용자가 늘어도 버티는지, 나중에 기능을 추가할 수 있는지 — 보이지 않는 곳까지 마음을 씁니다.",
     accent: "from-emerald to-cyan",
   },
 ];
@@ -35,9 +35,9 @@ export function AboutSection() {
     <section id="about" className="relative z-10 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          tag="소개"
-          title="AI 풀스택 빌더란?"
-          description="화면, 서버, 데이터베이스, 배포까지 — AI와 함께 처음부터 끝까지 혼자 만드는 새로운 방식의 개발자입니다."
+          tag="ABOUT"
+          title="이런 사람이 만듭니다"
+          description="당신의 이야기를 듣고, 기획하고, 디자인하고, 개발하고, 세상에 내놓기까지. 한 사람이 처음부터 끝까지 책임집니다."
         />
 
         <motion.div

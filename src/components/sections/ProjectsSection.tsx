@@ -158,9 +158,9 @@ export function ProjectsSection() {
     <section id="projects" className="relative z-10 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          tag="프로젝트"
-          title="진짜 돌아가는 서비스들"
-          description="발표용 데모가 아닙니다. 실제 사용자가 매일 쓰고 있는 서비스들입니다."
+          tag="WORK"
+          title="이렇게 만들어왔습니다"
+          description="누군가의 일상에서 매일 쓰이고 있는 서비스들. 각각의 이야기가 담겨 있습니다."
         />
 
         {/* 필터 */}

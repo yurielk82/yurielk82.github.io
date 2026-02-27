@@ -10,7 +10,7 @@ const LINKS = [
     label: "GitHub",
     href: `https://github.com/${siteConfig.author.github}`,
     icon: Github,
-    description: "프로젝트 소스 코드 보기",
+    description: "지금까지의 작업물 보기",
   },
   {
     label: "이메일",
@@ -49,10 +49,10 @@ export function ContactSection() {
 
           <div className="relative z-10">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl mb-4">
-              만들고 싶은 게 있으신가요?
+              함께 만들어 볼까요?
             </h2>
             <p className="text-white/80 text-lg mb-10 max-w-lg mx-auto">
-              아이디어만 알려주세요. 어떻게 만들지 함께 얘기해 봅시다.
+              아직 막연한 아이디어라도 괜찮아요. 커피 한 잔 하듯 편하게 이야기 나눠보아요.
             </p>
 
             <motion.div

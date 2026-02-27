@@ -20,7 +20,6 @@ export function SectionHeading({ tag, title, description }: SectionHeadingProps)
       transition={defaultTransition}
     >
       <span className="inline-block font-mono text-sm tracking-widest uppercase text-cyan mb-4">
-        {"// "}
         {tag}
       </span>
       <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">

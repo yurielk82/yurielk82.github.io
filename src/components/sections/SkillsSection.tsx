@@ -20,9 +20,9 @@ export function SkillsSection() {
       <div className="mx-auto max-w-6xl px-6">
         {/* 역량 카드 */}
         <SectionHeading
-          tag="역량"
-          title="숫자로 말합니다"
-          description="기술 목록보다 중요한 건, 그 기술로 실제로 뭘 만들었는가."
+          tag="SKILLS"
+          title="이런 점이 다릅니다"
+          description="기술은 도구일 뿐. 중요한 건 그 도구로 당신을 위해 무엇을 만들 수 있는가입니다."
         />
 
         <motion.div
@@ -75,10 +75,10 @@ export function SkillsSection() {
           transition={defaultTransition}
         >
           <h3 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            기술 <span className="gradient-text">스택</span>
+            함께하는 <span className="gradient-text">기술들</span>
           </h3>
           <p className="mt-3 text-muted-foreground">
-            아이디어에 맞는 최적의 기술을 선택합니다.
+            당신의 아이디어에 맞는 기술을 골라, 최선의 결과를 만듭니다.
           </p>
         </motion.div>
 

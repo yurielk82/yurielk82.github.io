@@ -65,10 +65,10 @@ function useTypewriter(lines: typeof TERMINAL_LINES) {
 }
 
 const STATS = [
-  { value: "5+", label: "운영 중인 서비스" },
+  { value: "5+", label: "함께 만든 서비스" },
   { value: "171", label: "자동화 테스트" },
-  { value: "2주", label: "→ 프로덕션 배포" },
-  { value: "15+", label: "기술 스택 활용" },
+  { value: "2주", label: "아이디어에서 런칭까지" },
+  { value: "15+", label: "활용 가능한 기술" },
 ];
 
 export function HeroSection() {
@@ -113,7 +113,7 @@ export function HeroSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan/20 bg-cyan/5 text-cyan text-xs font-mono tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan animate-pulse" />
-            AI × FULL-STACK BUILDER
+            YOUR IDEA, MY CODE
           </span>
         </motion.div>
 
@@ -126,9 +126,9 @@ export function HeroSection() {
           transition={{ ...defaultTransition, delay: 0.3 }}
         >
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-7xl leading-[1.1]">
-            <span className="text-foreground">보이는 것도,</span>
+            <span className="text-foreground">상상만 했던 것,</span>
             <br />
-            <span className="gradient-text">보이지 않는 것도.</span>
+            <span className="gradient-text">이제 만들어 볼까요?</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
             {siteConfig.author.bio}
