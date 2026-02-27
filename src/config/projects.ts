@@ -171,8 +171,6 @@ export const projects: ProjectConfig[] = [
 export const projectCategories: Record<string, string> = {
   all: "전체",
   fullstack: "웹 서비스",
-  frontend: "화면",
-  backend: "서버",
   desktop: "PC 프로그램",
   automation: "자동화",
 };

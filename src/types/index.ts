@@ -39,8 +39,6 @@ export interface ProjectConfig {
 
 export type ProjectCategory =
   | "fullstack"
-  | "frontend"
-  | "backend"
   | "desktop"
   | "automation";
 
@@ -56,13 +54,7 @@ export interface Capability {
   icon: string;
 }
 
-export interface SkillGroup {
-  category: string;
-  items: string[];
-}
-
 export interface TechItem {
   name: string;
-  icon: string; // devicon class or image URL
-  color?: string;
+  icon: string;
 }

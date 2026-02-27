@@ -1,4 +1,4 @@
-import type { Capability, SkillGroup, TechItem } from "@/types";
+import type { Capability, TechItem } from "@/types";
 
 export const capabilities: Capability[] = [
   {
@@ -44,51 +44,4 @@ export const techItems: TechItem[] = [
   { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" },
   { name: "Prisma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg" },
   { name: "SQLite", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" },
-];
-
-export const skillGroups: SkillGroup[] = [
-  {
-    category: "Frontend",
-    items: [
-      "Next.js",
-      "React",
-      "TypeScript",
-      "Tailwind CSS",
-      "Framer Motion",
-      "shadcn/ui",
-    ],
-  },
-  {
-    category: "Backend",
-    items: [
-      "Node.js",
-      "Express",
-      "Supabase",
-      "PostgreSQL",
-      "Prisma",
-      "REST API",
-    ],
-  },
-  {
-    category: "DevOps & Testing",
-    items: [
-      "Vitest",
-      "Playwright",
-      "GitHub Actions",
-      "Netlify",
-      "Vercel",
-      "Docker",
-    ],
-  },
-  {
-    category: "AI & Tools",
-    items: [
-      "Claude Code",
-      "Cursor",
-      "Electron",
-      "Python",
-      "Streamlit",
-      "PWA",
-    ],
-  },
 ];

@@ -2,6 +2,14 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.3.1] - 2026-02-27
+
+### Removed
+- 미사용 애니메이션 variants 제거 (`fadeIn`, `scaleIn`, `slideInLeft`, `slideInRight`, `springTransition`)
+- 미사용 `skillGroups` export 및 `SkillGroup` 타입 제거
+- 미사용 `TechItem.color` 속성 제거
+- 미사용 프로젝트 카테고리 제거 (`frontend`, `backend` — 해당 프로젝트 없음)
+
 ## [0.3.0] - 2026-02-27
 
 ### Added
