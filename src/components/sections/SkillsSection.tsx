@@ -20,9 +20,9 @@ export function SkillsSection() {
     <section id="skills" className="relative z-10 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          tag="Skills"
-          title="역량 — 성과로 증명"
-          description="기술 나열이 아닌, 각 프로젝트에서 달성한 실제 성과로 역량을 보여줍니다."
+          tag="역량"
+          title="이런 것들을 만들 수 있습니다"
+          description="기술 나열이 아닌, 프로젝트에서 달성한 실제 성과로 역량을 보여드립니다."
         />
 
         {/* Capabilities */}

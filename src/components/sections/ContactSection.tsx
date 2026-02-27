@@ -10,10 +10,10 @@ const LINKS = [
     label: "GitHub",
     href: `https://github.com/${siteConfig.author.github}`,
     icon: Github,
-    description: "소스 코드 & 프로젝트",
+    description: "프로젝트 소스 코드 보기",
   },
   {
-    label: "Email",
+    label: "이메일",
     href: `mailto:${siteConfig.author.email}`,
     icon: Mail,
     description: siteConfig.author.email,
@@ -32,13 +32,13 @@ export function ContactSection() {
           transition={defaultTransition}
         >
           <span className="inline-block font-mono text-sm tracking-widest uppercase text-cyan mb-4">
-            {"// "}Contact
+            {"// "}연락
           </span>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            함께 만들어 봅시다
+            만들고 싶은 서비스가 있으신가요?
           </h2>
           <p className="text-muted-foreground text-lg mb-12 max-w-lg mx-auto">
-            AI 기반 풀스택 개발에 관심이 있으시다면 연락주세요.
+            아이디어만 알려주세요. 어떻게 만들 수 있는지 함께 이야기해 봅시다.
           </p>
         </motion.div>
 

@@ -10,25 +10,25 @@ const PARADIGM_CARDS = [
   {
     icon: MessageSquare,
     phase: "01",
-    title: "AI와 대화로 설계",
+    title: "대화로 설계합니다",
     description:
-      "요구사항을 자연어로 전달하면, AI가 아키텍처를 제안하고 도메인 모델을 함께 설계합니다. DDD 레이어, 테이블 스키마, API 엔드포인트까지.",
+      "필요한 서비스를 말하면, AI가 아키텍처를 제안하고 도메인 모델을 함께 설계합니다. 화면 구성, 데이터 구조, API 설계까지 — 대화만으로 큰 그림을 완성합니다.",
     accent: "from-cyan to-teal",
   },
   {
     icon: Code2,
     phase: "02",
-    title: "코드 = 엔지니어링",
+    title: "빠르게, 그리고 제대로",
     description:
-      "AI가 생성한 코드를 복사-붙여넣기하지 않습니다. Repository 패턴, 의존성 역전, 테스트 가능한 구조 — 운영 환경 수준의 코드를 AI와 함께 엔지니어링합니다.",
+      "AI가 생성한 코드를 그대로 쓰지 않습니다. Repository 패턴, 테스트 자동화, 확장 가능한 구조 — 나중에 기능을 추가하거나 수정하기 쉬운 코드를 엔지니어링합니다.",
     accent: "from-teal to-emerald",
   },
   {
     icon: Rocket,
     phase: "03",
-    title: "배포까지 완결",
+    title: "바로 쓸 수 있는 완성품",
     description:
-      "171개 테스트, CI/CD 파이프라인, 듀얼 이메일 프로바이더, SSE 실시간 처리 — '작동하는 데모'가 아닌, 프로덕션에 투입 가능한 완제품을 만듭니다.",
+      "시연용 데모가 아닙니다. 이메일 자동 발송, 사업자 인증, 실시간 진행률 표시, CI/CD 파이프라인까지 — 운영 환경에 바로 투입 가능한 서비스를 만듭니다.",
     accent: "from-emerald to-cyan",
   },
 ];
@@ -38,9 +38,9 @@ export function AboutSection() {
     <section id="about" className="relative z-10 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          tag="About"
-          title="AI 개발의 새로운 패러다임"
-          description="AI는 도구가 아닌 팀원입니다. 설계부터 배포까지 모든 과정에서 AI와 협업하여 엔지니어링 품질을 유지하면서 개발 속도를 극대화합니다."
+          tag="소개"
+          title="이런 방식으로 만듭니다"
+          description="AI는 단순한 코드 생성기가 아닙니다. 기획부터 완성까지 모든 과정에서 AI와 대화하며 서비스를 만듭니다."
         />
 
         <motion.div
@@ -59,7 +59,7 @@ export function AboutSection() {
               <GlassCard className="h-full relative overflow-hidden group">
                 {/* Phase number */}
                 <div className="absolute top-4 right-4 font-mono text-[10px] tracking-[0.3em] text-muted-foreground/40">
-                  PHASE {card.phase}
+                  STEP {card.phase}
                 </div>
 
                 {/* Icon */}

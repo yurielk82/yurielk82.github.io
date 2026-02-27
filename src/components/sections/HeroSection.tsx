@@ -8,12 +8,12 @@ import { fadeInUp, defaultTransition } from "@/lib/animations";
 
 const TERMINAL_LINES = [
   { prompt: "~", cmd: "claude", delay: 800 },
-  { prompt: "claude", cmd: '"build a B2B SaaS portal with DDD architecture"', delay: 60 },
+  { prompt: "claude", cmd: '"정산 수수료 조회 시스템 만들어줘"', delay: 60 },
   { prompt: "", cmd: "⠋ Analyzing requirements...", delay: 400 },
-  { prompt: "", cmd: "⠙ Designing 4-layer architecture...", delay: 400 },
+  { prompt: "", cmd: "⠙ Designing DDD 4-layer architecture...", delay: 400 },
   { prompt: "", cmd: "⠹ Writing 47 components, 13 API routes...", delay: 400 },
-  { prompt: "", cmd: "⠸ Running 171 test cases... all passed ✓", delay: 400 },
-  { prompt: "", cmd: "✓ Production deployment complete.", delay: 600 },
+  { prompt: "", cmd: "⠸ Running 171 tests... all passed ✓", delay: 400 },
+  { prompt: "", cmd: "✓ 배포 완료 — 서비스 사용 가능", delay: 600 },
 ];
 
 function useTypewriter(lines: typeof TERMINAL_LINES) {
@@ -65,10 +65,10 @@ function useTypewriter(lines: typeof TERMINAL_LINES) {
 }
 
 const STATS = [
-  { value: "5+", label: "Production Apps" },
-  { value: "171", label: "Test Cases" },
-  { value: "2주", label: "SaaS 구축 속도" },
-  { value: "3", label: "Platforms / 1 Source" },
+  { value: "5+", label: "완성된 서비스" },
+  { value: "2주", label: "기업용 시스템 완성" },
+  { value: "3곳", label: "동시 배포 (PC·웹·모바일)" },
+  { value: "₩0", label: "서버 비용" },
 ];
 
 export function HeroSection() {
@@ -113,7 +113,7 @@ export function HeroSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-cyan/20 bg-cyan/5 text-cyan text-xs font-mono tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-cyan animate-pulse" />
-            AI-POWERED ENGINEERING
+            아이디어 → 완성품
           </span>
         </motion.div>
 
@@ -126,9 +126,9 @@ export function HeroSection() {
           transition={{ ...defaultTransition, delay: 0.3 }}
         >
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-7xl leading-[1.1]">
-            <span className="gradient-text">AI Full-Stack</span>
+            <span className="text-foreground">AI로 만드는</span>
             <br />
-            <span className="text-foreground">Builder</span>
+            <span className="gradient-text">진짜 서비스</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
             {siteConfig.author.bio}

@@ -68,7 +68,7 @@ function ProjectCard({
 
           {/* View more hint */}
           <div className="flex items-center gap-1 mt-3 text-xs text-muted-foreground group-hover:text-cyan transition-colors font-mono">
-            <span>Details</span>
+            <span>자세히 보기</span>
             <ChevronRight className="h-3 w-3 group-hover:translate-x-0.5 transition-transform" />
           </div>
         </button>
@@ -151,7 +151,7 @@ function ProjectModal({
           {/* Highlights */}
           <div>
             <h4 className="text-sm font-mono text-cyan mb-3 tracking-wider">
-              {"// "}HIGHLIGHTS
+              {"// "}주요 기능
             </h4>
             <ul className="space-y-2">
               {project.highlights.map((h) => (
@@ -169,7 +169,7 @@ function ProjectModal({
           {/* Tech stack */}
           <div>
             <h4 className="text-sm font-mono text-cyan mb-3 tracking-wider">
-              {"// "}TECH STACK
+              {"// "}사용 기술
             </h4>
             <div className="flex flex-wrap gap-2">
               {project.techStack.map((tech) => (
@@ -229,9 +229,9 @@ export function ProjectsSection() {
     <section id="projects" className="relative z-10 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
-          tag="Projects"
-          title="프로덕션 레벨 프로젝트"
-          description="AI와 함께 엔지니어링한 실제 서비스들. 데모가 아닌, 운영 환경에서 동작하는 시스템."
+          tag="프로젝트"
+          title="실제로 사용 중인 서비스들"
+          description="시연용 데모가 아닙니다. 실무에서 매일 사용되고 있는 서비스들입니다."
         />
 
         {/* Filter */}
