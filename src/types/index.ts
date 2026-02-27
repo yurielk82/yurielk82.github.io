@@ -28,6 +28,7 @@ export interface ProjectConfig {
   techStack: string[];
   highlights: string[];
   metrics?: ProjectMetric[];
+  image?: string;
   links: {
     github?: string;
     live?: string;

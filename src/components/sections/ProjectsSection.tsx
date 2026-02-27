@@ -10,8 +10,8 @@ import { TechBadge } from "@/components/shared/TechBadge";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
 import type { ProjectConfig } from "@/types";
 
-/* 프로젝트별 비주얼 그래디언트 */
-const PROJECT_VISUALS: Record<string, { gradient: string; pattern: string }> = {
+/* 이미지 없는 프로젝트용 폴백 그래디언트 */
+const FALLBACK_GRADIENTS: Record<string, { gradient: string; pattern: string }> = {
   csoweb: {
     gradient: "from-cyan-500/30 via-blue-600/20 to-indigo-700/30",
     pattern: "radial-gradient(circle at 70% 30%, rgba(6,182,212,0.3) 0%, transparent 50%)",
@@ -35,26 +35,40 @@ const PROJECT_VISUALS: Record<string, { gradient: string; pattern: string }> = {
 };
 
 function ProjectCard({ project }: { project: ProjectConfig }) {
-  const visual = PROJECT_VISUALS[project.id] ?? PROJECT_VISUALS.csoweb;
+  const fallback = FALLBACK_GRADIENTS[project.id] ?? FALLBACK_GRADIENTS.csoweb;
+  const hasImage = !!project.image;
 
   return (
     <motion.div variants={fadeInUp} transition={defaultTransition}>
       <div className="group relative rounded-2xl overflow-hidden border border-border/50 bg-card transition-all duration-300 hover:border-cyan/20 hover:shadow-[0_0_30px_rgba(6,182,212,0.06)]">
         {/* 비주얼 영역 */}
         <div className="relative aspect-[16/10] overflow-hidden">
-          {/* 그래디언트 배경 */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${visual.gradient}`} />
-          <div className="absolute inset-0" style={{ background: visual.pattern }} />
-
-          {/* 도트 패턴 */}
-          <div
-            className="absolute inset-0 opacity-[0.07]"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, currentColor 1px, transparent 1px)",
-              backgroundSize: "20px 20px",
-            }}
-          />
+          {hasImage ? (
+            <>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.image}
+                alt={`${project.name} 스크린샷`}
+                className="absolute inset-0 w-full h-full object-cover object-top"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-black/10" />
+            </>
+          ) : (
+            <>
+              {/* 폴백 그래디언트 배경 */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${fallback.gradient}`} />
+              <div className="absolute inset-0" style={{ background: fallback.pattern }} />
+              <div
+                className="absolute inset-0 opacity-[0.07]"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle, currentColor 1px, transparent 1px)",
+                  backgroundSize: "20px 20px",
+                }}
+              />
+            </>
+          )}
 
           {/* Featured 뱃지 */}
           {project.featured && (
@@ -76,30 +90,36 @@ function ProjectCard({ project }: { project: ProjectConfig }) {
           </div>
 
           {/* 호버 오버레이 */}
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-4">
-            {project.links.github && (
-              <a
-                href={project.links.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors border border-white/20 backdrop-blur"
-              >
-                <Github className="h-4 w-4" />
-                GitHub
-              </a>
-            )}
-            {project.links.live && (
-              <a
-                href={project.links.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan/20 hover:bg-cyan/30 text-white text-sm font-medium transition-colors border border-cyan/30 backdrop-blur"
-              >
-                <ExternalLink className="h-4 w-4" />
-                Live
-              </a>
-            )}
-          </div>
+          {(project.links.github || project.links.live) ? (
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-4">
+              {project.links.live && (
+                <a
+                  href={project.links.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan/20 hover:bg-cyan/30 text-white text-sm font-medium transition-colors border border-cyan/30 backdrop-blur"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  사이트 보기
+                </a>
+              )}
+              {project.links.github && (
+                <a
+                  href={project.links.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors border border-white/20 backdrop-blur"
+                >
+                  <Github className="h-4 w-4" />
+                  GitHub
+                </a>
+              )}
+            </div>
+          ) : (
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+              <span className="text-white/60 text-sm font-medium">로컬 전용 프로젝트</span>
+            </div>
+          )}
         </div>
 
         {/* 텍스트 영역 */}
