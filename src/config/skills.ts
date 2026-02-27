@@ -16,10 +16,9 @@ export const capabilities: Capability[] = [
     icon: "Layers",
   },
   {
-    title: "서버 비용이 0원입니다",
+    title: "기술에 구애받지 않습니다",
     description:
-      "Google Sheets를 DB 대신 쓰는 서버리스 PWA. 인터넷 없어도 되고, 매달 나가는 서버비도 없습니다. 똑똑한 설계가 비용을 줄입니다.",
-    projectRef: "myaccweb",
+      "보통 개발자는 자기가 아는 기술로만 만듭니다. 저는 아이디어를 먼저 듣고, 거기에 최적화된 기술 스택을 적용합니다. React가 맞으면 React, Python이 맞으면 Python. 기술이 아이디어를 제한하지 않습니다.",
     icon: "Zap",
   },
   {

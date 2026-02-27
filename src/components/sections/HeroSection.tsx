@@ -68,7 +68,7 @@ const STATS = [
   { value: "5+", label: "운영 중인 서비스" },
   { value: "171", label: "자동화 테스트" },
   { value: "2주", label: "→ 프로덕션 배포" },
-  { value: "₩0", label: "서버 비용 달성" },
+  { value: "15+", label: "기술 스택 활용" },
 ];
 
 export function HeroSection() {
