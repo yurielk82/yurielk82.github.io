@@ -1,34 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageSquare, Shield, Rocket } from "lucide-react";
+import { Layers, Cpu, Shield } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { GlassCard } from "@/components/shared/GlassCard";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
 
-const PARADIGM_CARDS = [
+const PILLARS = [
   {
-    icon: MessageSquare,
-    phase: "01",
-    title: "말로 시작합니다",
+    icon: Layers,
+    title: "처음부터 끝까지 혼자",
     description:
-      "\"이런 게 필요해요\" 한마디면 됩니다. 어떤 화면이 필요하고 데이터는 어떻게 흘러야 하는지, AI와 대화하면서 전체 그림을 그립니다.",
+      "기획, 디자인, 개발, 테스트, 배포. 각각 다른 사람에게 맡길 필요 없이 한 사람이 전부 해냅니다. AI가 팀원이 되어주기 때문에 가능합니다.",
     accent: "from-cyan to-teal",
   },
   {
-    icon: Shield,
-    phase: "02",
-    title: "안 보이는 곳이 진짜입니다",
+    icon: Cpu,
+    title: "기술에 갇히지 않습니다",
     description:
-      "로그인하면 내 데이터만 보이는지. 동시에 접속해도 버티는지. 기능 하나 추가할 때 다른 게 안 깨지는지. 사용자는 모르지만, 서비스 품질을 결정하는 건 이런 부분입니다.",
+      "보통 개발자는 자기가 아는 기술로만 만듭니다. 풀스택 빌더는 아이디어를 먼저 듣고, 거기에 맞는 최적의 기술을 선택합니다. React든 Python이든 Electron이든.",
     accent: "from-teal to-emerald",
   },
   {
-    icon: Rocket,
-    phase: "03",
-    title: "데모가 아닌 실서비스",
+    icon: Shield,
+    title: "보이지 않는 곳까지 제대로",
     description:
-      "발표용 프로토타입이 아닙니다. 실제 사용자가 매일 접속하고, 데이터가 쌓이고, 이메일이 발송되는 — 진짜 돌아가는 서비스를 만듭니다.",
+      "화면은 당연히 깔끔하게. 하지만 데이터 구조, 보안, 테스트, 확장성 — 눈에 안 보이는 이 부분까지 제대로 만드는 게 서비스의 수명을 결정합니다.",
     accent: "from-emerald to-cyan",
   },
 ];
@@ -39,8 +36,8 @@ export function AboutSection() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           tag="소개"
-          title="겉만 만들지 않습니다"
-          description="예쁜 화면 뒤에 탄탄한 구조가 없으면, 서비스는 오래 못 갑니다. 보이지 않는 곳까지 신경 쓰는 게 제가 일하는 방식입니다."
+          title="AI 풀스택 빌더란?"
+          description="화면, 서버, 데이터베이스, 배포까지 — AI와 함께 처음부터 끝까지 혼자 만드는 새로운 방식의 개발자입니다."
         />
 
         <motion.div
@@ -50,19 +47,19 @@ export function AboutSection() {
           viewport={{ once: true, margin: "-80px" }}
           variants={staggerContainer}
         >
-          {PARADIGM_CARDS.map((card) => (
+          {PILLARS.map((card, i) => (
             <motion.div
-              key={card.phase}
+              key={card.title}
               variants={fadeInUp}
               transition={defaultTransition}
             >
               <GlassCard className="h-full relative overflow-hidden group">
-                {/* Phase number */}
+                {/* 번호 */}
                 <div className="absolute top-4 right-4 font-mono text-[10px] tracking-[0.3em] text-muted-foreground/40">
-                  {card.phase}
+                  0{i + 1}
                 </div>
 
-                {/* Icon */}
+                {/* 아이콘 */}
                 <div className={`inline-flex p-2.5 rounded-xl bg-gradient-to-br ${card.accent} mb-5`}>
                   <card.icon className="h-5 w-5 text-white" />
                 </div>
@@ -74,7 +71,7 @@ export function AboutSection() {
                   {card.description}
                 </p>
 
-                {/* Bottom accent line */}
+                {/* 하단 악센트 라인 */}
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </GlassCard>
             </motion.div>
