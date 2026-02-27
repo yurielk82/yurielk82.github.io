@@ -4,8 +4,7 @@ import { motion } from "framer-motion";
 import { Rocket, Layers, Zap, Brain } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { GlassCard } from "@/components/shared/GlassCard";
-import { TechBadge } from "@/components/shared/TechBadge";
-import { capabilities, skillGroups } from "@/config/skills";
+import { capabilities, techItems } from "@/config/skills";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
 
 const ICON_MAP: Record<string, typeof Rocket> = {
@@ -19,15 +18,15 @@ export function SkillsSection() {
   return (
     <section id="skills" className="relative z-10 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
+        {/* 역량 카드 */}
         <SectionHeading
           tag="역량"
           title="숫자로 말합니다"
           description="기술 목록보다 중요한 건, 그 기술로 실제로 뭘 만들었는가."
         />
 
-        {/* Capabilities */}
         <motion.div
-          className="grid gap-6 sm:grid-cols-2 mb-20"
+          className="grid gap-6 sm:grid-cols-2 mb-24"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
@@ -66,30 +65,49 @@ export function SkillsSection() {
           })}
         </motion.div>
 
-        {/* Tech Stack Grid */}
+        {/* 기술 스택 아이콘 그리드 */}
         <motion.div
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+          className="text-center mb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
+          variants={fadeInUp}
+          transition={defaultTransition}
+        >
+          <h3 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            기술 <span className="gradient-text">스택</span>
+          </h3>
+          <p className="mt-3 text-muted-foreground">
+            아이디어에 맞는 최적의 기술을 선택합니다.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
           variants={staggerContainer}
         >
-          {skillGroups.map((group) => (
+          {techItems.map((tech) => (
             <motion.div
-              key={group.category}
+              key={tech.name}
               variants={fadeInUp}
               transition={defaultTransition}
+              className="group flex flex-col items-center gap-3 p-5 rounded-2xl border border-border/50 bg-card hover:border-cyan/20 hover:shadow-[0_0_20px_rgba(6,182,212,0.06)] transition-all duration-300"
             >
-              <div className="space-y-3">
-                <h4 className="text-xs font-mono text-cyan tracking-[0.2em] uppercase">
-                  {group.category}
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <TechBadge key={item}>{item}</TechBadge>
-                  ))}
-                </div>
-              </div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={tech.icon}
+                alt={tech.name}
+                width={40}
+                height={40}
+                className="h-10 w-10 group-hover:scale-110 transition-transform duration-300"
+                loading="lazy"
+              />
+              <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors text-center leading-tight">
+                {tech.name}
+              </span>
             </motion.div>
           ))}
         </motion.div>

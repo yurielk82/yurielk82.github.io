@@ -59,3 +59,9 @@ export interface SkillGroup {
   category: string;
   items: string[];
 }
+
+export interface TechItem {
+  name: string;
+  icon: string; // devicon class or image URL
+  color?: string;
+}

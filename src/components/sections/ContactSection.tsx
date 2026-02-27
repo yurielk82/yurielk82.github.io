@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Mail, ArrowUpRight } from "lucide-react";
+import { Github, Mail, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
 
@@ -23,56 +23,63 @@ const LINKS = [
 export function ContactSection() {
   return (
     <section id="contact" className="relative z-10 py-24 sm:py-32">
-      <div className="mx-auto max-w-3xl px-6 text-center">
+      <div className="mx-auto max-w-6xl px-6">
+        {/* CTA 배너 */}
         <motion.div
+          className="relative overflow-hidden rounded-3xl p-10 sm:p-16 text-center"
+          style={{
+            background:
+              "linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #d946ef 100%)",
+          }}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={fadeInUp}
           transition={defaultTransition}
         >
-          <span className="inline-block font-mono text-sm tracking-widest uppercase text-cyan mb-4">
-            {"// "}연락
-          </span>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            만들고 싶은 게 있으신가요?
-          </h2>
-          <p className="text-muted-foreground text-lg mb-12 max-w-lg mx-auto">
-            아이디어만 알려주세요. 어떻게 만들지 함께 얘기해 봅시다.
-          </p>
-        </motion.div>
+          {/* 도트 패턴 오버레이 */}
+          <div
+            className="absolute inset-0 opacity-10"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, white 1px, transparent 1px)",
+              backgroundSize: "24px 24px",
+            }}
+          />
 
-        <motion.div
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-        >
-          {LINKS.map((link) => (
-            <motion.a
-              key={link.label}
-              href={link.href}
-              target={link.href.startsWith("http") ? "_blank" : undefined}
-              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="group glass-card !p-5 flex items-center gap-4 min-w-[240px] text-left"
-              variants={fadeInUp}
-              transition={defaultTransition}
+          <div className="relative z-10">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl mb-4">
+              만들고 싶은 게 있으신가요?
+            </h2>
+            <p className="text-white/80 text-lg mb-10 max-w-lg mx-auto">
+              아이디어만 알려주세요. 어떻게 만들지 함께 얘기해 봅시다.
+            </p>
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              variants={staggerContainer}
             >
-              <div className="p-2.5 rounded-xl bg-gradient-to-br from-cyan to-teal shrink-0">
-                <link.icon className="h-5 w-5 text-white" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="font-semibold text-sm group-hover:text-cyan transition-colors">
-                  {link.label}
-                </div>
-                <div className="text-xs text-muted-foreground truncate">
-                  {link.description}
-                </div>
-              </div>
-              <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-cyan group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0" />
-            </motion.a>
-          ))}
+              {LINKS.map((link) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    link.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
+                  className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/15 hover:bg-white/25 backdrop-blur-sm text-white font-medium transition-all duration-200 border border-white/20"
+                  variants={fadeInUp}
+                  transition={defaultTransition}
+                >
+                  <link.icon className="h-5 w-5" />
+                  <span>{link.label}</span>
+                  <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
+                </motion.a>
+              ))}
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>
