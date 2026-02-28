@@ -1,10 +1,47 @@
+<a id="readme-top"></a>
+
+<div align="center">
+
+[![Next.js][nextjs-shield]][nextjs-url]
+[![TypeScript][typescript-shield]][typescript-url]
+[![Tailwind CSS][tailwind-shield]][tailwind-url]
+[![Framer Motion][framer-shield]][framer-url]
+[![GitHub Pages][ghpages-shield]][ghpages-url]
+
 # yurielk82.github.io
 
-**AI Full-Stack Builder 포트폴리오** v1.6.1
+<code>v1.6.1</code>
 
-AI를 활용해 설계부터 배포까지 풀스택 앱을 구축하는 개발자 포트폴리오.
+**AI Full-Stack Builder 포트폴리오**
 
-## About
+AI를 활용해 설계부터 배포까지 풀스택 앱을 구축하는 개발자 포트폴리오
+
+[사이트 보기](https://yurielk82.github.io) · [이슈 등록](https://github.com/yurielk82/yurielk82.github.io/issues)
+
+</div>
+
+---
+
+<details>
+<summary>목차</summary>
+<ol>
+  <li><a href="#프로젝트-소개">프로젝트 소개</a></li>
+  <li><a href="#기술-스택">기술 스택</a></li>
+  <li>
+    <a href="#시작하기">시작하기</a>
+    <ul>
+      <li><a href="#설치-및-개발">설치 및 개발</a></li>
+      <li><a href="#빌드--배포">빌드 & 배포</a></li>
+    </ul>
+  </li>
+  <li><a href="#프로젝트-구조">프로젝트 구조</a></li>
+  <li><a href="#라이선스">라이선스</a></li>
+</ol>
+</details>
+
+---
+
+## 프로젝트 소개
 
 AI(Claude Code)와 협업하여 프로덕션 레벨의 풀스택 애플리케이션을 구축하는 과정과 결과물을 소개하는 포트폴리오 사이트입니다.
 
@@ -24,19 +61,25 @@ AI(Claude Code)와 협업하여 프로덕션 레벨의 풀스택 애플리케이
 | 설정 기반 데이터 | `src/config/`에서 모든 콘텐츠 관리 |
 | 정적 배포 | GitHub Pages + GitHub Actions 자동 배포 |
 
-## Built With
+<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
+
+## 기술 스택
 
 | Category | Technology |
 |----------|-----------|
-| Framework | Next.js 15 (App Router, `output: 'export'`) |
-| Language | TypeScript (strict) |
-| Styling | Tailwind CSS v4 + shadcn/ui |
-| Animation | Framer Motion |
+| Framework | [![Next.js][nextjs-shield]][nextjs-url] 15 (App Router, `output: 'export'`) |
+| Language | [![TypeScript][typescript-shield]][typescript-url] (strict) |
+| Styling | [![Tailwind CSS][tailwind-shield]][tailwind-url] v4 + shadcn/ui |
+| Animation | [![Framer Motion][framer-shield]][framer-url] |
 | Icons | Lucide React |
 | Font | Outfit + JetBrains Mono + Pretendard |
-| Deploy | GitHub Pages (GitHub Actions) |
+| Deploy | [![GitHub Pages][ghpages-shield]][ghpages-url] (GitHub Actions) |
 
-## Getting Started
+<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
+
+## 시작하기
+
+### 설치 및 개발
 
 ```bash
 git clone https://github.com/yurielk82/yurielk82.github.io.git
@@ -47,7 +90,7 @@ npm run dev
 
 http://localhost:3000 에서 확인.
 
-## Build & Deploy
+### 빌드 & 배포
 
 ```bash
 npm run build        # 정적 내보내기 (out/)
@@ -56,7 +99,9 @@ npx serve out        # 빌드 결과 로컬 확인
 
 `main` 브랜치에 push하면 GitHub Actions가 자동으로 GitHub Pages에 배포합니다.
 
-## Project Structure
+<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
+
+## 프로젝트 구조
 
 ```
 src/
@@ -79,16 +124,22 @@ src/
 └── lib/                # utils.ts, animations.ts
 ```
 
-## Documentation
+<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
-| 문서 | 설명 |
-|------|------|
-| [Architecture](docs/ARCHITECTURE.md) | 구조, 설계 의도 |
-| [Design System](docs/DESIGN_SYSTEM.md) | Liquid Glass 디자인 토큰, 컴포넌트 규격 |
-| [Deployment](docs/DEPLOYMENT.md) | 배포, GitHub Pages |
-| [Contributing](CONTRIBUTING.md) | 기여 규칙 |
-| [Changelog](CHANGELOG.md) | 변경 이력 |
-
-## License
+## 라이선스
 
 Copyright (c) 2026 yurielk82. All rights reserved.
+
+<p align="right">(<a href="#readme-top">맨 위로</a>)</p>
+
+<!-- 배지 레퍼런스 링크 -->
+[nextjs-shield]: https://img.shields.io/badge/Next.js_15-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[nextjs-url]: https://nextjs.org/
+[typescript-shield]: https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white
+[typescript-url]: https://www.typescriptlang.org/
+[tailwind-shield]: https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white
+[tailwind-url]: https://tailwindcss.com/
+[framer-shield]: https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white
+[framer-url]: https://www.framer.com/motion/
+[ghpages-shield]: https://img.shields.io/badge/GitHub_Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white
+[ghpages-url]: https://pages.github.com/
