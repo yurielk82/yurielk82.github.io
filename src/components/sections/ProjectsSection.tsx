@@ -110,48 +110,15 @@ function ProjectImage({
   );
 }
 
-/* ---------- Impact 숫자 블록 ---------- */
-function ImpactBlock({
-  impacts,
-  size,
-}: {
-  impacts: ProjectImpact[];
-  size: "lg" | "md" | "sm";
-}) {
-  const valueClass = {
-    lg: "text-2xl sm:text-3xl",
-    md: "text-xl",
-    sm: "text-lg",
-  }[size];
-
-  /* sm(일반 카드): 한 줄 배치 */
-  if (size === "sm") {
-    const item = impacts[0];
-    if (!item) return null;
-    return (
-      <>
-        <div className="my-3 border-t border-border/50" />
-        <div className="flex items-baseline gap-2">
-          <span className={cn(valueClass, "font-bold font-mono gradient-text")}>
-            {item.after}
-          </span>
-          <span className="text-xs text-muted-foreground">{item.label}</span>
-        </div>
-        <p className="text-[10px] font-mono text-amber-400/50 line-through mt-0.5">
-          {item.before}
-        </p>
-      </>
-    );
-  }
-
-  /* md/lg(Featured): 여러 항목 가로 배치 + 세로 구분선 */
+/* ---------- Impact 블록 (통일) ---------- */
+function ImpactBlock({ impacts }: { impacts: ProjectImpact[] }) {
   return (
     <div className="flex gap-6 items-start">
       {impacts.map((item, i) => (
         <div key={item.label} className="flex items-start gap-6">
           {i > 0 && <div className="w-px bg-border/30 self-stretch" />}
           <div>
-            <p className={cn(valueClass, "font-bold font-mono gradient-text leading-tight")}>
+            <p className="text-xl font-bold font-mono gradient-text leading-tight">
               {item.after}
             </p>
             <p className="text-xs text-muted-foreground mt-0.5">{item.label}</p>
@@ -165,78 +132,19 @@ function ImpactBlock({
   );
 }
 
-/* ---------- Primary Featured (가로, col-span-2) ---------- */
-function PrimaryFeaturedCard({ project }: { project: ProjectConfig }) {
-  const story = project.story;
-
-  return (
-    <motion.div
-      variants={fadeInUp}
-      transition={defaultTransition}
-      className="md:col-span-2"
-    >
-      <div className="glass-card overflow-hidden group">
-        <div className="grid grid-cols-1 sm:grid-cols-5">
-          {/* 이미지 (2/5) */}
-          <ProjectImage
-            project={project}
-            className="sm:col-span-2 aspect-[16/10] sm:aspect-auto sm:min-h-[320px]"
-          />
-
-          {/* 텍스트 (3/5) */}
-          <div className="sm:col-span-3 p-6 sm:p-8 flex flex-col justify-center gap-4">
-            {/* 헤더 */}
-            <div className="flex items-center gap-3 flex-wrap">
-              <h3 className="text-xl font-bold">{project.name}</h3>
-              <span className="text-xs font-mono text-muted-foreground">
-                v{project.version}
-              </span>
-            </div>
-
-            {/* Tagline */}
-            <p className="text-base sm:text-lg font-semibold gradient-text">
-              {project.tagline}
-            </p>
-
-            {/* Narrative 인용문 */}
-            {story?.narrative && (
-              <blockquote className="border-l-2 border-cyan/30 pl-4 text-sm text-muted-foreground leading-relaxed">
-                {story.narrative}
-              </blockquote>
-            )}
-
-            {/* Impact 대형 숫자 */}
-            {story && <ImpactBlock impacts={story.impact} size="lg" />}
-
-            {/* 기술 스택 */}
-            <div className="flex flex-wrap gap-1.5">
-              {project.techStack.slice(0, 4).map((tech) => (
-                <TechBadge key={tech}>{tech}</TechBadge>
-              ))}
-              {project.techStack.length > 4 && (
-                <TechBadge>+{project.techStack.length - 4}</TechBadge>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ---------- Secondary Featured (세로, col-span-1 + narrative/impact) ---------- */
-function SecondaryFeaturedCard({ project }: { project: ProjectConfig }) {
+/* ---------- StoryCard (단일 카드) ---------- */
+function StoryCard({ project }: { project: ProjectConfig }) {
   const story = project.story;
 
   return (
     <motion.div variants={fadeInUp} transition={defaultTransition}>
       <div className="glass-card overflow-hidden group h-full flex flex-col">
-        {/* 이미지 */}
+        {/* 이미지 16:10 */}
         <ProjectImage project={project} className="aspect-[16/10]" />
 
         {/* 텍스트 */}
         <div className="p-5 flex flex-col flex-1 gap-3">
-          {/* 헤더 */}
+          {/* 이름 + 버전 */}
           <div className="flex items-center gap-3 flex-wrap">
             <h3 className="text-lg font-bold">{project.name}</h3>
             <span className="text-xs font-mono text-muted-foreground">
@@ -245,7 +153,7 @@ function SecondaryFeaturedCard({ project }: { project: ProjectConfig }) {
           </div>
 
           {/* Tagline */}
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm font-semibold gradient-text">
             {project.tagline}
           </p>
 
@@ -260,7 +168,7 @@ function SecondaryFeaturedCard({ project }: { project: ProjectConfig }) {
           {story && (
             <>
               <div className="border-t border-border/50" />
-              <ImpactBlock impacts={story.impact} size="md" />
+              <ImpactBlock impacts={story.impact} />
             </>
           )}
 
@@ -279,68 +187,6 @@ function SecondaryFeaturedCard({ project }: { project: ProjectConfig }) {
   );
 }
 
-/* ---------- 일반 카드 (세로, col-span-1) ---------- */
-function RegularCard({ project }: { project: ProjectConfig }) {
-  const firstImpact = project.story?.impact[0];
-
-  return (
-    <motion.div variants={fadeInUp} transition={defaultTransition}>
-      <div className="glass-card overflow-hidden group h-full flex flex-col">
-        {/* 이미지 */}
-        <ProjectImage project={project} className="aspect-[16/10]" />
-
-        {/* 텍스트 */}
-        <div className="p-5 flex flex-col flex-1">
-          {/* 헤더 */}
-          <div className="flex items-center gap-3 flex-wrap mb-2">
-            <h3 className="text-lg font-bold">{project.name}</h3>
-            <span className="text-xs font-mono text-muted-foreground">
-              v{project.version}
-            </span>
-          </div>
-
-          {/* Tagline */}
-          <p className="text-sm text-muted-foreground mb-3">
-            {project.tagline}
-          </p>
-
-          {/* 기술 스택 */}
-          <div className="flex flex-wrap gap-1.5">
-            {project.techStack.slice(0, 4).map((tech) => (
-              <TechBadge key={tech}>{tech}</TechBadge>
-            ))}
-            {project.techStack.length > 4 && (
-              <TechBadge>+{project.techStack.length - 4}</TechBadge>
-            )}
-          </div>
-
-          {/* Impact 한 줄 */}
-          {firstImpact && (
-            <div className="mt-auto pt-2">
-              <ImpactBlock impacts={[firstImpact]} size="sm" />
-            </div>
-          )}
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-/* ---------- StoryCard — 통합 분기 ---------- */
-function StoryCard({
-  project,
-  isPrimary,
-  isSecondaryFeatured,
-}: {
-  project: ProjectConfig;
-  isPrimary: boolean;
-  isSecondaryFeatured: boolean;
-}) {
-  if (isPrimary) return <PrimaryFeaturedCard project={project} />;
-  if (isSecondaryFeatured) return <SecondaryFeaturedCard project={project} />;
-  return <RegularCard project={project} />;
-}
-
 /* ---------- ProjectsSection ---------- */
 export function ProjectsSection() {
   const [filter, setFilter] = useState("all");
@@ -356,14 +202,6 @@ export function ProjectsSection() {
     ([key]) =>
       key === "all" || projects.some((p) => p.category.includes(key as never))
   );
-
-  /* 첫 번째 featured = primary, 나머지 featured = secondary */
-  const featuredIds = projects
-    .filter((p) => p.featured)
-    .sort((a, b) => a.order - b.order)
-    .map((p) => p.id);
-  const primaryId = featuredIds[0];
-  const secondaryIds = new Set(featuredIds.slice(1));
 
   return (
     <section id="projects" className="relative z-10 py-24 sm:py-32">
@@ -392,21 +230,16 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {/* 통합 그리드 */}
+        {/* 2컬럼 그리드 */}
         <motion.div
           key={`grid-${filter}`}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
         >
           {sorted.map((project) => (
-            <StoryCard
-              key={project.id}
-              project={project}
-              isPrimary={project.id === primaryId}
-              isSecondaryFeatured={secondaryIds.has(project.id)}
-            />
+            <StoryCard key={project.id} project={project} />
           ))}
         </motion.div>
       </div>

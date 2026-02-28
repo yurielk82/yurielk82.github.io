@@ -2,6 +2,18 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.6.1] - 2026-02-28
+
+### Changed
+- WORK 섹션 스토리 관점 전환 — 효율화("야근 줄임") → 시스템 설계("오류 원천 차단") 관점으로 5개 프로젝트 tagline, narrative, impact 전면 교체
+- 3종 카드(PrimaryFeaturedCard, SecondaryFeaturedCard, RegularCard) → 단일 StoryCard로 통일
+- 그리드 레이아웃 3컬럼 → 2컬럼(md:grid-cols-2)으로 변경, 모든 카드 동일 크기
+- ImpactBlock 단일 사이즈로 통일 (lg/md/sm 분기 제거)
+
+### Removed
+- `PrimaryFeaturedCard`, `SecondaryFeaturedCard`, `RegularCard` 컴포넌트 삭제
+- `featured` 기반 primary/secondary 분기 로직 삭제
+
 ## [0.6.0] - 2026-02-28
 
 ### Added

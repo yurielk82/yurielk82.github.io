@@ -5,7 +5,7 @@ export const projects: ProjectConfig[] = [
     id: "csoweb",
     name: "CSO 정산 포털",
     version: "0.18.7",
-    tagline: "매달 반복되던 야근, 이제 엑셀 하나로 끝나요",
+    tagline: "사람은 승인만. 정산은 시스템이 합니다.",
     description:
       "제약사 CSO 업체들의 수수료 정산을 자동화하는 B2B 포털입니다. 엑셀 하나 올리면 업체별로 알아서 분류되고, 각 업체는 로그인해서 자기 정산 내역만 확인·다운로드합니다. 정산서 이메일 자동 발송, 사업자번호 실시간 인증까지. DDD 4레이어 아키텍처 위에 자동화 테스트 171건으로 안정성까지 잡았습니다.",
     category: ["fullstack"],
@@ -37,15 +37,15 @@ export const projects: ProjectConfig[] = [
     },
     story: {
       narrative:
-        "매달 엑셀 수십 개를 분류하며 밤늦게까지 야근하던 정산 업무. 이제 엑셀 하나 올리면 수만 줄 데이터가 자동 분류되고, 정산서 이메일까지 발송됩니다.",
+        "수만 줄 정산 데이터를 사람이 분류하면 오류는 필연입니다. 업체 매칭, 사업자 검증, 정산서 발송까지 시스템이 처리하고, 사람은 승인만 누릅니다.",
       pain: "매달 반복되는 정산 수작업. 엑셀 수십 개를 업체별로 분류하고, 밤늦게까지 야근.",
       solution:
         "엑셀 하나 올리면 자동 분류. 국세청 API로 사업자 인증. 정산서 이메일까지 자동 발송.",
       outcome:
         "API 연결 후 새 업체 회원 승인만 해주면 끝. 정산 업무가 사라졌습니다.",
       impact: [
-        { label: "야근", before: "매달 반복", after: "0" },
-        { label: "데이터 처리", before: "수만 줄 수작업", after: "엑셀 1개로 자동화" },
+        { label: "정산 오류", before: "수작업 분류", after: "시스템 자동 매칭" },
+        { label: "운영 모드", before: "매달 야근", after: "승인만 누르면 끝" },
       ],
     },
     featured: true,
@@ -55,7 +55,7 @@ export const projects: ProjectConfig[] = [
     id: "kpis-dsr-api",
     name: "KPIS 의약품 보고",
     version: "0.10.0",
-    tagline: "어디서 일하든 걱정 없이, 늘 곁에 있는 보고 시스템",
+    tagline: "실수가 불가능한 보고 시스템",
     description:
       "의약품 공급내역을 정부 시스템(KPIS)에 보고하는 작업을 자동화합니다. 한 번 만들어서 웹, PC 프로그램, 모바일 세 곳에서 전부 돌아갑니다. 인터넷이 끊겨도 로컬에 저장해두고, 연결되면 알아서 처리합니다.",
     category: ["fullstack", "desktop"],
@@ -84,14 +84,14 @@ export const projects: ProjectConfig[] = [
     },
     story: {
       narrative:
-        "엑셀 수작업 오류가 반복되는 의약품 보고. 한 번의 실수가 규제 위반인 업무를, 자동 수정과 자동 보고로 실수 자체가 불가능한 환경으로 바꿨습니다.",
+        "의약품 보고는 한 번의 실수가 규제 위반입니다. ERP 데이터 자동 수정, 정해진 시간에 API 자동 보고 — 사람이 실수할 수 있는 지점을 시스템이 모두 대체합니다.",
       pain: "단순하지만 리스크가 큰 의약품 보고. 엑셀 수작업 오류가 반복되고, 한 번의 실수가 규제 위반.",
       solution:
         "ERP 데이터를 읽어 자동 수정. 지정 시간에 API 자동 보고. 반복 오류 자동 처리.",
       outcome: "특이건만 알림이 옵니다. 실수할 수 없는 환경.",
       impact: [
-        { label: "보고 업무", before: "매달 야근", after: "시스템 자동" },
-        { label: "리스크", before: "수작업 오류", after: "제거" },
+        { label: "보고 오류", before: "수작업 반복", after: "시스템 자동 보고" },
+        { label: "운영 모드", before: "매달 야근", after: "특이건만 알림" },
       ],
     },
     featured: true,
@@ -101,7 +101,7 @@ export const projects: ProjectConfig[] = [
     id: "myaccweb",
     name: "내 수수료 장부",
     version: "1.0.0",
-    tagline: "부담 없이 시작하세요. 서버 비용, 영원히 0원",
+    tagline: "서버 없이도 사라지지 않는 기록",
     description:
       "영업사원이 수수료를 기록·관리하는 앱입니다. 서버 대신 Google Sheets를 활용해서 매달 나가는 비용이 0원. 인터넷 없는 곳에서도 쓸 수 있고, 스마트폰에서 바로 접속 가능합니다.",
     category: ["fullstack"],
@@ -128,13 +128,14 @@ export const projects: ProjectConfig[] = [
     },
     story: {
       narrative:
-        "서버 비용이 부담되는 영업사원에게, Google Sheets를 DB로 활용해 인프라 비용 영원히 0원인 수수료 관리 앱을 만들었습니다.",
+        "영업사원의 수수료 기록은 생계와 직결됩니다. 서버에 의존하지 않고 Google Sheets를 DB로 활용해, 데이터 유실 걱정 없는 시스템을 설계했습니다.",
       pain: "서버 비용이 부담. 매달 호스팅 비용 없이 수수료를 관리할 방법이 필요.",
       solution:
         "Google Sheets를 DB로 활용. 서버리스 + PWA 구조로 인프라 비용 0원.",
       outcome: "서버 비용, 영원히 0원.",
       impact: [
-        { label: "서버 비용", before: "매달 발생", after: "영원히 ₩0" },
+        { label: "인프라 비용", before: "매달 발생", after: "영원히 ₩0" },
+        { label: "데이터 안전", before: "서버 의존", after: "Google Sheets 영속" },
       ],
     },
     featured: false,
@@ -144,7 +145,7 @@ export const projects: ProjectConfig[] = [
     id: "codegear2",
     name: "Code Gear 웹사이트",
     version: "0.8.0",
-    tagline: "처음 방문한 사람의 마음을 사로잡는 웹사이트",
+    tagline: "개발자 없이도 운영되는 웹사이트",
     description:
       "AI 반도체 스타트업 코드기어의 공식 웹사이트입니다. 관리자가 직접 공지사항을 올리고 수정할 수 있는 CMS, 로그인 권한 관리, 인터랙티브 메인 화면까지. Prisma + Neon 서버리스 DB 기반으로 빠르고 안정적으로 운영됩니다.",
     category: ["fullstack"],
@@ -172,13 +173,13 @@ export const projects: ProjectConfig[] = [
     },
     story: {
       narrative:
-        "AI 반도체 스타트업의 첫인상을 전할 웹사이트가 없었습니다. 기업 아이덴티티에 맞춘 인터랙티브 웹사이트를 맞춤 제작했습니다.",
+        "기업 웹사이트 업데이트마다 개발자를 부르면 비용과 시간이 반복됩니다. CMS와 관리자 인증을 설계해, 콘텐츠 관리를 개발자에게 의존하지 않는 구조를 만들었습니다.",
       pain: "AI 반도체 스타트업에 첫인상을 전할 웹사이트가 없었습니다.",
       solution:
         "사이트 아이덴티티만 전달받고, 기업 특성에 맞춘 인터랙티브 웹사이트 맞춤 제작.",
       outcome: "처음 방문한 사람의 마음을 사로잡는 웹사이트가 완성.",
       impact: [
-        { label: "웹 존재감", before: "없음", after: "브랜드 맞춤 사이트" },
+        { label: "콘텐츠 관리", before: "개발자 의존", after: "관리자 직접 운영" },
       ],
     },
     featured: false,
@@ -188,7 +189,7 @@ export const projects: ProjectConfig[] = [
     id: "mm-project",
     name: "정산서 자동 발송",
     version: "3.1.0",
-    tagline: "수백 장의 정산서, 이제 클릭 한 번이면 충분합니다",
+    tagline: "시스템이 분류하고, 시스템이 보냅니다",
     description:
       "엑셀 파일 하나 올리면 업체별로 분류하고, 정산서 PDF 만들어서, 이메일까지 한 번에 보냅니다. 수백 개 업체에 개별 정산서를 보내는 일이 클릭 몇 번이면 끝납니다. 3번의 버전 업을 거치며 검증된 시스템입니다.",
     category: ["fullstack", "automation"],
@@ -212,13 +213,14 @@ export const projects: ProjectConfig[] = [
     links: {},
     story: {
       narrative:
-        "수백 개 업체에 정산서를 하나하나 만들어 개별 발송하던 업무. 엑셀 하나로 분류, PDF 생성, 이메일 발송까지 클릭 한 번으로 끝나도록 자동화했습니다.",
+        "수백 업체에 정산서를 사람이 분류하면 잘못된 업체에 잘못된 금액이 갑니다. 엑셀 데이터를 시스템이 자동 분류하고, PDF 생성부터 이메일 발송까지 오류 없이 처리합니다.",
       pain: "수백 개 업체에 정산서를 하나하나 만들어서 개별 발송.",
       solution:
         "엑셀 업로드로 업체별 분류, PDF 자동 생성, 이메일 일괄 발송.",
       outcome: "클릭 한 번이면 수백 장의 정산서가 각 업체에 도착합니다.",
       impact: [
-        { label: "발송", before: "수작업 개별", after: "클릭 한 번" },
+        { label: "정산서 오류", before: "수작업 분류", after: "시스템 자동 분류" },
+        { label: "발송", before: "개별 수작업", after: "일괄 자동 발송" },
       ],
     },
     featured: false,
