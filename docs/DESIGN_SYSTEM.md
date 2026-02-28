@@ -1,8 +1,8 @@
-# Design System — Terminal Futurism
+# Design System — Liquid Glass
 
 ## 컨셉
 
-터미널/IDE의 모노스페이스 미학과 SF HUD 인터페이스의 결합. 코드가 곧 디자인이고, AI가 곧 도구인 세계관.
+Apple WWDC 2025 "Liquid Glass" 스타일에서 영감받은 디자인 시스템. 반투명 글래스 머티리얼, 스펙큘러 하이라이트, 부드러운 블롭 그래디언트 배경으로 콘텐츠에 깊이와 공간감을 부여한다.
 
 ## 색상 토큰
 
@@ -10,23 +10,43 @@
 
 | 토큰 | 값 | 용도 |
 |------|-----|------|
-| `--background` | `#09090b` | 페이지 배경 |
-| `--foreground` | `#e4e4e7` | 기본 텍스트 |
-| `--card` | `#0f1117` | 카드/서피스 배경 |
-| `--muted-foreground` | `#71717a` | 보조 텍스트 |
-| `--border` | `rgba(255,255,255,0.06)` | 테두리 |
-| `--tf-cyan` | `#06b6d4` | 프라이머리 액센트 |
-| `--tf-teal` | `#14b8a6` | 세컨더리 액센트 |
-| `--tf-emerald` | `#10b981` | 성공/완료 시그널 |
-| `--tf-amber` | `#f59e0b` | 경고/강조 |
-| `--tf-surface` | `#0f1117` | 서피스 |
-| `--tf-surface-elevated` | `#161a26` | 부양된 서피스 |
+| `--background` | `#0a0a0f` | 딥 네이비 블랙 |
+| `--foreground` | `#f0f0f5` | 소프트 오프화이트 |
+| `--lg-accent` | `#7c8aff` | 프라이머리 — 인디고 블루 |
+| `--lg-secondary` | `#a78bfa` | 소프트 바이올렛 |
+| `--lg-tertiary` | `#f0abfc` | 라이트 퓨샤 |
+| `--lg-success` | `#34d399` | 에메랄드 (성공) |
+| `--lg-warning` | `#fbbf24` | 앰버 (경고) |
+| `--lg-accent-subtle` | `rgba(124,138,255,0.08)` | 액센트 서브틀 배경 |
+| `--lg-surface` | `#10101a` | 서피스 |
+| `--lg-surface-elevated` | `#18182a` | 부양된 서피스 |
+
+### 라이트 모드
+
+| 토큰 | 값 | 용도 |
+|------|-----|------|
+| `--background` | `#f8f9fc` | 블루 틴트 화이트 |
+| `--foreground` | `#1a1a2e` | 딥 네이비 |
+| `--lg-accent` | `#5b6abf` | 다크 인디고 (가독성 확보) |
+| `--lg-secondary` | `#7c6aad` | 라이트 바이올렛 |
+| `--lg-tertiary` | `#c07ec8` | 라이트 퓨샤 |
+
+### Tailwind 시맨틱 클래스
+
+| CSS 변수 | Tailwind 클래스 |
+|----------|----------------|
+| `--lg-accent` | `text-accent-lg`, `bg-accent-lg`, `border-accent-lg` |
+| `--lg-secondary` | `text-secondary-lg`, `bg-secondary-lg` |
+| `--lg-tertiary` | `text-tertiary-lg`, `bg-tertiary-lg` |
+| `--lg-success` | `text-success-lg`, `bg-success-lg` |
+| `--lg-warning` | `text-warning-lg`, `bg-warning-lg` |
+| `--lg-accent-subtle` | `bg-accent-lg-subtle` |
 
 ### 그래디언트
 
 ```css
-.gradient-text     /* 시안→틸→에메랄드 (#06b6d4 → #14b8a6 → #10b981) */
-.gradient-text-amber  /* 앰버→시안 (#f59e0b → #06b6d4) */
+.liquid-gradient-text      /* 인디고→바이올렛→퓨샤 (#7c8aff → #a78bfa → #f0abfc) */
+.liquid-gradient-text-warm /* 앰버→인디고 (#fbbf24 → #7c8aff) */
 ```
 
 ## 타이포그래피
@@ -34,7 +54,7 @@
 | 용도 | 폰트 | 변수 |
 |------|------|------|
 | Heading/Body | Outfit | `--font-outfit` |
-| Code/Terminal | JetBrains Mono | `--font-jetbrains-mono` |
+| Code/Mono | JetBrains Mono | `--font-jetbrains-mono` |
 | 한글 | Pretendard | `--font-pretendard` |
 
 ```css
@@ -42,110 +62,136 @@
 --font-mono: var(--font-jetbrains-mono), ui-monospace;
 ```
 
+## 머티리얼: `.liquid-glass`
+
+기존 `.glass-card`를 대체하는 핵심 머티리얼.
+
+```css
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+}
+```
+
+### 스펙큘러 하이라이트
+
+`.liquid-glass::before`로 상단 가장자리에 밝은 빛 반사 라인 추가. 기존 glassmorphism과 Liquid Glass의 핵심 차이.
+
+```css
+.liquid-glass::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 8px; right: 8px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+}
+```
+
+### 호버 상태
+
+```css
+.liquid-glass:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(124, 138, 255, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(-3px);
+}
+```
+
+### 라이트 모드
+
+```css
+:root:not(.dark) .liquid-glass {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(91, 106, 191, 0.12);
+}
+```
+
 ## 컴포넌트 패턴
 
 ### GlassCard
 
-```css
-.glass-card {
-  background: rgba(15, 17, 23, 0.6);
-  backdrop-filter: blur(24px);
-  border: 1px solid rgba(6, 182, 212, 0.08);
-  border-radius: 16px;
-}
-/* hover: border-color → rgba(6,182,212,0.2), glow shadow, translateY(-2px) */
-```
+`liquid-glass` 머티리얼 래퍼. `hover` prop으로 호버 효과 토글.
 
 ### TechBadge
 
-- `default`: `bg-secondary/50` + `border-border` → hover시 시안 테두리
-- `cyan`: `bg-cyan/10` + `text-cyan`
-- `amber`: `bg-amber/10` + `text-amber`
-
-### StoryCard (통합 컴포넌트)
-
-3단계 계층으로 분기하는 통합 프로젝트 카드. 모두 `glass-card` 기반.
-
-#### Primary Featured (가로, col-span-2)
-
-```
-레이아웃: grid grid-cols-1 sm:grid-cols-5 (이미지 2col, 텍스트 3col)
-```
-
-| 요소 | 스타일 |
-|------|--------|
-| Tagline | `text-base sm:text-lg font-semibold gradient-text` |
-| Narrative | `border-l-2 border-cyan/30 pl-4 text-sm text-muted-foreground` |
-| Impact 수치 | `text-2xl sm:text-3xl font-bold font-mono gradient-text` |
-| Impact 라벨 | `text-xs text-muted-foreground` |
-| Impact Before | `text-[10px] font-mono text-amber-400/50 line-through` |
-| 항목 구분 | `w-px bg-border/30 self-stretch` (세로선) |
-
-#### Secondary Featured (세로, col-span-1)
-
-| 요소 | 스타일 |
-|------|--------|
-| Tagline | `text-sm text-muted-foreground` |
-| Narrative | `border-l-2 border-cyan/30 pl-4 text-sm text-muted-foreground` |
-| Impact 수치 | `text-xl font-bold font-mono gradient-text` |
-
-#### 일반 카드 (세로, col-span-1)
-
-| 요소 | 스타일 |
-|------|--------|
-| Tagline | `text-sm text-muted-foreground` |
-| Impact 수치 | `text-lg font-bold font-mono gradient-text` |
-| Impact 라벨 | `text-xs text-muted-foreground` |
-| Impact Before | `text-[10px] font-mono text-amber-400/50 line-through` |
+- `default`: `bg-secondary/50` + `border-border` → hover 시 accent-lg 테두리
+- `accent`: `bg-accent-lg-subtle` + `text-accent-lg`
+- `warning`: `bg-warning-lg/10` + `text-warning-lg`
 
 ### SectionHeading
 
 ```
-// TAG            ← font-mono, text-cyan, tracking-widest, uppercase
+// TAG            ← font-mono, text-accent-lg, tracking-widest, uppercase
 Section Title     ← text-3xl~5xl, font-bold
 Optional desc     ← text-muted-foreground, max-w-2xl, mx-auto
 ```
 
-### Terminal Window (Hero)
+### Hero (Liquid Glass)
 
-- 타이틀 바: 트래픽 라이트 (red/yellow/green dots) + 텍스트
-- 바디: font-mono, 줄별 타이핑 애니메이션
-- 프롬프트: `text-cyan` + `$` 기호
-- 성공: `text-emerald` + `✓`
-- 진행: `text-muted-foreground` + 스피너 (`⠋⠙⠹⠸`)
+- 배지: `border-accent-lg/20 bg-accent-lg-subtle text-accent-lg`
+- 타이틀: `liquid-gradient-text`
+- 핵심 역량 카드: `.liquid-glass` 안에 아이콘 + 라벨 가로 배치
+- Stats: `liquid-gradient-text` 수치
+- 배경: radial glow indigo 톤
+
+### SVG 필터 (`LiquidGlassSVGFilters`)
+
+전역 SVG 필터 (`feTurbulence` + `feDisplacementMap`) 정의. 특정 요소에 선택적 적용.
+
+## 배경
+
+### CSS 블롭 그래디언트
+
+Canvas 뉴럴 네트워크를 대체하는 3개 블롭 그래디언트.
+
+| 블롭 | 색상 | 주기 |
+|------|------|------|
+| Indigo | `rgba(124,138,255,0.4)` | 20s |
+| Fuchsia | `rgba(240,171,252,0.4)` | 30s |
+| Violet | `rgba(167,139,250,0.4)` | 25s |
+
+- `blur-3xl`로 경계가 부드러운 대형 원
+- CSS `@keyframes blob-drift-*`로 느린 드리프트
+- `prefers-reduced-motion` 시 정적 고정
 
 ## 애니메이션
 
-### Framer Motion Variants
+### Framer Motion
 
 | Variant | 효과 |
 |---------|------|
-| `fadeInUp` | opacity 0→1, y 24→0 |
-| `fadeIn` | opacity 0→1 |
+| `fadeInUp` | opacity 0→1, y 20→0 |
 | `staggerContainer` | children 0.1s 간격 |
-| `scaleIn` | opacity 0→1, scale 0.92→1 |
-| `slideInLeft/Right` | opacity + x ±32 |
+
+```ts
+defaultTransition = { type: "spring", stiffness: 300, damping: 30 }
+```
 
 ### CSS 애니메이션
 
-- `scan-line`: 수평 스캔 라인 (4s 주기)
-- `pulse-glow`: 시안 글로우 펄스 (box-shadow)
-- `cursor-blink`: 터미널 커서 깜빡임 (1s step-end)
-- `terminal-glow`: 시안 text-shadow
+| 이름 | 용도 |
+|------|------|
+| `blob-drift-1` | 인디고 블롭 드리프트 (20s) |
+| `blob-drift-2` | 퓨샤 블롭 드리프트 (30s) |
+| `blob-drift-3` | 바이올렛 블롭 드리프트 (25s) |
 
 ## 반응형
 
 | 요소 | Mobile (<768) | Tablet (768+) | Desktop (1024+) |
 |------|--------------|---------------|-----------------|
 | Navigation | 햄버거 | 가로 메뉴 | 가로 메뉴 |
-| Projects 그리드 | 1열 (전체 세로) | 2열 (Primary 2칸) | 3열 (Primary 2칸+1) |
+| Hero 역량 카드 | 2×2 그리드 | 4열 | 4열 |
+| Projects | 가로 스크롤 | 가로 스크롤 | 가로 스크롤 |
 | Skills (역량) | 1열 | 2열 | 2열 |
-| Skills (기술) | 1열 | 2열 | 4열 |
-| 프로젝트 모달 | 풀스크린 | 중앙 Dialog | 중앙 (max-w-2xl) |
+| Skills (기술) | 3열 | 4열 | 7열 |
 
 ## 접근성
 
-- `useReducedMotion`: Canvas 애니메이션 정적 렌더링 전환
+- `useReducedMotion`: 블롭 애니메이션 정적 전환, 카드 호버 transform 비활성화
 - 모든 인터랙티브 요소에 `aria-label`
-- Canvas에 `aria-hidden="true"`
+- 배경·SVG 필터에 `aria-hidden="true"`
 - 키보드 네비게이션 지원
+- 다크/라이트 양쪽 모드에서 충분한 대비 확보

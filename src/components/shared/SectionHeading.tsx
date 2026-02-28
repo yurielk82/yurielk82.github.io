@@ -19,7 +19,7 @@ export function SectionHeading({ tag, title, description }: SectionHeadingProps)
       variants={fadeInUp}
       transition={defaultTransition}
     >
-      <span className="inline-block font-mono text-sm tracking-widest uppercase text-cyan mb-4">
+      <span className="inline-block font-mono text-sm tracking-widest uppercase text-accent-lg mb-4">
         {tag}
       </span>
       <h2 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">

@@ -2,6 +2,47 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [1.0.0] - 2026-02-28
+
+### BREAKING — Liquid Glass 디자인 시스템 전환
+
+Terminal Futurism 디자인 시스템을 Apple WWDC 2025 "Liquid Glass" 스타일로 전면 교체. 콘텐츠·구조·기능은 100% 유지하되, 시각적 아이덴티티를 완전히 교체하는 메이저 리디자인.
+
+### Added
+- **Liquid Glass 머티리얼** (`.liquid-glass`) — 반투명 배경 + `backdrop-filter: blur(20px) saturate(1.5)` + 스펙큘러 하이라이트 `::before`
+- **CSS 블롭 그래디언트 배경** — 인디고/퓨샤/바이올렛 3개 블롭, 20~30초 주기 느린 드리프트 (`@keyframes blob-drift-*`)
+- `LiquidGlassSVGFilters.tsx` — 전역 SVG 굴절 필터 (`feTurbulence` + `feDisplacementMap`) 선택적 적용
+- Hero 핵심 역량 카드 — Liquid Glass 카드 안에 아이콘+라벨 가로 4열 배치 (About의 3대 원칙 요약판)
+- `liquid-gradient-text` / `liquid-gradient-text-warm` CSS 유틸리티
+- `prefers-reduced-motion` 시 블롭 애니메이션·카드 호버 transform 비활성화
+
+### Changed
+- **색상 팔레트 전면 교체** — 시안/틸/에메랄드 → 인디고(`#7c8aff`)/바이올렛(`#a78bfa`)/퓨샤(`#f0abfc`)
+- **배경 전환** — Canvas 뉴럴 네트워크 (60노드+연결선+마우스반응) → CSS 블롭 그래디언트 (GPU 효율)
+- **애니메이션 전환** — `duration: 0.6, ease: cubic-bezier` → `type: "spring", stiffness: 300, damping: 30`
+- **`fadeInUp`** y offset 24 → 20 (더 절제된 진입)
+- Navigation — `Terminal` 아이콘 → `Sparkles`, `bg-background/60` → `.liquid-glass` 머티리얼
+- Footer — `Terminal` 아이콘 → `Sparkles`, `text-cyan` → `text-accent-lg`
+- GlassCard — `glass-card` → `liquid-glass` 클래스
+- SectionHeading — `text-cyan` → `text-accent-lg`
+- TechBadge — variant 이름 `cyan`→`accent`, `amber`→`warning`, 색상 계열 교체
+- HeroSection — 터미널 윈도우·타이핑 애니메이션 → Liquid Glass 핵심 역량 카드, 그래디언트 텍스트 교체
+- AboutSection — 아이콘 그래디언트 `from-cyan` → `from-accent-lg`, 하단 라인 `via-cyan/20` → `via-accent-lg/15`
+- ProjectsSection — `glass-card` → `liquid-glass`, 필터 버튼 `bg-cyan` → `bg-accent-lg`, FALLBACK_GRADIENTS 인디고/바이올렛/퓨샤 계열로 교체
+- SkillsSection — 아이콘 배경 `from-cyan` → `from-accent-lg`, 기술 그리드 호버 `border-cyan/20` → `border-accent-lg/20`
+- ContactSection — CTA 배너 그래디언트 시안→보라→마젠타 → 인디고→바이올렛→퓨샤
+- 스크롤바 색상 시안 → 인디고, 선택영역 색상 교체
+- `DESIGN_SYSTEM.md` 전면 재작성 — Liquid Glass 문서
+
+### Removed
+- Terminal Futurism 색상 토큰 (`--tf-cyan`, `--tf-teal`, `--tf-emerald`, `--tf-amber`, `--tf-surface`, `--tf-surface-elevated`)
+- `.glass-card` CSS 클래스
+- `.gradient-text` / `.gradient-text-amber` CSS 유틸리티
+- `.terminal-glow` / `.scan-line` / `.cursor-blink` CSS 유틸리티
+- `@keyframes scan` / `@keyframes pulse-glow` / `@keyframes typewriter-blink` 애니메이션
+- Hero 터미널 관련 코드 — `TERMINAL_LINES`, `useTypewriter` 훅, 터미널 윈도우 JSX 전체
+- Canvas 뉴럴 네트워크 (`AnimatedBackground.tsx` 전면 재작성)
+
 ## [0.6.5] - 2026-02-28
 
 ### Added

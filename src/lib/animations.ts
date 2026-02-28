@@ -1,7 +1,7 @@
 import type { Variants } from "framer-motion";
 
 export const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, y: 0 },
 };
 
@@ -16,6 +16,7 @@ export const staggerContainer: Variants = {
 };
 
 export const defaultTransition = {
-  duration: 0.6,
-  ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+  type: "spring" as const,
+  stiffness: 300,
+  damping: 30,
 };

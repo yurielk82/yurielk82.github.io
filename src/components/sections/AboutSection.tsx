@@ -12,21 +12,21 @@ const PILLARS = [
     title: "처음부터 끝까지, 한 사람이",
     description:
       "여러 사람에게 전달하다 흐려지는 의도, 경험해 보셨나요? 기획부터 배포까지 한 사람이 관통하면, 당신의 아이디어가 그대로 살아 숨 쉽니다.",
-    accent: "from-cyan to-teal",
+    accent: "from-accent-lg to-secondary-lg",
   },
   {
     icon: Cpu,
     title: "당신의 아이디어가 먼저입니다",
     description:
       "\"이 기술로는 안 돼요\"라는 말, 저에게는 없습니다. 아이디어를 먼저 듣고, 거기에 딱 맞는 기술을 골라 씁니다. 기술이 아이디어를 가두지 않도록.",
-    accent: "from-teal to-emerald",
+    accent: "from-secondary-lg to-tertiary-lg",
   },
   {
     icon: Shield,
     title: "오래 쓸 수 있도록, 꼼꼼하게",
     description:
       "예쁜 화면은 기본이에요. 하지만 진짜 중요한 건, 그 뒤에 있습니다. 데이터가 안전한지, 사용자가 늘어도 버티는지, 나중에 기능을 추가할 수 있는지 — 보이지 않는 곳까지 마음을 씁니다.",
-    accent: "from-emerald to-cyan",
+    accent: "from-tertiary-lg to-accent-lg",
   },
 ];
 
@@ -72,7 +72,7 @@ export function AboutSection() {
                 </p>
 
                 {/* 하단 악센트 라인 */}
-                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-lg/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </GlassCard>
             </motion.div>
           ))}

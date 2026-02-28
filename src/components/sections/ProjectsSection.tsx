@@ -12,27 +12,27 @@ import { TechBadge } from "@/components/shared/TechBadge";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
 import type { ProjectConfig, ProjectImpact } from "@/types";
 
-/* 이미지 없는 프로젝트용 폴백 그래디언트 */
+/* 이미지 없는 프로젝트용 폴백 그래디언트 — Liquid Glass 팔레트 */
 const FALLBACK_GRADIENTS: Record<string, { gradient: string; pattern: string }> = {
   csoweb: {
-    gradient: "from-cyan-500/30 via-blue-600/20 to-indigo-700/30",
-    pattern: "radial-gradient(circle at 70% 30%, rgba(6,182,212,0.3) 0%, transparent 50%)",
+    gradient: "from-indigo-500/30 via-violet-600/20 to-purple-700/30",
+    pattern: "radial-gradient(circle at 70% 30%, rgba(124,138,255,0.3) 0%, transparent 50%)",
   },
   "kpis-dsr-api": {
-    gradient: "from-emerald-500/30 via-teal-600/20 to-cyan-700/30",
-    pattern: "radial-gradient(circle at 30% 70%, rgba(16,185,129,0.3) 0%, transparent 50%)",
+    gradient: "from-violet-500/30 via-purple-600/20 to-fuchsia-700/30",
+    pattern: "radial-gradient(circle at 30% 70%, rgba(167,139,250,0.3) 0%, transparent 50%)",
   },
   myaccweb: {
-    gradient: "from-amber-500/30 via-orange-600/20 to-rose-700/30",
-    pattern: "radial-gradient(circle at 80% 80%, rgba(245,158,11,0.3) 0%, transparent 50%)",
+    gradient: "from-fuchsia-500/30 via-pink-600/20 to-rose-700/30",
+    pattern: "radial-gradient(circle at 80% 80%, rgba(240,171,252,0.3) 0%, transparent 50%)",
   },
   codegear2: {
-    gradient: "from-violet-500/30 via-purple-600/20 to-indigo-700/30",
-    pattern: "radial-gradient(circle at 20% 40%, rgba(139,92,246,0.3) 0%, transparent 50%)",
+    gradient: "from-indigo-500/30 via-blue-600/20 to-violet-700/30",
+    pattern: "radial-gradient(circle at 20% 40%, rgba(124,138,255,0.3) 0%, transparent 50%)",
   },
   "mm-project": {
-    gradient: "from-rose-500/30 via-pink-600/20 to-fuchsia-700/30",
-    pattern: "radial-gradient(circle at 60% 20%, rgba(244,114,182,0.3) 0%, transparent 50%)",
+    gradient: "from-purple-500/30 via-fuchsia-600/20 to-pink-700/30",
+    pattern: "radial-gradient(circle at 60% 20%, rgba(167,139,250,0.3) 0%, transparent 50%)",
   },
 };
 
@@ -83,7 +83,7 @@ function ProjectImage({
               href={project.links.live}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan/20 hover:bg-cyan/30 text-white text-sm font-medium transition-colors border border-cyan/30 backdrop-blur"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-accent-lg/20 hover:bg-accent-lg/30 text-white text-sm font-medium transition-colors border border-accent-lg/30 backdrop-blur"
             >
               <ExternalLink className="h-4 w-4" />
               사이트 보기
@@ -118,11 +118,11 @@ function ImpactBlock({ impacts }: { impacts: ProjectImpact[] }) {
         <div key={item.label} className="flex items-start gap-6">
           {i > 0 && <div className="w-px bg-border/30 self-stretch" />}
           <div>
-            <p className="text-xl font-bold font-mono gradient-text leading-tight">
+            <p className="text-xl font-bold font-mono liquid-gradient-text leading-tight">
               {item.after}
             </p>
             <p className="text-xs text-muted-foreground mt-0.5">{item.label}</p>
-            <p className="text-[10px] font-mono text-amber-400/50 line-through mt-0.5">
+            <p className="text-[10px] font-mono text-warning-lg/50 line-through mt-0.5">
               {item.before}
             </p>
           </div>
@@ -142,7 +142,7 @@ function StoryCard({ project }: { project: ProjectConfig }) {
       transition={defaultTransition}
       className="min-w-70 max-w-80 snap-center flex-shrink-0"
     >
-      <div className="glass-card overflow-hidden group h-full flex flex-col">
+      <div className="liquid-glass overflow-hidden group h-full flex flex-col">
         {/* 이미지 16:10 */}
         <ProjectImage project={project} className="aspect-[16/10]" />
 
@@ -157,7 +157,7 @@ function StoryCard({ project }: { project: ProjectConfig }) {
           </div>
 
           {/* Tagline */}
-          <p className="text-sm font-semibold gradient-text">
+          <p className="text-sm font-semibold liquid-gradient-text">
             {project.tagline}
           </p>
 
@@ -310,7 +310,6 @@ export function ProjectsSection() {
 
   /* 필터 변경 · 마운트 시 스크롤 상태 초기화 */
   useEffect(() => {
-    /* scrollBy smooth 완료 후 상태 업데이트를 위해 약간 지연 */
     const timer = setTimeout(scroll.updateScrollState, 50);
     return () => clearTimeout(timer);
   }, [filter, scroll.updateScrollState]);
@@ -333,7 +332,7 @@ export function ProjectsSection() {
               className={cn(
                 "px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-200",
                 filter === key
-                  ? "bg-cyan text-white shadow-lg shadow-cyan/25"
+                  ? "bg-accent-lg text-white shadow-lg shadow-accent-lg/25"
                   : "bg-secondary/50 text-muted-foreground hover:text-foreground hover:bg-secondary"
               )}
             >
@@ -348,7 +347,7 @@ export function ProjectsSection() {
           {scroll.canScrollLeft && (
             <button
               onClick={() => scroll.scrollByAmount(-SCROLL_STEP)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-background/80 backdrop-blur border border-border/50 hover:bg-background hover:border-cyan/30 text-muted-foreground hover:text-foreground transition-all duration-200 shadow-lg"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-background/80 backdrop-blur border border-border/50 hover:bg-background hover:border-accent-lg/30 text-muted-foreground hover:text-foreground transition-all duration-200 shadow-lg"
               aria-label="이전 프로젝트"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -378,7 +377,7 @@ export function ProjectsSection() {
           {scroll.canScrollRight && (
             <button
               onClick={() => scroll.scrollByAmount(SCROLL_STEP)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-background/80 backdrop-blur border border-border/50 hover:bg-background hover:border-cyan/30 text-muted-foreground hover:text-foreground transition-all duration-200 shadow-lg"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-background/80 backdrop-blur border border-border/50 hover:bg-background hover:border-accent-lg/30 text-muted-foreground hover:text-foreground transition-all duration-200 shadow-lg"
               aria-label="다음 프로젝트"
             >
               <ChevronRight className="h-5 w-5" />

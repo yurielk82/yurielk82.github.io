@@ -52,104 +52,104 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
 
-  /* Terminal Futurism Tokens */
-  --color-cyan: var(--tf-cyan);
-  --color-cyan-light: var(--tf-cyan-light);
-  --color-cyan-dark: var(--tf-cyan-dark);
-  --color-teal: var(--tf-teal);
-  --color-emerald: var(--tf-emerald);
-  --color-amber: var(--tf-amber);
-  --color-surface: var(--tf-surface);
-  --color-surface-elevated: var(--tf-surface-elevated);
+  /* Liquid Glass Tokens */
+  --color-accent-lg: var(--lg-accent);
+  --color-secondary-lg: var(--lg-secondary);
+  --color-tertiary-lg: var(--lg-tertiary);
+  --color-success-lg: var(--lg-success);
+  --color-warning-lg: var(--lg-warning);
+  --color-accent-lg-subtle: var(--lg-accent-subtle);
+  --color-surface-lg: var(--lg-surface);
+  --color-surface-elevated-lg: var(--lg-surface-elevated);
 }
 
 /* ── Light Mode ── */
 :root {
   --radius: 0.625rem;
-  --background: #fafbfc;
-  --foreground: #0a0f1e;
+  --background: #f8f9fc;
+  --foreground: #1a1a2e;
   --card: #ffffff;
-  --card-foreground: #0a0f1e;
+  --card-foreground: #1a1a2e;
   --popover: #ffffff;
-  --popover-foreground: #0a0f1e;
-  --primary: #0891b2;
+  --popover-foreground: #1a1a2e;
+  --primary: #5b6abf;
   --primary-foreground: #ffffff;
-  --secondary: #f0f4f8;
-  --secondary-foreground: #0a0f1e;
-  --muted: #f0f4f8;
+  --secondary: #eef0f8;
+  --secondary-foreground: #1a1a2e;
+  --muted: #eef0f8;
   --muted-foreground: #5a6578;
-  --accent: #06b6d4;
+  --accent: #5b6abf;
   --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #06b6d4;
-  --chart-1: #06b6d4;
-  --chart-2: #10b981;
-  --chart-3: #f59e0b;
-  --chart-4: #8b5cf6;
-  --chart-5: #ec4899;
-  --sidebar: #f0f4f8;
-  --sidebar-foreground: #0a0f1e;
-  --sidebar-primary: #0891b2;
+  --ring: #5b6abf;
+  --chart-1: #5b6abf;
+  --chart-2: #34d399;
+  --chart-3: #fbbf24;
+  --chart-4: #a78bfa;
+  --chart-5: #f0abfc;
+  --sidebar: #eef0f8;
+  --sidebar-foreground: #1a1a2e;
+  --sidebar-primary: #5b6abf;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #e2e8f0;
-  --sidebar-accent-foreground: #0a0f1e;
+  --sidebar-accent-foreground: #1a1a2e;
   --sidebar-border: #e2e8f0;
-  --sidebar-ring: #06b6d4;
+  --sidebar-ring: #5b6abf;
 
-  --tf-cyan: #0891b2;
-  --tf-cyan-light: #22d3ee;
-  --tf-cyan-dark: #0e7490;
-  --tf-teal: #0d9488;
-  --tf-emerald: #059669;
-  --tf-amber: #d97706;
-  --tf-surface: #ffffff;
-  --tf-surface-elevated: #f8fafc;
+  --lg-accent: #5b6abf;
+  --lg-secondary: #7c6aad;
+  --lg-tertiary: #c07ec8;
+  --lg-success: #059669;
+  --lg-warning: #d97706;
+  --lg-accent-subtle: rgba(91, 106, 191, 0.08);
+  --lg-surface: #ffffff;
+  --lg-surface-elevated: #f8f9fc;
 }
 
 /* ── Dark Mode (기본) ── */
 .dark {
-  --background: #09090b;
-  --foreground: #e4e4e7;
-  --card: #0f1117;
-  --card-foreground: #e4e4e7;
-  --popover: #0f1117;
-  --popover-foreground: #e4e4e7;
-  --primary: #06b6d4;
-  --primary-foreground: #09090b;
-  --secondary: #131620;
-  --secondary-foreground: #e4e4e7;
-  --muted: #131620;
+  --background: #0a0a0f;
+  --foreground: #f0f0f5;
+  --card: #10101a;
+  --card-foreground: #f0f0f5;
+  --popover: #10101a;
+  --popover-foreground: #f0f0f5;
+  --primary: #7c8aff;
+  --primary-foreground: #0a0a0f;
+  --secondary: #14142a;
+  --secondary-foreground: #f0f0f5;
+  --muted: #14142a;
   --muted-foreground: #71717a;
-  --accent: #06b6d4;
-  --accent-foreground: #09090b;
+  --accent: #7c8aff;
+  --accent-foreground: #0a0a0f;
   --destructive: oklch(0.704 0.191 22.216);
   --border: rgba(255, 255, 255, 0.06);
   --input: rgba(255, 255, 255, 0.08);
-  --ring: #06b6d4;
-  --chart-1: #06b6d4;
-  --chart-2: #10b981;
-  --chart-3: #f59e0b;
+  --ring: #7c8aff;
+  --chart-1: #7c8aff;
+  --chart-2: #34d399;
+  --chart-3: #fbbf24;
   --chart-4: #a78bfa;
-  --chart-5: #f472b6;
-  --sidebar: #0c0d12;
-  --sidebar-foreground: #e4e4e7;
-  --sidebar-primary: #06b6d4;
-  --sidebar-primary-foreground: #09090b;
-  --sidebar-accent: #131620;
-  --sidebar-accent-foreground: #e4e4e7;
+  --chart-5: #f0abfc;
+  --sidebar: #0d0d14;
+  --sidebar-foreground: #f0f0f5;
+  --sidebar-primary: #7c8aff;
+  --sidebar-primary-foreground: #0a0a0f;
+  --sidebar-accent: #14142a;
+  --sidebar-accent-foreground: #f0f0f5;
   --sidebar-border: rgba(255, 255, 255, 0.06);
-  --sidebar-ring: #06b6d4;
+  --sidebar-ring: #7c8aff;
 
-  --tf-cyan: #06b6d4;
-  --tf-cyan-light: #22d3ee;
-  --tf-cyan-dark: #0891b2;
-  --tf-teal: #14b8a6;
-  --tf-emerald: #10b981;
-  --tf-amber: #f59e0b;
-  --tf-surface: #0f1117;
-  --tf-surface-elevated: #161a26;
+  --lg-accent: #7c8aff;
+  --lg-secondary: #a78bfa;
+  --lg-tertiary: #f0abfc;
+  --lg-success: #34d399;
+  --lg-warning: #fbbf24;
+  --lg-accent-subtle: rgba(124, 138, 255, 0.08);
+  --lg-surface: #10101a;
+  --lg-surface-elevated: #18182a;
 }
 
 @layer base {
@@ -164,97 +164,117 @@
   }
 }
 
-/* ── Terminal Futurism Utilities ── */
+/* ── Liquid Glass Utilities ── */
 
-.gradient-text {
-  background: linear-gradient(135deg, #06b6d4 0%, #14b8a6 50%, #10b981 100%);
+.liquid-gradient-text {
+  background: linear-gradient(135deg, #7c8aff 0%, #a78bfa 50%, #f0abfc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.gradient-text-amber {
-  background: linear-gradient(135deg, #f59e0b 0%, #06b6d4 100%);
+:root:not(.dark) .liquid-gradient-text {
+  background: linear-gradient(135deg, #5b6abf 0%, #7c6aad 50%, #c07ec8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-.glass-card {
-  background: rgba(15, 17, 23, 0.6);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(6, 182, 212, 0.08);
+.liquid-gradient-text-warm {
+  background: linear-gradient(135deg, #fbbf24 0%, #7c8aff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Liquid Glass Material ── */
+
+.liquid-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.glass-card:hover {
-  border-color: rgba(6, 182, 212, 0.2);
-  box-shadow:
-    0 0 30px rgba(6, 182, 212, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-  transform: translateY(-2px);
-}
-
-:root:not(.dark) .glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  border-color: rgba(6, 182, 212, 0.12);
-}
-
-:root:not(.dark) .glass-card:hover {
-  border-color: rgba(6, 182, 212, 0.3);
-  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.1);
-}
-
-.terminal-glow {
-  text-shadow: 0 0 10px rgba(6, 182, 212, 0.5), 0 0 40px rgba(6, 182, 212, 0.15);
-}
-
-.scan-line {
   position: relative;
-  overflow: hidden;
 }
 
-.scan-line::after {
+/* 스펙큘러 하이라이트 — Liquid Glass 핵심 */
+.liquid-glass::before {
   content: "";
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  left: 8px;
+  right: 8px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.4), transparent);
-  animation: scan 4s ease-in-out infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  border-radius: 16px 16px 0 0;
+  pointer-events: none;
+  z-index: 1;
 }
 
-@keyframes scan {
-  0%, 100% { top: 0; opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
+.liquid-glass:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 8px 32px rgba(124, 138, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transform: translateY(-3px);
 }
 
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 8px rgba(6, 182, 212, 0.2); }
-  50% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.4); }
+:root:not(.dark) .liquid-glass {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(91, 106, 191, 0.12);
 }
 
-@keyframes typewriter-blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
+:root:not(.dark) .liquid-glass::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
 }
 
-.cursor-blink {
-  animation: typewriter-blink 1s step-end infinite;
+:root:not(.dark) .liquid-glass:hover {
+  border-color: rgba(91, 106, 191, 0.25);
+  box-shadow: 0 8px 32px rgba(91, 106, 191, 0.1);
+}
+
+/* ── Blob Drift Animations ── */
+
+@keyframes blob-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(80px, -60px) scale(1.1); }
+  50% { transform: translate(-40px, 80px) scale(0.95); }
+  75% { transform: translate(60px, 40px) scale(1.05); }
+}
+
+@keyframes blob-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-70px, 50px) scale(0.95); }
+  50% { transform: translate(60px, -70px) scale(1.1); }
+  75% { transform: translate(-50px, -30px) scale(1.05); }
+}
+
+@keyframes blob-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(50px, 70px) scale(1.05); }
+  50% { transform: translate(-60px, -50px) scale(1.1); }
+  75% { transform: translate(40px, -60px) scale(0.95); }
 }
 
 /* ── Scrollbar ── */
 .dark ::-webkit-scrollbar { width: 6px; }
 .dark ::-webkit-scrollbar-track { background: transparent; }
-.dark ::-webkit-scrollbar-thumb { background: rgba(6, 182, 212, 0.15); border-radius: 3px; }
-.dark ::-webkit-scrollbar-thumb:hover { background: rgba(6, 182, 212, 0.3); }
-.dark ::selection { background: rgba(6, 182, 212, 0.3); color: #fff; }
-::selection { background: rgba(6, 182, 212, 0.2); }
+.dark ::-webkit-scrollbar-thumb { background: rgba(124, 138, 255, 0.15); border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb:hover { background: rgba(124, 138, 255, 0.3); }
+.dark ::selection { background: rgba(124, 138, 255, 0.3); color: #fff; }
+::selection { background: rgba(91, 106, 191, 0.2); }
 
 /* ── Scrollbar Hide ── */
 .scrollbar-hide {
@@ -275,4 +295,14 @@
   pointer-events: none;
   opacity: 0.015;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass {
+    transition: none;
+  }
+  .liquid-glass:hover {
+    transform: none;
+  }
 }

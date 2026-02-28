@@ -12,7 +12,7 @@ export function GlassCard({ children, className, hover = true }: GlassCardProps)
   return (
     <div
       className={cn(
-        "glass-card p-6",
+        "liquid-glass p-6",
         hover && "transition-all duration-300",
         className
       )}

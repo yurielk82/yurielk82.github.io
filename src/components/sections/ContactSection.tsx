@@ -29,7 +29,7 @@ export function ContactSection() {
           className="relative overflow-hidden rounded-3xl p-10 sm:p-16 text-center"
           style={{
             background:
-              "linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #d946ef 100%)",
+              "linear-gradient(135deg, #7c8aff 0%, #a78bfa 50%, #f0abfc 100%)",
           }}
           initial="hidden"
           whileInView="visible"

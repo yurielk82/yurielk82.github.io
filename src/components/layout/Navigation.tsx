@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Terminal } from "lucide-react";
+import { Menu, X, Sun, Moon, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
 import { useActiveSection } from "@/hooks/useActiveSection";
@@ -16,13 +16,13 @@ export function Navigation() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="flex h-16 items-center justify-between rounded-b-2xl bg-background/60 backdrop-blur-xl border-b border-border/50 px-4 sm:px-6">
+        <div className="flex h-16 items-center justify-between rounded-b-2xl liquid-glass px-4 sm:px-6 !border-t-0 !rounded-t-none">
           {/* Logo */}
           <a
             href="#hero"
-            className="flex items-center gap-2 font-mono text-sm tracking-tight hover:text-cyan transition-colors"
+            className="flex items-center gap-2 font-mono text-sm tracking-tight hover:text-accent-lg transition-colors"
           >
-            <Terminal className="h-4 w-4 text-cyan" />
+            <Sparkles className="h-4 w-4 text-accent-lg" />
             <span className="font-semibold">yurielk82</span>
             <span className="text-muted-foreground hidden sm:inline">.dev</span>
           </a>
@@ -38,13 +38,13 @@ export function Navigation() {
                   href={item.href}
                   className={cn(
                     "relative px-3 py-1.5 text-sm font-medium transition-colors",
-                    isActive ? "text-cyan" : "text-muted-foreground hover:text-foreground"
+                    isActive ? "text-accent-lg" : "text-muted-foreground hover:text-foreground"
                   )}
                 >
                   {isActive && (
                     <motion.span
                       layoutId="nav-indicator"
-                      className="absolute inset-0 rounded-lg bg-cyan/10 border border-cyan/20"
+                      className="absolute inset-0 rounded-lg bg-accent-lg-subtle border border-accent-lg/15"
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     />
                   )}
@@ -84,7 +84,7 @@ export function Navigation() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden mx-4 mt-1 rounded-2xl bg-background/90 backdrop-blur-xl border border-border/50 p-4"
+            className="md:hidden mx-4 mt-1 rounded-2xl liquid-glass p-4"
           >
             {siteConfig.nav.map((item) => (
               <a
@@ -94,7 +94,7 @@ export function Navigation() {
                 className={cn(
                   "block px-4 py-3 rounded-lg text-sm font-medium transition-colors",
                   active === item.href.replace("#", "")
-                    ? "text-cyan bg-cyan/10"
+                    ? "text-accent-lg bg-accent-lg-subtle"
                     : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
                 )}
               >

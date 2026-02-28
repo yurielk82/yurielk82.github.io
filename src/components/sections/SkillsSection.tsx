@@ -42,7 +42,7 @@ export function SkillsSection() {
               >
                 <GlassCard className="h-full">
                   <div className="flex items-start gap-4">
-                    <div className="p-2.5 rounded-xl bg-gradient-to-br from-cyan to-teal shrink-0">
+                    <div className="p-2.5 rounded-xl bg-gradient-to-br from-accent-lg to-secondary-lg shrink-0">
                       <Icon className="h-5 w-5 text-white" />
                     </div>
                     <div>
@@ -53,7 +53,7 @@ export function SkillsSection() {
                         {cap.description}
                       </p>
                       {cap.projectRef && (
-                        <span className="inline-block mt-3 text-[10px] font-mono text-cyan tracking-wider">
+                        <span className="inline-block mt-3 text-[10px] font-mono text-accent-lg tracking-wider">
                           → {cap.projectRef}
                         </span>
                       )}
@@ -75,7 +75,7 @@ export function SkillsSection() {
           transition={defaultTransition}
         >
           <h3 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            함께하는 <span className="gradient-text">기술들</span>
+            함께하는 <span className="liquid-gradient-text">기술들</span>
           </h3>
           <p className="mt-3 text-muted-foreground">
             당신의 아이디어에 맞는 기술을 골라, 최선의 결과를 만듭니다.
@@ -94,7 +94,7 @@ export function SkillsSection() {
               key={tech.name}
               variants={fadeInUp}
               transition={defaultTransition}
-              className="group flex flex-col items-center gap-3 p-5 rounded-2xl border border-border/50 bg-card hover:border-cyan/20 hover:shadow-[0_0_20px_rgba(6,182,212,0.06)] transition-all duration-300"
+              className="group flex flex-col items-center gap-3 p-5 rounded-2xl border border-border/50 bg-card hover:border-accent-lg/20 hover:shadow-[0_0_20px_rgba(124,138,255,0.06)] transition-all duration-300"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

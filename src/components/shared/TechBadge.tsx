@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface TechBadgeProps {
   children: React.ReactNode;
-  variant?: "default" | "cyan" | "amber";
+  variant?: "default" | "accent" | "warning";
   className?: string;
 }
 
@@ -14,11 +14,11 @@ export function TechBadge({ children, variant = "default", className }: TechBadg
       className={cn(
         "inline-flex items-center px-3 py-1 rounded-full text-xs font-mono tracking-wide border transition-colors",
         variant === "default" &&
-          "bg-secondary/50 text-muted-foreground border-border hover:border-cyan/30 hover:text-foreground",
-        variant === "cyan" &&
-          "bg-cyan/10 text-cyan border-cyan/20 hover:bg-cyan/20",
-        variant === "amber" &&
-          "bg-amber/10 text-amber border-amber/20 hover:bg-amber/20",
+          "bg-secondary/50 text-muted-foreground border-border hover:border-accent-lg/30 hover:text-foreground",
+        variant === "accent" &&
+          "bg-accent-lg-subtle text-accent-lg border-accent-lg/20 hover:bg-accent-lg/20",
+        variant === "warning" &&
+          "bg-warning-lg/10 text-warning-lg border-warning-lg/20 hover:bg-warning-lg/20",
         className
       )}
     >

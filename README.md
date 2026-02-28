@@ -1,6 +1,6 @@
 # yurielk82.github.io
 
-**AI Full-Stack Builder 포트폴리오** v0.6.5
+**AI Full-Stack Builder 포트폴리오** v1.0.0
 
 AI를 활용해 설계부터 배포까지 풀스택 앱을 구축하는 개발자 포트폴리오.
 
@@ -12,14 +12,14 @@ AI(Claude Code)와 협업하여 프로덕션 레벨의 풀스택 애플리케이
 
 | 특징 | 설명 |
 |------|------|
-| Terminal Futurism 디자인 | 터미널/IDE 미학 + SF HUD 인터페이스 결합 |
-| Canvas 뉴럴 네트워크 | Hero 배경에 인터랙티브 노드 애니메이션 |
-| 터미널 타이핑 | 고객-빌더-AI 3자 협업 대화 시뮬레이션 |
+| Liquid Glass 디자인 | Apple WWDC 2025 영감 — 반투명 머티리얼 + 스펙큘러 하이라이트 |
+| CSS 블롭 그래디언트 배경 | 인디고/바이올렛/퓨샤 3개 블롭 느린 드리프트 |
+| 핵심 역량 히어로 | Liquid Glass 카드 안에 아이콘+라벨 가로 배치 |
 | 프로젝트 스토리텔링 | 가로 스크롤 StoryCard — tagline + Impact 간결 표시 |
 | 프로젝트 스크린샷 카드 | 실제 서비스 스크린샷 + 라이브 URL 연결 |
 | devicon 기술 스택 그리드 | 14개 기술 아이콘 카드 (7열 반응형) |
 | 마케팅/브랜딩 카피 | 듀얼 톤 — 고객 친화 + 전문가 면모 |
-| 다크 모드 기본 | 시안/틸 액센트 + 라이트 모드 토글 |
+| 다크 모드 기본 | 인디고/바이올렛 액센트 + 라이트 모드 토글 |
 | 설정 기반 데이터 | `src/config/`에서 모든 콘텐츠 관리 |
 | 정적 배포 | GitHub Pages + GitHub Actions 자동 배포 |
 
@@ -62,7 +62,7 @@ src/
 ├── app/                # Next.js App Router
 │   ├── layout.tsx      # 루트 레이아웃 (폰트, 메타데이터)
 │   ├── page.tsx        # 메인 페이지 (섹션 조합)
-│   └── globals.css     # Tailwind v4 + 디자인 토큰
+│   └── globals.css     # Tailwind v4 + Liquid Glass 디자인 토큰
 ├── config/             # 모든 콘텐츠 데이터 (설정 기반)
 │   ├── site.ts         # 프로필, 메타데이터, 네비게이션
 │   ├── projects.ts     # 프로젝트 목록
@@ -71,7 +71,7 @@ src/
 ├── components/
 │   ├── layout/         # Navigation, Footer
 │   ├── sections/       # Hero, About, Projects, Skills, Contact
-│   ├── shared/         # GlassCard, SectionHeading, AnimatedBackground, TechBadge
+│   ├── shared/         # GlassCard, SectionHeading, AnimatedBackground, TechBadge, LiquidGlassSVGFilters
 │   └── ui/             # shadcn/ui
 ├── hooks/              # useActiveSection, useTheme, useReducedMotion
 └── lib/                # utils.ts, animations.ts
@@ -82,7 +82,7 @@ src/
 | 문서 | 설명 |
 |------|------|
 | [Architecture](docs/ARCHITECTURE.md) | 구조, 설계 의도 |
-| [Design System](docs/DESIGN_SYSTEM.md) | 디자인 토큰, 컴포넌트 규격 |
+| [Design System](docs/DESIGN_SYSTEM.md) | Liquid Glass 디자인 토큰, 컴포넌트 규격 |
 | [Deployment](docs/DEPLOYMENT.md) | 배포, GitHub Pages |
 | [Contributing](CONTRIBUTING.md) | 기여 규칙 |
 | [Changelog](CHANGELOG.md) | 변경 이력 |
