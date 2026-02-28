@@ -98,15 +98,15 @@ export const projects: ProjectConfig[] = [
     order: 2,
   },
   {
-    id: "myaccweb",
-    name: "내 수수료 장부",
+    id: "memo-todolist",
+    name: "메모 & 할 일",
     version: "1.0.0",
     tagline: "서버 없이도 사라지지 않는 기록",
     description:
-      "영업사원이 수수료를 기록·관리하는 앱입니다. 서버 대신 Google Sheets를 활용해서 매달 나가는 비용이 0원. 인터넷 없는 곳에서도 쓸 수 있고, 스마트폰에서 바로 접속 가능합니다.",
+      "메모와 할 일을 관리하는 PWA 앱입니다. Google Sheets를 DB로 활용해 서버 비용 0원. 오프라인에서도, 스마트폰에서도 사용할 수 있습니다.",
     category: ["fullstack"],
     techStack: [
-      "Next.js 14",
+      "Next.js 15",
       "TypeScript",
       "Google Sheets API",
       "PWA",
@@ -121,21 +121,16 @@ export const projects: ProjectConfig[] = [
       { label: "서버 비용", value: "₩0" },
       { label: "오프라인", value: "지원" },
     ],
-    image: "/images/projects/myaccweb.png",
-    links: {
-      github: "https://github.com/yurielk82/MyAccWeb",
-      live: "https://my-acc-web.vercel.app",
-    },
+    links: {},
     story: {
       narrative:
-        "영업사원의 수수료 기록은 생계와 직결됩니다. 서버에 의존하지 않고 Google Sheets를 DB로 활용해, 데이터 유실 걱정 없는 시스템을 설계했습니다.",
-      pain: "서버 비용이 부담. 매달 호스팅 비용 없이 수수료를 관리할 방법이 필요.",
+        "메모 하나, 할 일 하나를 기록하는 데 서버 비용이 들어야 할까요? Google Sheets를 DB로 활용해, 인프라 비용 없이 영원히 사용할 수 있는 앱을 만들었습니다.",
+      pain: "간단한 기록 앱에도 서버 비용이 매달 발생. 소규모 사용에는 과도한 인프라.",
       solution:
         "Google Sheets를 DB로 활용. 서버리스 + PWA 구조로 인프라 비용 0원.",
-      outcome: "서버 비용, 영원히 0원.",
+      outcome: "서버 비용, 영원히 0원. 오프라인에서도 기록이 사라지지 않습니다.",
       impact: [
         { label: "인프라 비용", before: "매달 발생", after: "영원히 ₩0" },
-        { label: "데이터 안전", before: "서버 의존", after: "Google Sheets 영속" },
       ],
     },
     featured: false,
@@ -228,32 +223,32 @@ export const projects: ProjectConfig[] = [
   },
   {
     id: "ev-motor-reliability",
-    name: "EV 모터 시험 자동화",
+    name: "실험실 원격 제어 시스템",
     version: "1.0.0",
-    tagline: "시험과 제어를 자동화합니다",
+    tagline: "어디서든 실험실을 제어합니다",
     description:
-      "전기차 구동모터와 인버터의 신뢰성 시험을 자동화하는 플랫폼입니다. 시험 조건 설정부터 데이터 수집, 결과 분석까지 전 과정을 시스템이 처리합니다.",
+      "전기차 모터·인버터의 신뢰성 시험을 원격으로 제어하는 웹 플랫폼입니다. 시뮬레이터 연동, 장비 통합 제어, 시험 자동화 — 실험실에 가지 않아도 시험이 돌아갑니다.",
     category: ["automation"],
-    techStack: ["Python"],
+    techStack: ["Python", "Web"],
     highlights: [
-      "구동모터/인버터 신뢰성 시험 자동화",
-      "시험 데이터 수집·분석 파이프라인",
-      "하드웨어 제어 인터페이스",
+      "웹 브라우저 기반 실험실 원격 제어",
+      "시뮬레이터·장비 통합 인터페이스",
+      "시험 데이터 실시간 수집·분석",
     ],
     metrics: [
+      { label: "제어 방식", value: "웹 원격" },
       { label: "자동화", value: "전 과정" },
-      { label: "언어", value: "Python" },
     ],
     links: {},
     story: {
       narrative:
-        "반복되는 신뢰성 시험을 사람이 수동으로 수행하면 시간과 오류가 반복됩니다. 시험 조건 설정부터 결과 분석까지 시스템이 처리하고, 엔지니어는 판단에 집중합니다.",
-      pain: "전기차 모터 신뢰성 시험의 수동 반복. 시험 조건 설정, 데이터 수집, 결과 분석에 많은 시간 소요.",
+        "매번 실험실에 출근해서 장비를 세팅하고, 시험이 끝날 때까지 대기하고, 결과를 수동으로 정리합니다. 시뮬레이터 연동과 웹 제어로, 어디서든 시험을 설정하고 결과를 확인합니다.",
+      pain: "실험실에 묶여서 시험 운영. 장비 세팅, 시험 대기, 결과 정리까지 수동 반복.",
       solution:
-        "Python 기반 자동화 플랫폼으로 시험 전 과정을 시스템화.",
-      outcome: "시험 전 과정이 자동화되어 엔지니어가 분석에 집중할 수 있는 환경.",
+        "웹 기반 원격 제어 플랫폼으로 시뮬레이터 연동, 장비 통합 제어, 시험 자동화.",
+      outcome: "실험실 밖에서도 브라우저 하나로 전체 시험을 운영하는 환경.",
       impact: [
-        { label: "시험 운영", before: "수동 반복", after: "전 과정 자동화" },
+        { label: "시험 운영", before: "실험실 상주", after: "원격 제어" },
       ],
     },
     featured: false,

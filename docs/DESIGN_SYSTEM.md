@@ -139,13 +139,14 @@ Optional desc     ← text-muted-foreground, max-w-2xl, mx-auto
 
 ### Solutions Section
 
-솔루션 카테고리 세로 스택. `SolutionCard` + `EvidenceCard` 내부 컴포넌트.
+솔루션 카테고리 세로 스택. 컴팩트 `SolutionCard` 단일 컴포넌트.
 
-- 카드: `GlassCard` 래퍼, `p-6 sm:p-8`, `relative group` + 하단 악센트 라인
-- 헤더: 아이콘(gradient bg) + 카테고리명/tagline + 상태 배지(`proven`: success-lg, `capable`: accent-lg)
-- Capabilities: 2열 그리드, accent-lg 불릿
-- Evidence (proven): `border-t border-border/50 pt-5`, 미니카드 가로 배치, 클릭 시 프로젝트 링크(`links.live` 우선, fallback `links.github`) 이동, hover 시 `border-accent-lg/30` 테두리 변화
-- CTA (capable): `#contact` 링크 + ArrowRight 아이콘
+- 카드: `GlassCard` 래퍼, `p-5 sm:p-6`, `relative group` + 하단 악센트 라인
+- 갭: `gap-4` (카드 간 간격)
+- 헤더: 아이콘(`p-2 rounded-lg` gradient bg, `h-4 w-4`) + 카테고리명/tagline + 상태 배지(`proven`: success-lg)
+- Evidence: `border-t border-border/50 pt-4 mt-4`, 인라인 텍스트 (`project.name · keyMetric`), 링크 있으면 `<a>` + hover `text-accent-lg`, 없으면 `<span>`
+- description / capabilities / CTA 제거 — F-pattern 스캔 최적화
+- 카드 1장 높이: ~140-160px (기존 ~440-480px 대비 -65%)
 
 ### 하단 악센트 라인 (공통 패턴)
 

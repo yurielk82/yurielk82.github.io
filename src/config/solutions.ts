@@ -94,8 +94,8 @@ export const solutions: SolutionCategory[] = [
     ],
     evidence: [
       {
-        projectId: "myaccweb",
-        role: "수수료 장부 앱",
+        projectId: "memo-todolist",
+        role: "메모 & 할 일 앱",
         keyMetric: "서버 비용 ₩0",
       },
     ],
@@ -104,22 +104,22 @@ export const solutions: SolutionCategory[] = [
   {
     id: "rd-engineering",
     name: "연구 개발",
-    tagline: "시험과 제어를 자동화합니다",
+    tagline: "어디서든 실험실을 제어합니다",
     description:
-      "하드웨어 제어, 신뢰성 시험, 데이터 수집 — 연구·개발 현장의 반복 작업을 소프트웨어로 자동화합니다. Python 기반 제어 시스템부터 시험 데이터 분석까지, 엔지니어가 연구에 집중할 수 있는 환경을 만듭니다.",
+      "시뮬레이터 연동, 장비 통합 제어, 시험 자동화 — 실험실 밖에서도 브라우저 하나로 전체 시험을 운영합니다.",
     icon: "FlaskConical",
     capabilities: [
-      "하드웨어 연동 제어 시스템 (모터·인버터)",
-      "신뢰성 시험 자동화 플랫폼",
-      "시험 데이터 수집·분석 파이프라인",
-      "데스크탑 앱 패키징 (Electron)",
+      "웹 기반 실험실 원격 제어",
+      "시뮬레이터·장비 통합 인터페이스",
+      "시험 데이터 실시간 수집·분석",
+      "자동화 시험 시퀀스 설계·실행",
       "비공개 API 연동",
     ],
     evidence: [
       {
         projectId: "ev-motor-reliability",
-        role: "EV 모터 시험 자동화",
-        keyMetric: "시험 전 과정 자동화",
+        role: "실험실 원격 제어 플랫폼",
+        keyMetric: "시뮬레이터 통합 자동화",
       },
     ],
     status: "proven",

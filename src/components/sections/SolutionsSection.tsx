@@ -8,15 +8,13 @@ import {
   Store,
   FlaskConical,
   CheckCircle2,
-  Sparkles,
-  ArrowRight,
 } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { GlassCard } from "@/components/shared/GlassCard";
 import { solutions } from "@/config/solutions";
 import { projects } from "@/config/projects";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
-import type { SolutionCategory, SolutionEvidence, ProjectConfig } from "@/types";
+import type { SolutionCategory, ProjectConfig } from "@/types";
 import type { LucideIcon } from "lucide-react";
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -31,48 +29,17 @@ function getProjectLink(project: ProjectConfig): string | undefined {
   return project.links.live || project.links.github;
 }
 
-function EvidenceCard({ evidence }: { evidence: SolutionEvidence }) {
-  const project = projects.find((p) => p.id === evidence.projectId);
-  if (!project) return null;
-
-  const href = getProjectLink(project);
-  const Wrapper = href ? "a" : "div";
-  const linkProps = href
-    ? { href, target: "_blank" as const, rel: "noopener noreferrer" as const }
-    : {};
-
-  return (
-    <Wrapper
-      {...linkProps}
-      className="flex-1 min-w-0 p-4 liquid-glass hover:border-accent-lg/30"
-    >
-      <div className="flex items-center gap-2 mb-1">
-        <span className="text-xs font-mono text-accent-lg tracking-wider truncate">
-          {project.name}
-        </span>
-      </div>
-      <p className="text-sm text-foreground font-medium truncate">
-        {evidence.role}
-      </p>
-      <p className="text-xs text-muted-foreground mt-1">
-        {evidence.keyMetric}
-      </p>
-    </Wrapper>
-  );
-}
-
 function SolutionCard({ solution }: { solution: SolutionCategory }) {
   const Icon = ICON_MAP[solution.icon] ?? Settings;
-  const isProven = solution.status === "proven";
 
   return (
     <GlassCard className="p-0 overflow-hidden relative group">
-      <div className="p-6 sm:p-8">
-        {/* Header */}
-        <div className="flex items-start justify-between gap-4 mb-4">
+      <div className="p-5 sm:p-6">
+        {/* Header: Icon + Name/Tagline + Badge */}
+        <div className="flex items-start justify-between gap-4 mb-0">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-accent-lg to-secondary-lg shrink-0">
-              <Icon className="h-5 w-5 text-white" />
+            <div className="p-2 rounded-lg bg-gradient-to-br from-accent-lg to-secondary-lg shrink-0">
+              <Icon className="h-4 w-4 text-white" />
             </div>
             <div>
               <h3 className="text-lg font-semibold tracking-tight">
@@ -83,61 +50,40 @@ function SolutionCard({ solution }: { solution: SolutionCategory }) {
               </p>
             </div>
           </div>
-          <span
-            className={`shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium ${
-              isProven
-                ? "bg-success-lg/10 text-success-lg"
-                : "bg-accent-lg-subtle text-accent-lg"
-            }`}
-          >
-            {isProven ? (
-              <CheckCircle2 className="h-3 w-3" />
-            ) : (
-              <Sparkles className="h-3 w-3" />
-            )}
-            {isProven ? "실증 완료" : "구현 가능"}
+          <span className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-success-lg/10 text-success-lg">
+            <CheckCircle2 className="h-3 w-3" />
+            실증 완료
           </span>
         </div>
 
-        {/* Description */}
-        <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-          {solution.description}
-        </p>
-
-        {/* Capabilities */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 mb-6">
-          {solution.capabilities.map((cap) => (
-            <div key={cap} className="flex items-start gap-2">
-              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent-lg shrink-0" />
-              <span className="text-sm text-foreground/80">{cap}</span>
+        {/* Evidence inline */}
+        {solution.evidence.length > 0 && (
+          <div className="border-t border-border/50 pt-4 mt-4">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1.5 sm:gap-x-4">
+              {solution.evidence.map((ev) => {
+                const project = projects.find((p) => p.id === ev.projectId);
+                if (!project) return null;
+                const href = getProjectLink(project);
+                const Tag = href ? "a" : "span";
+                const linkProps = href
+                  ? { href, target: "_blank" as const, rel: "noopener noreferrer" as const }
+                  : {};
+                return (
+                  <Tag
+                    key={ev.projectId}
+                    className={`text-sm ${href ? "hover:text-accent-lg transition-colors" : ""}`}
+                    {...linkProps}
+                  >
+                    <span className="font-medium">{project.name}</span>
+                    <span className="text-muted-foreground"> · {ev.keyMetric}</span>
+                  </Tag>
+                );
+              })}
             </div>
-          ))}
-        </div>
-
-        {/* Evidence or CTA */}
-        {isProven && solution.evidence.length > 0 ? (
-          <div className="border-t border-border/50 pt-5">
-            <span className="text-xs font-mono text-muted-foreground tracking-wider uppercase mb-3 block">
-              실제로 만든 것
-            </span>
-            <div className="flex flex-col sm:flex-row gap-3">
-              {solution.evidence.map((ev) => (
-                <EvidenceCard key={ev.projectId} evidence={ev} />
-              ))}
-            </div>
-          </div>
-        ) : (
-          <div className="border-t border-border/50 pt-5">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 text-sm font-medium text-accent-lg hover:text-secondary-lg transition-colors"
-            >
-              이 분야의 첫 프로젝트를 함께 시작해 보세요
-              <ArrowRight className="h-4 w-4" />
-            </a>
           </div>
         )}
-        {/* 하단 악센트 라인 */}
+
+        {/* Bottom accent line */}
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-lg/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
     </GlassCard>
@@ -155,7 +101,7 @@ export function SolutionsSection() {
         />
 
         <motion.div
-          className="flex flex-col gap-8"
+          className="flex flex-col gap-4"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
