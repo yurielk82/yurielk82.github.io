@@ -132,6 +132,7 @@ Optional desc     ← text-muted-foreground, max-w-2xl, mx-auto
 ### Hero (Liquid Glass)
 
 - 배지: `border-accent-lg/20 bg-accent-lg-subtle text-accent-lg`
+- 아바타: `w-24 h-24 rounded-full object-cover`, Liquid Glass 그래디언트 링(`p-1 bg-gradient-to-br from-accent-lg via-secondary-lg to-tertiary-lg`)으로 감싸기. 아래에 이름 + 타이틀 소형 텍스트
 - 타이틀: `liquid-gradient-text`
 - 핵심 역량 카드: `.liquid-glass` 안에 아이콘 + 라벨 가로 배치
 - Stats: `liquid-gradient-text` 수치

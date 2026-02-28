@@ -11,7 +11,7 @@ export function useTheme() {
   useEffect(() => {
     setMounted(true);
     const stored = localStorage.getItem("portfolio-theme") as Theme | null;
-    const initial = stored ?? "dark";
+    const initial = stored ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     setThemeState(initial);
     document.documentElement.classList.toggle("dark", initial === "dark");
   }, []);

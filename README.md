@@ -1,6 +1,6 @@
 # yurielk82.github.io
 
-**AI Full-Stack Builder 포트폴리오** v1.0.0
+**AI Full-Stack Builder 포트폴리오** v1.1.0
 
 AI를 활용해 설계부터 배포까지 풀스택 앱을 구축하는 개발자 포트폴리오.
 
@@ -19,7 +19,8 @@ AI(Claude Code)와 협업하여 프로덕션 레벨의 풀스택 애플리케이
 | 프로젝트 스크린샷 카드 | 실제 서비스 스크린샷 + 라이브 URL 연결 |
 | devicon 기술 스택 그리드 | 14개 기술 아이콘 카드 (7열 반응형) |
 | 마케팅/브랜딩 카피 | 듀얼 톤 — 고객 친화 + 전문가 면모 |
-| 다크 모드 기본 | 인디고/바이올렛 액센트 + 라이트 모드 토글 |
+| Hero 아바타 | GitHub 아바타 + Liquid Glass 그래디언트 링 프레임 |
+| OS 테마 연동 | `prefers-color-scheme` 기반 초기 테마 + FOUC 방지 |
 | 설정 기반 데이터 | `src/config/`에서 모든 콘텐츠 관리 |
 | 정적 배포 | GitHub Pages + GitHub Actions 자동 배포 |
 
