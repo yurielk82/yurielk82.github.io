@@ -7,17 +7,17 @@ import { siteConfig } from "@/config/site";
 import { fadeInUp, defaultTransition } from "@/lib/animations";
 
 const STATS = [
-  { value: "5+", label: "함께 만든 서비스" },
-  { value: "171", label: "자동화 테스트" },
+  { value: "5+", label: "함께 풀어온 문제" },
+  { value: "171", label: "자동 검증, 실수 제로" },
   { value: "2주", label: "아이디어에서 런칭까지" },
-  { value: "15+", label: "활용 가능한 기술" },
+  { value: "0원", label: "서버 비용도 설계합니다" },
 ];
 
 const CORE_CAPABILITIES = [
-  { icon: Layers, label: "풀스택" },
-  { icon: Cpu, label: "AI 활용" },
-  { icon: Shield, label: "견고한 설계" },
-  { icon: Zap, label: "빠른 런칭" },
+  { icon: Layers, label: "처음부터 끝까지" },
+  { icon: Cpu, label: "반복은 기계에게" },
+  { icon: Shield, label: "6개월 뒤에도 안심" },
+  { icon: Zap, label: "2주면 런칭" },
 ];
 
 export function HeroSection() {
@@ -60,7 +60,7 @@ export function HeroSection() {
         >
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-accent-lg/20 bg-accent-lg-subtle text-accent-lg text-xs font-mono tracking-wider">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-lg animate-pulse" />
-            YOUR IDEA, MY CODE
+            아이디어만 주세요, 나머지는 제가
           </span>
         </motion.div>
 
@@ -118,7 +118,7 @@ export function HeroSection() {
           transition={{ ...defaultTransition, delay: 0.6 }}
         >
           {STATS.map((stat) => (
-            <div key={stat.label} className="text-center">
+            <div key={stat.label} className="text-center flex flex-col items-center justify-center">
               <div className="text-2xl font-bold font-mono liquid-gradient-text">
                 {stat.value}
               </div>

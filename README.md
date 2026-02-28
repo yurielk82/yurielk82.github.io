@@ -10,7 +10,7 @@
 
 # yurielk82.github.io
 
-<code>v1.6.1</code>
+<code>v1.7.0</code>
 
 **AI Full-Stack Builder 포트폴리오**
 

@@ -34,7 +34,7 @@ function SolutionCard({ solution }: { solution: SolutionCategory }) {
 
   return (
     <GlassCard className="p-0 overflow-hidden relative group">
-      <div className="p-5 sm:p-6">
+      <div className="p-5 sm:p-6 flex flex-col h-full">
         {/* Header: Icon + Name/Tagline + Badge */}
         <div className="flex items-start justify-between gap-4 mb-0">
           <div className="flex items-center gap-3">
@@ -58,7 +58,7 @@ function SolutionCard({ solution }: { solution: SolutionCategory }) {
 
         {/* Evidence inline */}
         {solution.evidence.length > 0 && (
-          <div className="border-t border-border/50 pt-4 mt-4">
+          <div className="border-t border-border/50 pt-4 mt-auto">
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-1.5 sm:gap-x-4">
               {solution.evidence.map((ev) => {
                 const project = projects.find((p) => p.id === ev.projectId);
@@ -96,8 +96,8 @@ export function SolutionsSection() {
       <div className="mx-auto max-w-4xl px-6">
         <SectionHeading
           tag="SOLUTIONS"
-          title="이런 것을 만들 수 있습니다"
-          description="문제를 들으면 해결법이 보이고, 해결법이 보이면 구조가 잡힙니다."
+          title="이런 문제를 풀어왔습니다"
+          description="각 카드의 '실증 완료'를 눌러보세요. 실제 프로젝트로 증명했습니다."
         />
 
         <motion.div

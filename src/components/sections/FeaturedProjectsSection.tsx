@@ -167,8 +167,8 @@ export function FeaturedProjectsSection() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           tag="PROJECTS"
-          title="직접 만들고, 직접 증명했습니다"
-          description="데이터가 말하는 결과. Before & After로 확인하세요."
+          title="이런 고민, 이렇게 풀었습니다"
+          description="숫자가 아니라, 달라진 하루로 증명합니다."
         />
 
         <div className="space-y-16 lg:space-y-24">

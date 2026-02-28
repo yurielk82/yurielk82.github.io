@@ -44,8 +44,8 @@ export const projects: ProjectConfig[] = [
       outcome:
         "API 연결 후 새 업체 회원 승인만 해주면 끝. 정산 업무가 사라졌습니다.",
       impact: [
-        { label: "정산 오류", before: "수작업 분류", after: "시스템 자동 매칭" },
-        { label: "운영 모드", before: "매달 야근", after: "승인만 누르면 끝" },
+        { label: "정산 오류", before: "매달 손으로 분류하던 그 정산", after: "시스템이 알아서 매칭" },
+        { label: "운영 모드", before: "월말마다 야근", after: "버튼 하나면 퇴근" },
       ],
     },
     featured: true,
@@ -90,8 +90,8 @@ export const projects: ProjectConfig[] = [
         "ERP 데이터를 읽어 자동 수정. 지정 시간에 API 자동 보고. 반복 오류 자동 처리.",
       outcome: "특이건만 알림이 옵니다. 실수할 수 없는 환경.",
       impact: [
-        { label: "보고 오류", before: "수작업 반복", after: "시스템 자동 보고" },
-        { label: "운영 모드", before: "매달 야근", after: "특이건만 알림" },
+        { label: "보고 오류", before: "매번 손으로 옮기던 보고서", after: "시스템이 알아서 보고" },
+        { label: "운영 모드", before: "틀릴까 봐 불안한 야근", after: "문제 있을 때만 알림" },
       ],
     },
     featured: true,

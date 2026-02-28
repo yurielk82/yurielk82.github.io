@@ -28,19 +28,19 @@ const PROCESS_STEPS = [
     step: 1,
     icon: Send,
     title: "아이디어 공유",
-    description: "이메일로 아이디어를 보내주세요. 막연해도 괜찮습니다.",
+    description: "막연해도 괜찮아요. 그 막연함에서 시작하는 게 가장 좋습니다.",
   },
   {
     step: 2,
     icon: MessageSquare,
     title: "30분 무료 상담",
-    description: "가능성, 일정, 비용을 함께 정리합니다.",
+    description: "30분이면 '이거 되겠다'는 감이 옵니다.",
   },
   {
     step: 3,
     icon: FileText,
-    title: "견적서 전달",
-    description: "구체적인 범위와 비용을 문서로 드립니다.",
+    title: "제안서 전달",
+    description: "놀라는 포인트는 비용이 아니라, 이렇게까지 해주나? 입니다.",
   },
 ];
 
@@ -69,7 +69,7 @@ export function ContactSection() {
                 key={item.step}
                 variants={fadeInUp}
                 transition={defaultTransition}
-                className="relative text-center"
+                className="relative text-center flex flex-col items-center"
               >
                 <div className="inline-flex p-3 rounded-2xl bg-gradient-to-br from-accent-lg to-secondary-lg mb-4">
                   <item.icon className="h-5 w-5 text-white" />

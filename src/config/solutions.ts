@@ -4,7 +4,7 @@ export const solutions: SolutionCategory[] = [
   {
     id: "enterprise-automation",
     name: "기업 업무 자동화",
-    tagline: "반복 업무를 시스템으로 대체합니다",
+    tagline: "매달 반복되는 그 업무, 사람이 꼭 해야 할까요?",
     description:
       "매달 반복되는 정산, 분류, 발송 같은 업무를 시스템이 대신 처리합니다. 사람은 승인만 누르면 됩니다. 엑셀 자동 분류, PDF 생성, 이메일 일괄 발송까지 — 클릭 몇 번이면 끝.",
     icon: "Settings",
@@ -33,7 +33,7 @@ export const solutions: SolutionCategory[] = [
   {
     id: "regulatory-compliance",
     name: "규제 보고 자동화",
-    tagline: "실수가 불가능한 보고 시스템",
+    tagline: "틀리면 큰일인 보고, 아직 손으로 하고 계신가요?",
     description:
       "한 번의 실수가 규제 위반인 영역. ERP 데이터를 자동으로 읽고, 정해진 시간에 정부 API로 보고합니다. 사람이 실수할 수 있는 지점을 시스템이 모두 대체합니다.",
     icon: "ShieldCheck",
@@ -57,7 +57,7 @@ export const solutions: SolutionCategory[] = [
   {
     id: "business-website",
     name: "기업/브랜드 웹사이트",
-    tagline: "개발자 없이도 운영되는 웹사이트",
+    tagline: "공지 하나 바꾸려고 개발자 부르셨나요?",
     description:
       "공지사항, 소식, 포트폴리오 — 관리자가 직접 올리고 수정할 수 있는 CMS 기반 웹사이트. 개발자를 부르지 않아도 콘텐츠를 관리할 수 있습니다.",
     icon: "Globe",
@@ -81,7 +81,7 @@ export const solutions: SolutionCategory[] = [
   {
     id: "smb-tools",
     name: "소상공인 맞춤 도구",
-    tagline: "서버 비용 0원, 영원히",
+    tagline: "서버 비용 걱정 없이, 내 가게에 딱 맞는 도구",
     description:
       "서버 비용이 부담되는 소규모 사업자를 위한 도구. Google Sheets를 DB로, PWA로 모바일 대응 — 매달 나가는 비용 없이 영원히 사용할 수 있습니다.",
     icon: "Store",
@@ -104,7 +104,7 @@ export const solutions: SolutionCategory[] = [
   {
     id: "rd-engineering",
     name: "연구 개발",
-    tagline: "어디서든 실험실을 제어합니다",
+    tagline: "실험실에 매번 출근하지 않아도 됩니다",
     description:
       "시뮬레이터 연동, 장비 통합 제어, 시험 자동화 — 실험실 밖에서도 브라우저 하나로 전체 시험을 운영합니다.",
     icon: "FlaskConical",

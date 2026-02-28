@@ -2,6 +2,14 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [1.7.0] - 2026-03-01
+
+### Changed
+- 전체 섹션 카피라이팅 F(공감+신뢰)톤 통일 — Hero 뱃지·역량·스탯, Featured Projects 제목·impact, Solutions tagline·제목, Contact Process 카피
+- Solutions 카드 높이 균등화 (`flex flex-col h-full` + `mt-auto`)
+- Hero 스탯 카드 높이 균등화 (`flex flex-col items-center justify-center`)
+- Contact Process 카드 flex 정렬
+
 ## [1.6.1] - 2026-03-01
 
 ### Fixed
