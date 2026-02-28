@@ -27,7 +27,7 @@ export function SkillsSection() {
 
         <motion.div
           className="grid gap-6 sm:grid-cols-2 mb-24"
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={staggerContainer}
@@ -71,7 +71,7 @@ export function SkillsSection() {
         {/* 기술 스택 아이콘 그리드 */}
         <motion.div
           className="text-center mb-12"
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={fadeInUp}
@@ -87,7 +87,7 @@ export function SkillsSection() {
 
         <motion.div
           className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4"
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, margin: "-40px" }}
           variants={staggerContainer}

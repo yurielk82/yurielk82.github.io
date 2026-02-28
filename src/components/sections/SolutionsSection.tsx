@@ -102,7 +102,7 @@ export function SolutionsSection() {
 
         <motion.div
           className="flex flex-col gap-4"
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={staggerContainer}

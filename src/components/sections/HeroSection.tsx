@@ -53,7 +53,7 @@ export function HeroSection() {
         {/* Badge */}
         <motion.div
           className="flex justify-center mb-8"
-          initial="hidden"
+          initial={false}
           animate="visible"
           variants={fadeInUp}
           transition={{ ...defaultTransition, delay: 0.1 }}
@@ -67,7 +67,7 @@ export function HeroSection() {
         {/* Title */}
         <motion.div
           className="text-center mb-8"
-          initial="hidden"
+          initial={false}
           animate="visible"
           variants={fadeInUp}
           transition={{ ...defaultTransition, delay: 0.2 }}
@@ -85,7 +85,7 @@ export function HeroSection() {
         {/* Core capabilities — Liquid Glass 카드 */}
         <motion.div
           className="mx-auto max-w-2xl mb-12"
-          initial="hidden"
+          initial={false}
           animate="visible"
           variants={fadeInUp}
           transition={{ ...defaultTransition, delay: 0.4 }}
@@ -112,7 +112,7 @@ export function HeroSection() {
         {/* Stats */}
         <motion.div
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto"
-          initial="hidden"
+          initial={false}
           animate="visible"
           variants={fadeInUp}
           transition={{ ...defaultTransition, delay: 0.6 }}
@@ -133,7 +133,7 @@ export function HeroSection() {
       {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-        initial={{ opacity: 0 }}
+        initial={false}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 2 }}
       >

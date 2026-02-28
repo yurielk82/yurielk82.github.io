@@ -27,7 +27,7 @@ export function ContactSection() {
         {/* CTA 배너 */}
         <motion.div
           className="relative overflow-hidden rounded-3xl p-10 sm:p-16 text-center cta-gradient"
-          initial="hidden"
+          initial={false}
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={fadeInUp}
