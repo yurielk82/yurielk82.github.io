@@ -1,6 +1,6 @@
 # yurielk82.github.io
 
-**AI Full-Stack Builder 포트폴리오** v0.6.1
+**AI Full-Stack Builder 포트폴리오** v0.6.2
 
 AI를 활용해 설계부터 배포까지 풀스택 앱을 구축하는 개발자 포트폴리오.
 
@@ -15,7 +15,7 @@ AI(Claude Code)와 협업하여 프로덕션 레벨의 풀스택 애플리케이
 | Terminal Futurism 디자인 | 터미널/IDE 미학 + SF HUD 인터페이스 결합 |
 | Canvas 뉴럴 네트워크 | Hero 배경에 인터랙티브 노드 애니메이션 |
 | 터미널 타이핑 | 고객-빌더-AI 3자 협업 대화 시뮬레이션 |
-| 프로젝트 스토리텔링 | 단일 StoryCard 2컬럼 — 시스템 설계 관점 내러티브 + Impact |
+| 프로젝트 스토리텔링 | 가로 스크롤 StoryCard — tagline + Impact 간결 표시 |
 | 프로젝트 스크린샷 카드 | 실제 서비스 스크린샷 + 라이브 URL 연결 |
 | devicon 기술 스택 그리드 | 14개 기술 아이콘 카드 (7열 반응형) |
 | 마케팅/브랜딩 카피 | 듀얼 톤 — 고객 친화 + 전문가 면모 |

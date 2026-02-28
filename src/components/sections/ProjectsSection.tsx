@@ -137,7 +137,11 @@ function StoryCard({ project }: { project: ProjectConfig }) {
   const story = project.story;
 
   return (
-    <motion.div variants={fadeInUp} transition={defaultTransition}>
+    <motion.div
+      variants={fadeInUp}
+      transition={defaultTransition}
+      className="min-w-70 max-w-80 snap-center flex-shrink-0"
+    >
       <div className="glass-card overflow-hidden group h-full flex flex-col">
         {/* 이미지 16:10 */}
         <ProjectImage project={project} className="aspect-[16/10]" />
@@ -156,13 +160,6 @@ function StoryCard({ project }: { project: ProjectConfig }) {
           <p className="text-sm font-semibold gradient-text">
             {project.tagline}
           </p>
-
-          {/* Narrative 인용문 */}
-          {story?.narrative && (
-            <blockquote className="border-l-2 border-cyan/30 pl-4 text-sm text-muted-foreground leading-relaxed">
-              {story.narrative}
-            </blockquote>
-          )}
 
           {/* Impact */}
           {story && (
@@ -230,10 +227,10 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {/* 2컬럼 그리드 */}
+        {/* 가로 스크롤 */}
         <motion.div
-          key={`grid-${filter}`}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          key={`scroll-${filter}`}
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-thin"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}

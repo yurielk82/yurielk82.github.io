@@ -2,6 +2,12 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.6.2] - 2026-02-28
+
+### Changed
+- WORK 섹션 카드 간소화 — narrative 인용문(blockquote) 제거, tagline + impact만 표시
+- WORK 섹션 레이아웃 — 2컬럼 그리드 → 가로 스크롤 flex (snap-x, 카드 280~320px 고정폭)
+
 ## [0.6.1] - 2026-02-28
 
 ### Changed
