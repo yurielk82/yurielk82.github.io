@@ -40,7 +40,7 @@ export function SkillsSection() {
                 variants={fadeInUp}
                 transition={defaultTransition}
               >
-                <GlassCard className="h-full">
+                <GlassCard className="h-full relative overflow-hidden group">
                   <div className="flex items-start gap-4">
                     <div className="p-2.5 rounded-xl bg-gradient-to-br from-accent-lg to-secondary-lg shrink-0">
                       <Icon className="h-5 w-5 text-white" />
@@ -59,6 +59,9 @@ export function SkillsSection() {
                       )}
                     </div>
                   </div>
+
+                  {/* 하단 악센트 라인 */}
+                  <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-lg/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </GlassCard>
               </motion.div>
             );
@@ -94,7 +97,7 @@ export function SkillsSection() {
               key={tech.name}
               variants={fadeInUp}
               transition={defaultTransition}
-              className="group flex flex-col items-center gap-3 p-5 rounded-2xl border border-border/50 bg-card hover:border-accent-lg/20 hover:shadow-[0_0_20px_rgba(124,138,255,0.06)] transition-all duration-300"
+              className="group flex flex-col items-center gap-3 p-4 liquid-glass transition-all duration-300"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

@@ -141,11 +141,19 @@ Optional desc     ← text-muted-foreground, max-w-2xl, mx-auto
 
 솔루션 카테고리 세로 스택. `SolutionCard` + `EvidenceCard` 내부 컴포넌트.
 
-- 카드: `GlassCard` 래퍼, `p-6 sm:p-8`
+- 카드: `GlassCard` 래퍼, `p-6 sm:p-8`, `relative group` + 하단 악센트 라인
 - 헤더: 아이콘(gradient bg) + 카테고리명/tagline + 상태 배지(`proven`: success-lg, `capable`: accent-lg)
 - Capabilities: 2열 그리드, accent-lg 불릿
-- Evidence (proven): `border-t border-border/50 pt-5`, 미니카드 가로 배치
+- Evidence (proven): `border-t border-border/50 pt-5`, 미니카드 가로 배치, 클릭 시 프로젝트 링크(`links.live` 우선, fallback `links.github`) 이동, hover 시 `border-accent-lg/30` 테두리 변화
 - CTA (capable): `#contact` 링크 + ArrowRight 아이콘
+
+### 하단 악센트 라인 (공통 패턴)
+
+`group` + `relative overflow-hidden` GlassCard 안에 배치. About, Solutions, Skills 역량 카드에 공통 적용.
+
+```html
+<div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-lg/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+```
 
 ### SVG 필터 (`LiquidGlassSVGFilters`)
 
@@ -196,7 +204,7 @@ defaultTransition = { type: "spring", stiffness: 300, damping: 30 }
 | Hero 역량 카드 | 2×2 그리드 | 4열 | 4열 |
 | Solutions | 1열 스택 | 1열 스택 | 1열 스택 (max-w-4xl) |
 | Skills (역량) | 1열 | 2열 | 2열 |
-| Skills (기술) | 3열 | 4열 | 7열 |
+| Skills (기술) | 3열 (`liquid-glass`) | 4열 (`liquid-glass`) | 7열 (`liquid-glass`) |
 
 ## 접근성
 

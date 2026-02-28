@@ -16,7 +16,7 @@ import { GlassCard } from "@/components/shared/GlassCard";
 import { solutions } from "@/config/solutions";
 import { projects } from "@/config/projects";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
-import type { SolutionCategory, SolutionEvidence } from "@/types";
+import type { SolutionCategory, SolutionEvidence, ProjectConfig } from "@/types";
 import type { LucideIcon } from "lucide-react";
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -27,12 +27,25 @@ const ICON_MAP: Record<string, LucideIcon> = {
   Wrench,
 };
 
+function getProjectLink(project: ProjectConfig): string | undefined {
+  return project.links.live || project.links.github;
+}
+
 function EvidenceCard({ evidence }: { evidence: SolutionEvidence }) {
   const project = projects.find((p) => p.id === evidence.projectId);
   if (!project) return null;
 
+  const href = getProjectLink(project);
+  const Wrapper = href ? "a" : "div";
+  const linkProps = href
+    ? { href, target: "_blank" as const, rel: "noopener noreferrer" as const }
+    : {};
+
   return (
-    <div className="flex-1 min-w-0 p-4 rounded-xl border border-border/50 bg-card/50">
+    <Wrapper
+      {...linkProps}
+      className="flex-1 min-w-0 p-4 rounded-xl border border-border/50 bg-card/50 hover:border-accent-lg/30 transition-colors duration-300"
+    >
       <div className="flex items-center gap-2 mb-1">
         <span className="text-xs font-mono text-accent-lg tracking-wider truncate">
           {project.name}
@@ -44,7 +57,7 @@ function EvidenceCard({ evidence }: { evidence: SolutionEvidence }) {
       <p className="text-xs text-muted-foreground mt-1">
         {evidence.keyMetric}
       </p>
-    </div>
+    </Wrapper>
   );
 }
 
@@ -53,7 +66,7 @@ function SolutionCard({ solution }: { solution: SolutionCategory }) {
   const isProven = solution.status === "proven";
 
   return (
-    <GlassCard className="p-0 overflow-hidden">
+    <GlassCard className="p-0 overflow-hidden relative group">
       <div className="p-6 sm:p-8">
         {/* Header */}
         <div className="flex items-start justify-between gap-4 mb-4">
@@ -124,6 +137,8 @@ function SolutionCard({ solution }: { solution: SolutionCategory }) {
             </a>
           </div>
         )}
+        {/* 하단 악센트 라인 */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-lg/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
     </GlassCard>
   );
