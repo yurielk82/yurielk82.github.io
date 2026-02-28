@@ -2,6 +2,11 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.6.4] - 2026-02-28
+
+### Changed
+- WORK 섹션 드래그 스크롤에 관성(momentum) 추가 — 놓았을 때 속도 비례 감속으로 부드러운 전환
+
 ## [0.6.3] - 2026-02-28
 
 ### Changed

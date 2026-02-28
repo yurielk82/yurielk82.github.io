@@ -184,35 +184,80 @@ function StoryCard({ project }: { project: ProjectConfig }) {
   );
 }
 
-/* ---------- 드래그 스크롤 훅 ---------- */
+/* ---------- 드래그 스크롤 훅 (관성 포함) ---------- */
 function useDragScroll() {
   const ref = useRef<HTMLDivElement>(null);
-  const drag = useRef({ active: false, startX: 0, scrollLeft: 0 });
+  const drag = useRef({
+    active: false,
+    startX: 0,
+    scrollLeft: 0,
+    lastX: 0,
+    lastTime: 0,
+    velocity: 0,
+    animId: 0,
+  });
+
+  const stopMomentum = useCallback(() => {
+    cancelAnimationFrame(drag.current.animId);
+  }, []);
+
+  const startMomentum = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    let v = drag.current.velocity;
+    const friction = 0.95;
+    const step = () => {
+      if (Math.abs(v) < 0.5) return;
+      el.scrollLeft -= v;
+      v *= friction;
+      drag.current.animId = requestAnimationFrame(step);
+    };
+    drag.current.animId = requestAnimationFrame(step);
+  }, []);
 
   const onMouseDown = useCallback((e: React.MouseEvent) => {
     const el = ref.current;
     if (!el) return;
-    drag.current = { active: true, startX: e.pageX, scrollLeft: el.scrollLeft };
+    stopMomentum();
+    const now = Date.now();
+    drag.current = {
+      active: true,
+      startX: e.pageX,
+      scrollLeft: el.scrollLeft,
+      lastX: e.pageX,
+      lastTime: now,
+      velocity: 0,
+      animId: 0,
+    };
     el.style.cursor = "grabbing";
     el.style.userSelect = "none";
-  }, []);
+  }, [stopMomentum]);
 
   const onMouseMove = useCallback((e: React.MouseEvent) => {
     if (!drag.current.active) return;
     const el = ref.current;
     if (!el) return;
     e.preventDefault();
-    const dx = e.pageX - drag.current.startX;
-    el.scrollLeft = drag.current.scrollLeft - dx;
+    const now = Date.now();
+    const dt = now - drag.current.lastTime;
+    const dx = e.pageX - drag.current.lastX;
+    if (dt > 0) {
+      drag.current.velocity = dx / dt * 16;
+    }
+    drag.current.lastX = e.pageX;
+    drag.current.lastTime = now;
+    el.scrollLeft = drag.current.scrollLeft - (e.pageX - drag.current.startX);
   }, []);
 
   const onMouseUp = useCallback(() => {
+    if (!drag.current.active) return;
     drag.current.active = false;
     const el = ref.current;
     if (!el) return;
     el.style.cursor = "grab";
     el.style.removeProperty("user-select");
-  }, []);
+    startMomentum();
+  }, [startMomentum]);
 
   return { ref, onMouseDown, onMouseMove, onMouseUp, onMouseLeave: onMouseUp };
 }

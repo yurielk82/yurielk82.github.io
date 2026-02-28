@@ -257,6 +257,7 @@
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
