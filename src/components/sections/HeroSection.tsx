@@ -35,15 +35,15 @@ export function HeroSection() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Radial glow */}
+      {/* Mesh gradient background */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse 70% 50% at 50% 40%, rgba(124,138,255,0.08) 0%, transparent 70%)",
-          zIndex: 1,
-        }}
+        className="pointer-events-none absolute inset-0 z-1 hero-mesh-gradient"
+      />
+      {/* Bottom fadeout — About 섹션 전환 */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-2 hero-fadeout"
       />
 
       <motion.div

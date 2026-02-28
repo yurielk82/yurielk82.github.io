@@ -1,6 +1,6 @@
 # yurielk82.github.io
 
-**AI Full-Stack Builder 포트폴리오** v1.2.4
+**AI Full-Stack Builder 포트폴리오** v1.3.0
 
 AI를 활용해 설계부터 배포까지 풀스택 앱을 구축하는 개발자 포트폴리오.
 

@@ -110,9 +110,14 @@
   --blob-indigo: rgba(91, 106, 191, 0.5);
   --blob-fuchsia: rgba(192, 126, 200, 0.5);
   --blob-violet: rgba(124, 106, 173, 0.5);
-  --blob-opacity-1: 0.35;
-  --blob-opacity-2: 0.3;
-  --blob-opacity-3: 0.25;
+  --blob-opacity-1: 0.45;
+  --blob-opacity-2: 0.38;
+  --blob-opacity-3: 0.32;
+
+  --mesh-point-1: rgba(91, 106, 191, 0.18);
+  --mesh-point-2: rgba(124, 106, 173, 0.14);
+  --mesh-point-3: rgba(192, 126, 200, 0.12);
+  --mesh-point-4: rgba(91, 106, 191, 0.08);
 }
 
 /* ── OS Dark Mode CSS Fallback — JS 실행 전 즉시 적용 ── */
@@ -165,6 +170,11 @@
     --blob-opacity-1: 0.3;
     --blob-opacity-2: 0.25;
     --blob-opacity-3: 0.2;
+
+    --mesh-point-1: rgba(124, 138, 255, 0.25);
+    --mesh-point-2: rgba(167, 139, 250, 0.20);
+    --mesh-point-3: rgba(240, 171, 252, 0.15);
+    --mesh-point-4: rgba(124, 138, 255, 0.10);
   }
 }
 
@@ -217,6 +227,11 @@
   --blob-opacity-1: 0.3;
   --blob-opacity-2: 0.25;
   --blob-opacity-3: 0.2;
+
+  --mesh-point-1: rgba(124, 138, 255, 0.25);
+  --mesh-point-2: rgba(167, 139, 250, 0.20);
+  --mesh-point-3: rgba(240, 171, 252, 0.15);
+  --mesh-point-4: rgba(124, 138, 255, 0.10);
 }
 
 @layer base {
@@ -310,6 +325,20 @@
 :root:not(.dark) .liquid-glass:hover {
   border-color: rgba(91, 106, 191, 0.25);
   box-shadow: 0 8px 32px rgba(91, 106, 191, 0.1);
+}
+
+/* ── Hero Mesh Gradient ── */
+
+.hero-mesh-gradient {
+  background:
+    radial-gradient(ellipse 60% 50% at 25% 20%, var(--mesh-point-1) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 75% 30%, var(--mesh-point-2) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 45% at 50% 70%, var(--mesh-point-3) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 50% at 30% 50%, var(--mesh-point-4) 0%, transparent 70%);
+}
+
+.hero-fadeout {
+  background: linear-gradient(to bottom, transparent 60%, var(--background) 100%);
 }
 
 /* ── Blob Classes ── */
