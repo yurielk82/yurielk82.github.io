@@ -2,6 +2,11 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.4.2] - 2026-02-28
+
+### Changed
+- bio/description 카피를 협업·대화 톤으로 교체 ("대화 한 번이면 충분합니다")
+
 ## [0.4.1] - 2026-02-28
 
 ### Changed
