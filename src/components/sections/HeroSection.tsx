@@ -64,39 +64,13 @@ export function HeroSection() {
           </span>
         </motion.div>
 
-        {/* Avatar */}
-        <motion.div
-          className="flex flex-col items-center mb-6"
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-          transition={{ ...defaultTransition, delay: 0.2 }}
-        >
-          <div className="rounded-full p-1 bg-gradient-to-br from-accent-lg via-secondary-lg to-tertiary-lg">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={siteConfig.author.avatar}
-              alt={siteConfig.author.name}
-              width={96}
-              height={96}
-              className="w-24 h-24 rounded-full object-cover"
-            />
-          </div>
-          <span className="mt-3 text-sm font-medium text-foreground">
-            {siteConfig.author.name}
-          </span>
-          <span className="text-xs text-muted-foreground">
-            {siteConfig.author.title}
-          </span>
-        </motion.div>
-
         {/* Title */}
         <motion.div
           className="text-center mb-8"
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
-          transition={{ ...defaultTransition, delay: 0.3 }}
+          transition={{ ...defaultTransition, delay: 0.2 }}
         >
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-7xl leading-[1.1]">
             <span className="text-foreground">상상만 했던 것,</span>
@@ -114,7 +88,7 @@ export function HeroSection() {
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
-          transition={{ ...defaultTransition, delay: 0.5 }}
+          transition={{ ...defaultTransition, delay: 0.4 }}
         >
           <div className="liquid-glass p-6">
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -141,7 +115,7 @@ export function HeroSection() {
           initial="hidden"
           animate="visible"
           variants={fadeInUp}
-          transition={{ ...defaultTransition, delay: 0.7 }}
+          transition={{ ...defaultTransition, delay: 0.6 }}
         >
           {STATS.map((stat) => (
             <div key={stat.label} className="text-center">

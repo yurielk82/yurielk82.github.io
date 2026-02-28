@@ -2,29 +2,29 @@ import type { Capability, TechItem } from "@/types";
 
 export const capabilities: Capability[] = [
   {
-    title: "빠르게, 그리고 든든하게",
+    title: "견고한 아키텍처 설계",
     description:
-      "2주 만에 기업용 시스템이 완성됩니다. 빠르다고 대충이 아니에요. 자동화 테스트 171건, 견고한 아키텍처까지 — 속도와 품질, 둘 다 챙겨드립니다.",
+      "DDD 4레이어 + Repository 패턴으로 관심사를 분리하고, 171건 자동화 테스트로 품질을 보장합니다. 빠르게 만들되, 무너지지 않는 구조.",
     projectRef: "csoweb",
-    icon: "Rocket",
+    icon: "Shield",
   },
   {
-    title: "한 번 만들어, 어디서든",
+    title: "크로스 플랫폼, 하나의 코드로",
     description:
-      "웹, PC 프로그램, 모바일. 하나의 코드로 세 곳에서 동시에 쓸 수 있습니다. 따로 만드는 비용과 시간, 아껴드릴게요.",
+      "웹·PC(Electron)·모바일(PWA) 동시 배포. 오프라인 SQLite로 인터넷 없이도 동작합니다. 따로 만드는 비용과 시간, 아껴드립니다.",
     projectRef: "kpis-dsr-api",
     icon: "Layers",
   },
   {
-    title: "아이디어에 맞는 기술을",
+    title: "제로 인프라 비용 설계",
     description:
-      "당신의 아이디어에 가장 잘 맞는 기술을 골라 씁니다. React가 맞으면 React, Python이 맞으면 Python. 기술이 아이디어를 가두지 않도록, 늘 열린 마음으로 접근합니다.",
+      "서버리스, Google Sheets DB, Neon 서버리스 PostgreSQL — 매달 나가는 서버 비용 없이 영구 운영 가능한 아키텍처를 설계합니다.",
     icon: "Zap",
   },
   {
-    title: "AI와 함께, 사람의 판단으로",
+    title: "AI 파트너와 함께, 사람의 설계로",
     description:
-      "AI는 든든한 파트너이고, 방향을 잡는 건 사람입니다. 요구사항을 깊이 이해하고, 설계하고, 검증하는 전 과정을 AI와 함께 — 그러나 책임감 있게 완성합니다.",
+      "AI를 아키텍처 파트너로 활용하되, 요구사항 분석·설계 판단·품질 검증은 엔지니어가 책임집니다. 도구의 한계를 알고, 최종 판단은 사람이.",
     icon: "Brain",
   },
 ];
@@ -33,15 +33,14 @@ export const techItems: TechItem[] = [
   { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" },
   { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" },
   { name: "TypeScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" },
-  { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
-  { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg" },
   { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" },
+  { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" },
   { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg" },
   { name: "Supabase", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg" },
-  { name: "Electron", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg" },
   { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" },
+  { name: "Vercel", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg" },
+  { name: "Electron", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg" },
   { name: "GitHub Actions", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg" },
   { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg" },
-  { name: "Prisma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg" },
-  { name: "SQLite", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg" },
+  { name: "Framer Motion", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg" },
 ];

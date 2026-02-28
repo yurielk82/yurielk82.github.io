@@ -132,11 +132,20 @@ Optional desc     ← text-muted-foreground, max-w-2xl, mx-auto
 ### Hero (Liquid Glass)
 
 - 배지: `border-accent-lg/20 bg-accent-lg-subtle text-accent-lg`
-- 아바타: `w-24 h-24 rounded-full object-cover`, Liquid Glass 그래디언트 링(`p-1 bg-gradient-to-br from-accent-lg via-secondary-lg to-tertiary-lg`)으로 감싸기. 아래에 이름 + 타이틀 소형 텍스트
 - 타이틀: `liquid-gradient-text`
 - 핵심 역량 카드: `.liquid-glass` 안에 아이콘 + 라벨 가로 배치
 - Stats: `liquid-gradient-text` 수치
 - 배경: radial glow indigo 톤
+
+### Solutions Section
+
+솔루션 카테고리 세로 스택. `SolutionCard` + `EvidenceCard` 내부 컴포넌트.
+
+- 카드: `GlassCard` 래퍼, `p-6 sm:p-8`
+- 헤더: 아이콘(gradient bg) + 카테고리명/tagline + 상태 배지(`proven`: success-lg, `capable`: accent-lg)
+- Capabilities: 2열 그리드, accent-lg 불릿
+- Evidence (proven): `border-t border-border/50 pt-5`, 미니카드 가로 배치
+- CTA (capable): `#contact` 링크 + ArrowRight 아이콘
 
 ### SVG 필터 (`LiquidGlassSVGFilters`)
 
@@ -185,7 +194,7 @@ defaultTransition = { type: "spring", stiffness: 300, damping: 30 }
 |------|--------------|---------------|-----------------|
 | Navigation | 햄버거 | 가로 메뉴 | 가로 메뉴 |
 | Hero 역량 카드 | 2×2 그리드 | 4열 | 4열 |
-| Projects | 가로 스크롤 | 가로 스크롤 | 가로 스크롤 |
+| Solutions | 1열 스택 | 1열 스택 | 1열 스택 (max-w-4xl) |
 | Skills (역량) | 1열 | 2열 | 2열 |
 | Skills (기술) | 3열 | 4열 | 7열 |
 

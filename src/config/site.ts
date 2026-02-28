@@ -15,7 +15,7 @@ export const siteConfig: SiteConfig = {
   },
   nav: [
     { label: "소개", href: "#about" },
-    { label: "프로젝트", href: "#projects" },
+    { label: "솔루션", href: "#solutions" },
     { label: "역량", href: "#skills" },
     { label: "연락", href: "#contact" },
   ],

@@ -73,3 +73,20 @@ export interface TechItem {
   name: string;
   icon: string;
 }
+
+export interface SolutionCategory {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  icon: string;
+  capabilities: string[];
+  evidence: SolutionEvidence[];
+  status: "proven" | "capable";
+}
+
+export interface SolutionEvidence {
+  projectId: string;
+  role: string;
+  keyMetric: string;
+}

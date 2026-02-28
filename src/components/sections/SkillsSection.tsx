@@ -1,14 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Rocket, Layers, Zap, Brain } from "lucide-react";
+import { Shield, Layers, Zap, Brain } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { GlassCard } from "@/components/shared/GlassCard";
 import { capabilities, techItems } from "@/config/skills";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
 
-const ICON_MAP: Record<string, typeof Rocket> = {
-  Rocket,
+const ICON_MAP: Record<string, typeof Shield> = {
+  Shield,
   Layers,
   Zap,
   Brain,
@@ -33,7 +33,7 @@ export function SkillsSection() {
           variants={staggerContainer}
         >
           {capabilities.map((cap) => {
-            const Icon = ICON_MAP[cap.icon] ?? Rocket;
+            const Icon = ICON_MAP[cap.icon] ?? Shield;
             return (
               <motion.div
                 key={cap.title}
