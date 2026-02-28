@@ -11,15 +11,33 @@ export function useTheme() {
   useEffect(() => {
     setMounted(true);
     const stored = localStorage.getItem("portfolio-theme") as Theme | null;
-    const initial = stored ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    const initial =
+      stored ??
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light");
     setThemeState(initial);
-    document.documentElement.classList.toggle("dark", initial === "dark");
+    const doc = document.documentElement;
+    if (initial === "dark") {
+      doc.classList.add("dark");
+      doc.classList.remove("light");
+    } else {
+      doc.classList.add("light");
+      doc.classList.remove("dark");
+    }
   }, []);
 
   const setTheme = useCallback((t: Theme) => {
     setThemeState(t);
     localStorage.setItem("portfolio-theme", t);
-    document.documentElement.classList.toggle("dark", t === "dark");
+    const doc = document.documentElement;
+    if (t === "dark") {
+      doc.classList.add("dark");
+      doc.classList.remove("light");
+    } else {
+      doc.classList.add("light");
+      doc.classList.remove("dark");
+    }
   }, []);
 
   const toggleTheme = useCallback(() => {

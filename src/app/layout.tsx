@@ -71,7 +71,7 @@ export default function RootLayout({
       <head>
         <script
           dangerouslySetInnerHTML={{
-            __html: `(function(){var t=localStorage.getItem('portfolio-theme');if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.classList.toggle('dark',t==='dark')})()`,
+            __html: `(function(){var s=localStorage.getItem('portfolio-theme');var d=document.documentElement;if(s==='light'){d.classList.add('light')}else if(s==='dark'){d.classList.add('dark')}else if(window.matchMedia('(prefers-color-scheme: dark)').matches){d.classList.add('dark')}})()`,
           }}
         />
       </head>

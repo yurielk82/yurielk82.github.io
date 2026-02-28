@@ -222,6 +222,54 @@ defaultTransition = { type: "spring", stiffness: 300, damping: 30 }
 | Skills (역량) | 1열 | 2열 | 2열 |
 | Skills (기술) | 3열 (`liquid-glass`) | 4열 (`liquid-glass`) | 7열 (`liquid-glass`) |
 
+## 테마 전환 메커니즘 (FOUC 방지)
+
+3계층 구조로 다크/라이트 모드 FOUC(Flash of Unstyled Content)를 제거한다.
+
+### 1계층: CSS 미디어 쿼리 폴백 (즉시)
+
+```css
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) { /* 다크 모드 변수 전체 */ }
+}
+```
+
+CSS 파싱 단계에서 JS 없이 OS 다크 모드를 즉시 반영. `.light` 클래스가 있으면 무효화.
+
+### 2계층: 인라인 블로킹 스크립트 (`<head>`)
+
+```javascript
+(function(){
+  var s = localStorage.getItem('portfolio-theme');
+  if (s === 'light') d.classList.add('light');
+  else if (s === 'dark') d.classList.add('dark');
+  else if (matchMedia('(prefers-color-scheme: dark)').matches) d.classList.add('dark');
+})()
+```
+
+CSS 파싱 직후, `<body>` 파싱 전 실행. localStorage 사용자 선택을 `.dark`/`.light` 클래스로 반영.
+
+### 3계층: React 훅 (`useTheme`)
+
+클라이언트 하이드레이션 후 React 상태와 DOM 클래스를 동기화. 테마 토글 인터랙션 처리.
+
+### 클래스 규칙
+
+| 클래스 | 의미 | 설정 주체 |
+|--------|------|----------|
+| `.dark` | 다크 모드 활성 | 인라인 스크립트 / useTheme |
+| `.light` | 라이트 모드 명시 (미디어 쿼리 무효화) | 인라인 스크립트 / useTheme |
+| (없음) | OS 기본값 따름 | 초기 상태 |
+
+### 시나리오별 동작
+
+| localStorage | OS 테마 | 결과 | 메커니즘 |
+|-------------|---------|------|----------|
+| 없음 | light | 라이트 | `:root` 기본값 |
+| 없음 | dark | 다크 | `@media` CSS 폴백 → `.dark` 클래스 |
+| "dark" | light | 다크 | `.dark` 클래스 |
+| "light" | dark | 라이트 | `.light` → `:not(.light)` 무효화 |
+
 ## 접근성
 
 - `useReducedMotion`: 블롭 애니메이션 정적 전환, 카드 호버 transform 비활성화

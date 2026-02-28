@@ -115,7 +115,60 @@
   --blob-opacity-3: 0.25;
 }
 
-/* ── Dark Mode (기본) ── */
+/* ── OS Dark Mode CSS Fallback — JS 실행 전 즉시 적용 ── */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light) {
+    --background: #0a0a0f;
+    --foreground: #f0f0f5;
+    --card: #10101a;
+    --card-foreground: #f0f0f5;
+    --popover: #10101a;
+    --popover-foreground: #f0f0f5;
+    --primary: #7c8aff;
+    --primary-foreground: #0a0a0f;
+    --secondary: #14142a;
+    --secondary-foreground: #f0f0f5;
+    --muted: #14142a;
+    --muted-foreground: #71717a;
+    --accent: #7c8aff;
+    --accent-foreground: #0a0a0f;
+    --destructive: oklch(0.704 0.191 22.216);
+    --border: rgba(255, 255, 255, 0.06);
+    --input: rgba(255, 255, 255, 0.08);
+    --ring: #7c8aff;
+    --chart-1: #7c8aff;
+    --chart-2: #34d399;
+    --chart-3: #fbbf24;
+    --chart-4: #a78bfa;
+    --chart-5: #f0abfc;
+    --sidebar: #0d0d14;
+    --sidebar-foreground: #f0f0f5;
+    --sidebar-primary: #7c8aff;
+    --sidebar-primary-foreground: #0a0a0f;
+    --sidebar-accent: #14142a;
+    --sidebar-accent-foreground: #f0f0f5;
+    --sidebar-border: rgba(255, 255, 255, 0.06);
+    --sidebar-ring: #7c8aff;
+
+    --lg-accent: #7c8aff;
+    --lg-secondary: #a78bfa;
+    --lg-tertiary: #f0abfc;
+    --lg-success: #34d399;
+    --lg-warning: #fbbf24;
+    --lg-accent-subtle: rgba(124, 138, 255, 0.08);
+    --lg-surface: #10101a;
+    --lg-surface-elevated: #18182a;
+
+    --blob-indigo: rgba(124, 138, 255, 0.4);
+    --blob-fuchsia: rgba(240, 171, 252, 0.4);
+    --blob-violet: rgba(167, 139, 250, 0.4);
+    --blob-opacity-1: 0.3;
+    --blob-opacity-2: 0.25;
+    --blob-opacity-3: 0.2;
+  }
+}
+
+/* ── Dark Mode (JS 명시적 오버라이드) ── */
 .dark {
   --background: #0a0a0f;
   --foreground: #f0f0f5;
