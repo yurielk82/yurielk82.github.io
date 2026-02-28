@@ -2,6 +2,15 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.4.1] - 2026-02-28
+
+### Changed
+- Hero 터미널 애니메이션을 3자 협업 대화로 전환 (고객→빌더→AI)
+  - `client $` 고객이 문제 제기, `builder $` 빌더가 해결 방향 제시, `💬` AI가 최적 기술 제안 후 구현
+- 스피너 텍스트 한글화 ("Analyzing requirements..." → "요구사항 정리 중...")
+- 역할별 프롬프트 색상 구분 (client: amber, builder: violet, AI: cyan)
+- 최종 라인 "배포 완료 — 정산 자동화 플랫폼 오픈"으로 결과물 강조
+
 ## [0.3.1] - 2026-02-27
 
 ### Removed

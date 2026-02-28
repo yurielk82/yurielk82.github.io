@@ -8,12 +8,15 @@ import { fadeInUp, defaultTransition } from "@/lib/animations";
 
 const TERMINAL_LINES = [
   { prompt: "~", cmd: "claude", delay: 800 },
-  { prompt: "claude", cmd: '"정산 수수료 조회 시스템 만들어줘"', delay: 60 },
-  { prompt: "", cmd: "⠋ Analyzing requirements...", delay: 400 },
-  { prompt: "", cmd: "⠙ Designing DDD 4-layer architecture...", delay: 400 },
-  { prompt: "", cmd: "⠹ Writing 47 components, 13 API routes...", delay: 400 },
-  { prompt: "", cmd: "⠸ Running 171 tests... all passed ✓", delay: 400 },
-  { prompt: "", cmd: "✓ 배포 완료 — 서비스 사용 가능", delay: 600 },
+  { prompt: "client", cmd: '"매달 정산 수작업이 너무 많아"', delay: 60 },
+  { prompt: "builder", cmd: '"API 연동해서 자동 분류하고, 오류만 알림 받게 하죠"', delay: 60 },
+  { prompt: "", cmd: "💬 DDD 4레이어 + 결제 API 연동이 최적입니다. 바로 설계할게요.", delay: 500 },
+  { prompt: "builder", cmd: '"좋아, 시작하자"', delay: 60 },
+  { prompt: "", cmd: "⠋ 요구사항 정리 중...", delay: 400 },
+  { prompt: "", cmd: "⠙ DDD 4레이어 아키텍처 설계 중...", delay: 400 },
+  { prompt: "", cmd: "⠹ 47개 컴포넌트, 13개 API 작성 중...", delay: 400 },
+  { prompt: "", cmd: "⠸ 171건 테스트 통과 ✓", delay: 400 },
+  { prompt: "", cmd: "✓ 배포 완료 — 정산 자동화 플랫폼 오픈", delay: 600 },
 ];
 
 function useTypewriter(lines: typeof TERMINAL_LINES) {
@@ -160,15 +163,27 @@ export function HeroSection() {
               {displayed.map((line, i) => (
                 <div key={i} className="flex gap-2">
                   {line.prompt && (
-                    <span className="text-cyan shrink-0">{line.prompt} $</span>
+                    <span
+                      className={`shrink-0 ${
+                        line.prompt === "client"
+                          ? "text-amber-400"
+                          : line.prompt === "builder"
+                            ? "text-violet-400"
+                            : "text-cyan"
+                      }`}
+                    >
+                      {line.prompt} $
+                    </span>
                   )}
                   <span
                     className={
                       line.text.startsWith("✓")
                         ? "text-emerald"
-                        : line.text.startsWith("⠋") || line.text.startsWith("⠙") || line.text.startsWith("⠹") || line.text.startsWith("⠸")
-                          ? "text-muted-foreground"
-                          : "text-foreground"
+                        : line.text.startsWith("💬")
+                          ? "text-cyan"
+                          : line.text.startsWith("⠋") || line.text.startsWith("⠙") || line.text.startsWith("⠹") || line.text.startsWith("⠸")
+                            ? "text-muted-foreground"
+                            : "text-foreground"
                     }
                   >
                     {line.text}
