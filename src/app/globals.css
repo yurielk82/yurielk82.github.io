@@ -106,6 +106,13 @@
   --lg-accent-subtle: rgba(91, 106, 191, 0.08);
   --lg-surface: #ffffff;
   --lg-surface-elevated: #f8f9fc;
+
+  --blob-indigo: rgba(91, 106, 191, 0.5);
+  --blob-fuchsia: rgba(192, 126, 200, 0.5);
+  --blob-violet: rgba(124, 106, 173, 0.5);
+  --blob-opacity-1: 0.35;
+  --blob-opacity-2: 0.3;
+  --blob-opacity-3: 0.25;
 }
 
 /* ── Dark Mode (기본) ── */
@@ -150,6 +157,13 @@
   --lg-accent-subtle: rgba(124, 138, 255, 0.08);
   --lg-surface: #10101a;
   --lg-surface-elevated: #18182a;
+
+  --blob-indigo: rgba(124, 138, 255, 0.4);
+  --blob-fuchsia: rgba(240, 171, 252, 0.4);
+  --blob-violet: rgba(167, 139, 250, 0.4);
+  --blob-opacity-1: 0.3;
+  --blob-opacity-2: 0.25;
+  --blob-opacity-3: 0.2;
 }
 
 @layer base {
@@ -243,6 +257,21 @@
 :root:not(.dark) .liquid-glass:hover {
   border-color: rgba(91, 106, 191, 0.25);
   box-shadow: 0 8px 32px rgba(91, 106, 191, 0.1);
+}
+
+/* ── Blob Classes ── */
+
+.blob-indigo {
+  background: radial-gradient(circle, var(--blob-indigo) 0%, transparent 70%);
+  opacity: var(--blob-opacity-1);
+}
+.blob-fuchsia {
+  background: radial-gradient(circle, var(--blob-fuchsia) 0%, transparent 70%);
+  opacity: var(--blob-opacity-2);
+}
+.blob-violet {
+  background: radial-gradient(circle, var(--blob-violet) 0%, transparent 70%);
+  opacity: var(--blob-opacity-3);
 }
 
 /* ── Blob Drift Animations ── */

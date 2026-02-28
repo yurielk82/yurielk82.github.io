@@ -163,17 +163,33 @@ Optional desc     ← text-muted-foreground, max-w-2xl, mx-auto
 
 ### CSS 블롭 그래디언트
 
-Canvas 뉴럴 네트워크를 대체하는 3개 블롭 그래디언트.
+Canvas 뉴럴 네트워크를 대체하는 3개 블롭 그래디언트. CSS 변수로 라이트/다크 모드 색상을 분리 관리한다.
 
-| 블롭 | 색상 | 주기 |
-|------|------|------|
-| Indigo | `rgba(124,138,255,0.4)` | 20s |
-| Fuchsia | `rgba(240,171,252,0.4)` | 30s |
-| Violet | `rgba(167,139,250,0.4)` | 25s |
+#### 블롭 색상 변수
+
+| 변수 | 라이트 (`:root`) | 다크 (`.dark`) |
+|------|-----------------|----------------|
+| `--blob-indigo` | `rgba(91, 106, 191, 0.5)` | `rgba(124, 138, 255, 0.4)` |
+| `--blob-fuchsia` | `rgba(192, 126, 200, 0.5)` | `rgba(240, 171, 252, 0.4)` |
+| `--blob-violet` | `rgba(124, 106, 173, 0.5)` | `rgba(167, 139, 250, 0.4)` |
+| `--blob-opacity-1` | `0.35` | `0.3` |
+| `--blob-opacity-2` | `0.3` | `0.25` |
+| `--blob-opacity-3` | `0.25` | `0.2` |
+
+라이트 모드 색상은 `--lg-accent: #5b6abf`, `--lg-tertiary: #c07ec8`, `--lg-secondary: #7c6aad`에서 파생. 흰색 배경에서 시각적으로 구분 가능하도록 채도와 불투명도를 높임.
+
+#### 블롭 CSS 클래스
+
+| 클래스 | 배경 | 불투명도 | 주기 |
+|--------|------|---------|------|
+| `.blob-indigo` | `radial-gradient(circle, var(--blob-indigo), transparent)` | `var(--blob-opacity-1)` | 20s |
+| `.blob-fuchsia` | `radial-gradient(circle, var(--blob-fuchsia), transparent)` | `var(--blob-opacity-2)` | 30s |
+| `.blob-violet` | `radial-gradient(circle, var(--blob-violet), transparent)` | `var(--blob-opacity-3)` | 25s |
 
 - `blur-3xl`로 경계가 부드러운 대형 원
 - CSS `@keyframes blob-drift-*`로 느린 드리프트
 - `prefers-reduced-motion` 시 정적 고정
+- 인라인 하드코드 색상 사용 금지 — 반드시 CSS 클래스(`.blob-*`) 사용
 
 ## 애니메이션
 
