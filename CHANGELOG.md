@@ -2,6 +2,29 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [2.0.0] - 2026-02-28
+
+### BREAKING — Apple Bento Grid 전체 레이아웃 전환
+
+모든 섹션의 균일 세로 스택 레이아웃을 Apple WWDC 스타일 비대칭 Bento Grid로 전면 교체. 다양한 카드 크기(Featured 3x2, Side 1x2, Wide 4x1, Standard 1x1)로 정보 위계와 시각적 리듬감 부여.
+
+### Added
+- **BentoCard 컴포넌트** — `colSpan`/`rowSpan` prop으로 그리드 크기 제어, 하단 악센트 라인 내장
+- **TypeWriter 컴포넌트** — Hero 타이틀 타이핑 애니메이션 (Framer Motion 기반, SSR hydration mismatch 방지)
+- **CountUp 컴포넌트** — Stats 숫자 `useSpring` 카운트업 애니메이션 (viewport 진입 시 실행)
+- **SectionDivider 컴포넌트** — 섹션 간 그래디언트 구분선
+- Framer Motion variants: `staggerBento` (0.08s 간격), `fadeInScale`, `fadeInLeft`, `fadeInRight`
+- CSS `blink-cursor` 키프레임 + `.typing-cursor` 클래스
+
+### Changed
+- **HeroSection** — 세로 스택 → 4열 Bento Grid (Main Title 3x2, Badge/Profile 1x1, Stats 1x1 x4, Capability Strip 4x1, CTA 3x1)
+- **AboutSection** — 균일 3열 → 비대칭 Bento (Pillar 1 대형 3x2 + Pillar 2 사이드 1x2 + Pillar 3 와이드 4x1)
+- **SolutionsSection** — flex-col 스택 → Bento Grid (Featured 대형 3x2 + Compact 카드 조합), `max-w-4xl` → `max-w-6xl`
+- **SkillsSection** — 역량 2열 + 기술 그리드 분리 → 단일 4열 Bento Grid 통합
+- **ContactSection** — `rounded-3xl` → `rounded-2xl` (Liquid Glass 16px 통일)
+- **page.tsx** — About↔Solutions, Solutions↔Skills 사이에 SectionDivider 삽입
+- DESIGN_SYSTEM.md — Bento Grid 레이아웃 규격, 새 애니메이션 variants, 반응형 매트릭스 업데이트
+
 ## [1.0.0] - 2026-02-28
 
 ### BREAKING — Liquid Glass 디자인 시스템 전환

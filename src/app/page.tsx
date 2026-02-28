@@ -1,9 +1,13 @@
+/**
+ * Copyright (c) 2026 yurielk82. All rights reserved.
+ */
 "use client";
 
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import { AnimatedBackground } from "@/components/shared/AnimatedBackground";
 import { LiquidGlassSVGFilters } from "@/components/shared/LiquidGlassSVGFilters";
+import { SectionDivider } from "@/components/shared/SectionDivider";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SolutionsSection } from "@/components/sections/SolutionsSection";
@@ -19,7 +23,9 @@ export default function Home() {
       <main>
         <HeroSection />
         <AboutSection />
+        <SectionDivider className="mx-auto max-w-6xl" />
         <SolutionsSection />
+        <SectionDivider className="mx-auto max-w-6xl" />
         <SkillsSection />
         <ContactSection />
       </main>

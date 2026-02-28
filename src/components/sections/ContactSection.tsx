@@ -26,7 +26,7 @@ export function ContactSection() {
       <div className="mx-auto max-w-6xl px-6">
         {/* CTA 배너 */}
         <motion.div
-          className="relative overflow-hidden rounded-3xl p-10 sm:p-16 text-center cta-gradient"
+          className="relative overflow-hidden rounded-2xl p-10 sm:p-16 text-center cta-gradient"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
