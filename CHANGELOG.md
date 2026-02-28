@@ -2,6 +2,15 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.4.4] - 2026-02-28
+
+### Changed
+- Hero bio/description 사고 흐름 4단계 카피로 교체 (문제→해결법→구조→최적 기술)
+- 터미널 builder 턴 전문성 강화 — "룰엔진" 등 구체적 기술 용어 노출
+- 터미널 AI 턴 기술 스택 명시 — "NestJS + DDD 4레이어", "토스페이먼츠"
+- 스피너 DDD 용어 반영 — "요구사항 → 유스케이스 도출 중..."
+- SEO description을 bio와 동기화
+
 ## [0.4.3] - 2026-02-28
 
 ### Changed

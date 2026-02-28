@@ -9,14 +9,14 @@ import { fadeInUp, defaultTransition } from "@/lib/animations";
 const TERMINAL_LINES = [
   { prompt: "~", cmd: "claude", delay: 800 },
   { prompt: "client", cmd: '"매달 정산 수작업이 너무 많아"', delay: 60 },
-  { prompt: "builder", cmd: '"API 연동해서 자동 분류하고, 오류만 알림 받게 하죠"', delay: 60 },
-  { prompt: "", cmd: "💬 DDD 4레이어 + 결제 API 연동이 최적입니다. 바로 설계할게요.", delay: 500 },
-  { prompt: "builder", cmd: '"좋아, 시작하자"', delay: 60 },
-  { prompt: "", cmd: "⠋ 요구사항 정리 중...", delay: 400 },
+  { prompt: "builder", cmd: '"입력은 API로 자동화하고, 분류는 룰엔진으로 처리하죠"', delay: 60 },
+  { prompt: "", cmd: "💬 NestJS + DDD 4레이어로 설계합니다. 결제 API는 토스페이먼츠 연동이 최적.", delay: 500 },
+  { prompt: "builder", cmd: '"좋아, 바로 시작하자"', delay: 60 },
+  { prompt: "", cmd: "⠋ 요구사항 → 유스케이스 도출 중...", delay: 400 },
   { prompt: "", cmd: "⠙ DDD 4레이어 아키텍처 설계 중...", delay: 400 },
   { prompt: "", cmd: "⠹ 47개 컴포넌트, 13개 API 작성 중...", delay: 400 },
   { prompt: "", cmd: "⠸ 171건 테스트 통과 ✓", delay: 400 },
-  { prompt: "", cmd: "✓ 배포 완료 — 정산 자동화 플랫폼 오픈", delay: 600 },
+  { prompt: "", cmd: "✓ 배포 완료 — 정산 자동화 시스템 오픈", delay: 600 },
 ];
 
 function useTypewriter(lines: typeof TERMINAL_LINES) {
