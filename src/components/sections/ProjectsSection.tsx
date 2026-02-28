@@ -2,9 +2,9 @@
 
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { projects, projectCategories } from "@/config/projects";
 import { SectionHeading } from "@/components/shared/SectionHeading";
@@ -184,9 +184,11 @@ function StoryCard({ project }: { project: ProjectConfig }) {
   );
 }
 
-/* ---------- 드래그 스크롤 훅 (관성 포함) ---------- */
+/* ---------- 드래그 스크롤 훅 (관성 + 스크롤 위치 감지) ---------- */
 function useDragScroll() {
   const ref = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
   const drag = useRef({
     active: false,
     startX: 0,
@@ -196,6 +198,17 @@ function useDragScroll() {
     velocity: 0,
     animId: 0,
   });
+
+  const updateScrollState = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 1);
+    setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 1);
+  }, []);
+
+  const scrollByAmount = useCallback((delta: number) => {
+    ref.current?.scrollBy({ left: delta, behavior: "smooth" });
+  }, []);
 
   const stopMomentum = useCallback(() => {
     cancelAnimationFrame(drag.current.animId);
@@ -207,13 +220,16 @@ function useDragScroll() {
     let v = drag.current.velocity;
     const friction = 0.95;
     const step = () => {
-      if (Math.abs(v) < 0.5) return;
+      if (Math.abs(v) < 0.5) {
+        updateScrollState();
+        return;
+      }
       el.scrollLeft -= v;
       v *= friction;
       drag.current.animId = requestAnimationFrame(step);
     };
     drag.current.animId = requestAnimationFrame(step);
-  }, []);
+  }, [updateScrollState]);
 
   const onMouseDown = useCallback((e: React.MouseEvent) => {
     const el = ref.current;
@@ -259,8 +275,21 @@ function useDragScroll() {
     startMomentum();
   }, [startMomentum]);
 
-  return { ref, onMouseDown, onMouseMove, onMouseUp, onMouseLeave: onMouseUp };
+  return {
+    ref,
+    canScrollLeft,
+    canScrollRight,
+    updateScrollState,
+    scrollByAmount,
+    onMouseDown,
+    onMouseMove,
+    onMouseUp,
+    onMouseLeave: onMouseUp,
+  };
 }
+
+/* ---------- 카드 1장 스크롤 거리 (max-w-80=320px + gap-6=24px) ---------- */
+const SCROLL_STEP = 344;
 
 /* ---------- ProjectsSection ---------- */
 export function ProjectsSection() {
@@ -278,6 +307,13 @@ export function ProjectsSection() {
     ([key]) =>
       key === "all" || projects.some((p) => p.category.includes(key as never))
   );
+
+  /* 필터 변경 · 마운트 시 스크롤 상태 초기화 */
+  useEffect(() => {
+    /* scrollBy smooth 완료 후 상태 업데이트를 위해 약간 지연 */
+    const timer = setTimeout(scroll.updateScrollState, 50);
+    return () => clearTimeout(timer);
+  }, [filter, scroll.updateScrollState]);
 
   return (
     <section id="projects" className="relative z-10 py-24 sm:py-32">
@@ -306,23 +342,49 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {/* 가로 스크롤 (드래그) */}
-        <motion.div
-          key={`scroll-${filter}`}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 cursor-grab scrollbar-hide"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-          ref={scroll.ref}
-          onMouseDown={scroll.onMouseDown}
-          onMouseMove={scroll.onMouseMove}
-          onMouseUp={scroll.onMouseUp}
-          onMouseLeave={scroll.onMouseLeave}
-        >
-          {sorted.map((project) => (
-            <StoryCard key={project.id} project={project} />
-          ))}
-        </motion.div>
+        {/* 가로 스크롤 + 좌우 화살표 */}
+        <div className="relative">
+          {/* 왼쪽 화살표 */}
+          {scroll.canScrollLeft && (
+            <button
+              onClick={() => scroll.scrollByAmount(-SCROLL_STEP)}
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-background/80 backdrop-blur border border-border/50 hover:bg-background hover:border-cyan/30 text-muted-foreground hover:text-foreground transition-all duration-200 shadow-lg"
+              aria-label="이전 프로젝트"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          )}
+
+          {/* 가로 스크롤 (드래그) */}
+          <motion.div
+            key={`scroll-${filter}`}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 cursor-grab scrollbar-hide"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            ref={scroll.ref}
+            onScroll={scroll.updateScrollState}
+            onMouseDown={scroll.onMouseDown}
+            onMouseMove={scroll.onMouseMove}
+            onMouseUp={scroll.onMouseUp}
+            onMouseLeave={scroll.onMouseLeave}
+          >
+            {sorted.map((project) => (
+              <StoryCard key={project.id} project={project} />
+            ))}
+          </motion.div>
+
+          {/* 오른쪽 화살표 */}
+          {scroll.canScrollRight && (
+            <button
+              onClick={() => scroll.scrollByAmount(SCROLL_STEP)}
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-background/80 backdrop-blur border border-border/50 hover:bg-background hover:border-cyan/30 text-muted-foreground hover:text-foreground transition-all duration-200 shadow-lg"
+              aria-label="다음 프로젝트"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          )}
+        </div>
       </div>
     </section>
   );

@@ -2,6 +2,15 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.6.5] - 2026-02-28
+
+### Added
+- WORK 섹션 좌우 화살표 버튼 — 클릭 시 카드 1장씩 부드러운 스크롤, 시작/끝 도달 시 자동 숨김
+- `html { scroll-behavior: smooth }` 전역 적용 — 네비게이션 메뉴 클릭 시 부드러운 스크롤 이동
+
+### Changed
+- `useDragScroll` 훅 확장 — 스크롤 위치 감지(`canScrollLeft`/`canScrollRight`) 및 `scrollByAmount` 메서드 추가
+
 ## [0.6.4] - 2026-02-28
 
 ### Changed
