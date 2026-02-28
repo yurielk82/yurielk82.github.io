@@ -14,9 +14,9 @@ export const siteConfig: SiteConfig = {
     bio: "문제를 들으면 해결법이 보이고, 해결법이 보이면 구조가 잡힙니다. 거기에 최적의 기술을 얹어 진짜 서비스로 만들어요.",
   },
   nav: [
-    { label: "소개", href: "#about" },
+    { label: "프로젝트", href: "#projects" },
     { label: "솔루션", href: "#solutions" },
-    { label: "역량", href: "#skills" },
+    { label: "소개", href: "#about" },
     { label: "연락", href: "#contact" },
   ],
 };

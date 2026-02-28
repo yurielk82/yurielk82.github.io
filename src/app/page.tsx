@@ -5,9 +5,9 @@ import { Footer } from "@/components/layout/Footer";
 import { AnimatedBackground } from "@/components/shared/AnimatedBackground";
 import { LiquidGlassSVGFilters } from "@/components/shared/LiquidGlassSVGFilters";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { AboutSection } from "@/components/sections/AboutSection";
+import { FeaturedProjectsSection } from "@/components/sections/FeaturedProjectsSection";
 import { SolutionsSection } from "@/components/sections/SolutionsSection";
-import { SkillsSection } from "@/components/sections/SkillsSection";
+import { AboutSection } from "@/components/sections/AboutSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 
 export default function Home() {
@@ -18,9 +18,9 @@ export default function Home() {
       <Navigation />
       <main>
         <HeroSection />
-        <AboutSection />
+        <FeaturedProjectsSection />
         <SolutionsSection />
-        <SkillsSection />
+        <AboutSection />
         <ContactSection />
       </main>
       <Footer />

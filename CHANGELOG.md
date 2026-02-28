@@ -2,6 +2,23 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [1.6.0] - 2026-03-01
+
+### Added
+- Featured Projects 섹션 신규 — Before/After 스토리 카드 + 프로젝트 스크린샷 + 기술 스택 태그
+- Hero 섹션에 1차 CTA "프로젝트 상담하기" 버튼 추가
+- Navigation에 "프로젝트 문의" 강조 버튼 추가 (데스크탑 + 모바일)
+- Contact 섹션에 3단계 프로세스 안내 (아이디어 공유 → 무료 상담 → 견적서)
+- `slideInLeft` / `slideInRight` 애니메이션 variant 추가
+
+### Changed
+- 섹션 흐름 재설계: Hero → Featured Projects → Solutions → About → Contact
+- About 섹션에 기술 스택 아이콘 그리드 통합 (Skills에서 이동)
+- nav 항목 변경: 프로젝트 → 솔루션 → 소개 → 연락
+
+### Removed
+- Skills 섹션 삭제 — 역량 카드(About 철학과 중복)를 제거하고 기술 스택 그리드를 About으로 통합
+
 ## [1.0.0] - 2026-02-28
 
 ### BREAKING — Liquid Glass 디자인 시스템 전환

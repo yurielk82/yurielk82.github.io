@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, Layers, Cpu, Shield, Zap } from "lucide-react";
+import { ChevronDown, Layers, Cpu, Shield, Zap, Mail } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { fadeInUp, defaultTransition } from "@/lib/animations";
 
@@ -127,6 +127,24 @@ export function HeroSection() {
               </div>
             </div>
           ))}
+        </motion.div>
+
+        {/* 1차 CTA */}
+        <motion.div
+          className="mt-10 flex justify-center"
+          initial={false}
+          animate="visible"
+          variants={fadeInUp}
+          transition={{ ...defaultTransition, delay: 0.8 }}
+        >
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-2xl text-sm font-medium bg-gradient-to-r from-accent-lg to-secondary-lg text-white hover:opacity-90 transition-opacity shadow-lg shadow-accent-lg/20"
+          >
+            <Mail className="h-4 w-4" />
+            프로젝트 상담하기
+            <ChevronDown className="h-3.5 w-3.5 opacity-60 group-hover:translate-y-0.5 transition-transform" />
+          </a>
         </motion.div>
       </motion.div>
 

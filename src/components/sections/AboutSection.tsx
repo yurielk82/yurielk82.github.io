@@ -1,9 +1,13 @@
+/**
+ * Copyright (c) 2026 yurielk82. All rights reserved.
+ */
 "use client";
 
 import { motion } from "framer-motion";
 import { Layers, Cpu, Shield } from "lucide-react";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { GlassCard } from "@/components/shared/GlassCard";
+import { techItems } from "@/config/skills";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
 
 const PILLARS = [
@@ -40,6 +44,7 @@ export function AboutSection() {
           description="외주 맡기는 게 아닙니다. 문제를 함께 정의하고, 함께 풀고, 함께 책임집니다. 기획부터 배포까지, 한 사람이 처음부터 끝까지."
         />
 
+        {/* 철학 카드 */}
         <motion.div
           className="grid gap-6 md:grid-cols-3"
           initial={false}
@@ -74,6 +79,53 @@ export function AboutSection() {
                 {/* 하단 악센트 라인 */}
                 <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent-lg/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </GlassCard>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* 기술 스택 아이콘 그리드 (Skills에서 통합) */}
+        <motion.div
+          className="text-center mt-24 mb-12"
+          initial={false}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={fadeInUp}
+          transition={defaultTransition}
+        >
+          <h3 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            함께하는 <span className="liquid-gradient-text">기술들</span>
+          </h3>
+          <p className="mt-3 text-muted-foreground">
+            당신의 아이디어에 맞는 기술을 골라, 최선의 결과를 만듭니다.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-4"
+          initial={false}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+          variants={staggerContainer}
+        >
+          {techItems.map((tech) => (
+            <motion.div
+              key={tech.name}
+              variants={fadeInUp}
+              transition={defaultTransition}
+              className="group flex flex-col items-center gap-3 p-4 liquid-glass transition-all duration-300"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={tech.icon}
+                alt={tech.name}
+                width={40}
+                height={40}
+                className="h-10 w-10 group-hover:scale-110 transition-transform duration-300"
+                loading="lazy"
+              />
+              <span className="text-xs text-muted-foreground font-medium group-hover:text-foreground transition-colors text-center leading-tight">
+                {tech.name}
+              </span>
             </motion.div>
           ))}
         </motion.div>

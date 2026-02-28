@@ -27,7 +27,7 @@ src/
 ├── types/index.ts       # 공유 타입 (ProjectConfig, Capability, SkillGroup)
 ├── components/
 │   ├── layout/          # Navigation (고정 바 + 모바일), Footer
-│   ├── sections/        # Hero, About, Projects, Skills, Contact
+│   ├── sections/        # Hero, FeaturedProjects, Solutions, About, Contact
 │   ├── shared/          # GlassCard, SectionHeading, AnimatedBackground, TechBadge
 │   └── ui/              # shadcn/ui 컴포넌트
 ├── hooks/
@@ -111,8 +111,8 @@ interface SkillGroup {
 |----------|--------|-------|
 | Navigation | site.ts (nav) | useActiveSection, useTheme |
 | HeroSection | site.ts (author) | — |
-| AboutSection | — | — |
-| ProjectsSection (StoryCard) | projects.ts | — |
-| SkillsSection | skills.ts | — |
+| FeaturedProjectsSection | projects.ts (featured) | — |
+| SolutionsSection | solutions.ts, projects.ts | — |
+| AboutSection | skills.ts (techItems) | — |
 | ContactSection | site.ts (author) | — |
 | AnimatedBackground | — | useReducedMotion |

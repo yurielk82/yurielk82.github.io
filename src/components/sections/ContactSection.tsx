@@ -1,7 +1,10 @@
+/**
+ * Copyright (c) 2026 yurielk82. All rights reserved.
+ */
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Mail, ArrowRight } from "lucide-react";
+import { Github, Mail, ArrowRight, Send, MessageSquare, FileText } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
 
@@ -20,10 +23,76 @@ const LINKS = [
   },
 ];
 
+const PROCESS_STEPS = [
+  {
+    step: 1,
+    icon: Send,
+    title: "아이디어 공유",
+    description: "이메일로 아이디어를 보내주세요. 막연해도 괜찮습니다.",
+  },
+  {
+    step: 2,
+    icon: MessageSquare,
+    title: "30분 무료 상담",
+    description: "가능성, 일정, 비용을 함께 정리합니다.",
+  },
+  {
+    step: 3,
+    icon: FileText,
+    title: "견적서 전달",
+    description: "구체적인 범위와 비용을 문서로 드립니다.",
+  },
+];
+
 export function ContactSection() {
   return (
     <section id="contact" className="relative z-10 py-24 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
+        {/* 프로세스 안내 */}
+        <motion.div
+          className="mb-16"
+          initial={false}
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={fadeInUp}
+          transition={defaultTransition}
+        >
+          <p className="text-center font-mono text-sm tracking-widest uppercase text-accent-lg mb-8">
+            PROCESS
+          </p>
+          <motion.div
+            className="grid gap-6 sm:grid-cols-3 max-w-3xl mx-auto"
+            variants={staggerContainer}
+          >
+            {PROCESS_STEPS.map((item) => (
+              <motion.div
+                key={item.step}
+                variants={fadeInUp}
+                transition={defaultTransition}
+                className="relative text-center"
+              >
+                <div className="inline-flex p-3 rounded-2xl bg-gradient-to-br from-accent-lg to-secondary-lg mb-4">
+                  <item.icon className="h-5 w-5 text-white" />
+                </div>
+                <div className="absolute -top-1 -right-1 sm:static sm:mb-2">
+                  <span className="inline-flex items-center justify-center w-6 h-6 rounded-full text-[10px] font-mono font-bold bg-accent-lg text-white sm:hidden">
+                    {item.step}
+                  </span>
+                </div>
+                <h4 className="font-semibold tracking-tight mb-1">
+                  <span className="hidden sm:inline text-accent-lg font-mono mr-1">
+                    {item.step}.
+                  </span>
+                  {item.title}
+                </h4>
+                <p className="text-sm text-muted-foreground">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+
         {/* CTA 배너 */}
         <motion.div
           className="relative overflow-hidden rounded-3xl p-10 sm:p-16 text-center cta-gradient"

@@ -1,8 +1,11 @@
+/**
+ * Copyright (c) 2026 yurielk82. All rights reserved.
+ */
 "use client";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Sparkles } from "lucide-react";
+import { Menu, X, Sun, Moon, Sparkles, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
 import { useActiveSection } from "@/hooks/useActiveSection";
@@ -56,6 +59,14 @@ export function Navigation() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
+            {/* CTA 버튼 — 데스크탑 */}
+            <a
+              href="#contact"
+              className="hidden md:inline-flex items-center gap-1.5 px-4 py-1.5 rounded-xl text-xs font-medium bg-gradient-to-r from-accent-lg to-secondary-lg text-white hover:opacity-90 transition-opacity"
+            >
+              <Mail className="h-3 w-3" />
+              프로젝트 문의
+            </a>
             {mounted && (
               <button
                 onClick={toggleTheme}
@@ -101,6 +112,15 @@ export function Navigation() {
                 {item.label}
               </a>
             ))}
+            {/* 모바일 CTA */}
+            <a
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="mt-2 flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-medium bg-gradient-to-r from-accent-lg to-secondary-lg text-white"
+            >
+              <Mail className="h-4 w-4" />
+              프로젝트 문의
+            </a>
           </motion.div>
         )}
       </AnimatePresence>

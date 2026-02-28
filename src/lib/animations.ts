@@ -15,6 +15,16 @@ export const staggerContainer: Variants = {
   },
 };
 
+export const slideInLeft: Variants = {
+  hidden: { opacity: 0, x: -40 },
+  visible: { opacity: 1, x: 0 },
+};
+
+export const slideInRight: Variants = {
+  hidden: { opacity: 0, x: 40 },
+  visible: { opacity: 1, x: 0 },
+};
+
 export const defaultTransition = {
   type: "spring" as const,
   stiffness: 300,
