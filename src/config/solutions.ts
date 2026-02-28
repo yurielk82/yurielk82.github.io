@@ -102,20 +102,26 @@ export const solutions: SolutionCategory[] = [
     status: "proven",
   },
   {
-    id: "custom-software",
-    name: "커스텀 소프트웨어",
-    tagline: "필요에 맞춘 맞춤형 솔루션",
+    id: "rd-engineering",
+    name: "연구 개발",
+    tagline: "시험과 제어를 자동화합니다",
     description:
-      "표준 솔루션으로 해결되지 않는 문제. 내부 전용 대시보드, 데스크탑 앱, 하드웨어 연동까지 — 비즈니스에 정확히 맞는 소프트웨어를 설계하고 구축합니다.",
-    icon: "Wrench",
+      "하드웨어 제어, 신뢰성 시험, 데이터 수집 — 연구·개발 현장의 반복 작업을 소프트웨어로 자동화합니다. Python 기반 제어 시스템부터 시험 데이터 분석까지, 엔지니어가 연구에 집중할 수 있는 환경을 만듭니다.",
+    icon: "FlaskConical",
     capabilities: [
-      "내부 업무 전용 대시보드",
+      "하드웨어 연동 제어 시스템 (모터·인버터)",
+      "신뢰성 시험 자동화 플랫폼",
+      "시험 데이터 수집·분석 파이프라인",
       "데스크탑 앱 패키징 (Electron)",
-      "하드웨어 연동 제어 시스템 (EV 테스트 등)",
-      "데이터 수집/분석 자동화",
       "비공개 API 연동",
     ],
-    evidence: [],
-    status: "capable",
+    evidence: [
+      {
+        projectId: "ev-motor-reliability",
+        role: "EV 모터 시험 자동화",
+        keyMetric: "시험 전 과정 자동화",
+      },
+    ],
+    status: "proven",
   },
 ];

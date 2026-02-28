@@ -226,6 +226,39 @@ export const projects: ProjectConfig[] = [
     featured: false,
     order: 5,
   },
+  {
+    id: "ev-motor-reliability",
+    name: "EV 모터 시험 자동화",
+    version: "1.0.0",
+    tagline: "시험과 제어를 자동화합니다",
+    description:
+      "전기차 구동모터와 인버터의 신뢰성 시험을 자동화하는 플랫폼입니다. 시험 조건 설정부터 데이터 수집, 결과 분석까지 전 과정을 시스템이 처리합니다.",
+    category: ["automation"],
+    techStack: ["Python"],
+    highlights: [
+      "구동모터/인버터 신뢰성 시험 자동화",
+      "시험 데이터 수집·분석 파이프라인",
+      "하드웨어 제어 인터페이스",
+    ],
+    metrics: [
+      { label: "자동화", value: "전 과정" },
+      { label: "언어", value: "Python" },
+    ],
+    links: {},
+    story: {
+      narrative:
+        "반복되는 신뢰성 시험을 사람이 수동으로 수행하면 시간과 오류가 반복됩니다. 시험 조건 설정부터 결과 분석까지 시스템이 처리하고, 엔지니어는 판단에 집중합니다.",
+      pain: "전기차 모터 신뢰성 시험의 수동 반복. 시험 조건 설정, 데이터 수집, 결과 분석에 많은 시간 소요.",
+      solution:
+        "Python 기반 자동화 플랫폼으로 시험 전 과정을 시스템화.",
+      outcome: "시험 전 과정이 자동화되어 엔지니어가 분석에 집중할 수 있는 환경.",
+      impact: [
+        { label: "시험 운영", before: "수동 반복", after: "전 과정 자동화" },
+      ],
+    },
+    featured: false,
+    order: 6,
+  },
 ];
 
 export const projectCategories: Record<string, string> = {

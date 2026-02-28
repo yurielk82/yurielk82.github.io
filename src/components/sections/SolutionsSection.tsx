@@ -6,7 +6,7 @@ import {
   ShieldCheck,
   Globe,
   Store,
-  Wrench,
+  FlaskConical,
   CheckCircle2,
   Sparkles,
   ArrowRight,
@@ -24,7 +24,7 @@ const ICON_MAP: Record<string, LucideIcon> = {
   ShieldCheck,
   Globe,
   Store,
-  Wrench,
+  FlaskConical,
 };
 
 function getProjectLink(project: ProjectConfig): string | undefined {
