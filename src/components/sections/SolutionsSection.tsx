@@ -44,7 +44,7 @@ function EvidenceCard({ evidence }: { evidence: SolutionEvidence }) {
   return (
     <Wrapper
       {...linkProps}
-      className="flex-1 min-w-0 p-4 rounded-xl border border-border/50 bg-card/50 hover:border-accent-lg/30 transition-colors duration-300"
+      className="flex-1 min-w-0 p-4 liquid-glass hover:border-accent-lg/30"
     >
       <div className="flex items-center gap-2 mb-1">
         <span className="text-xs font-mono text-accent-lg tracking-wider truncate">

@@ -229,3 +229,32 @@ defaultTransition = { type: "spring", stiffness: 300, damping: 30 }
 - 배경·SVG 필터에 `aria-hidden="true"`
 - 키보드 네비게이션 지원
 - 다크/라이트 양쪽 모드에서 충분한 대비 확보
+
+## 적용 규칙 (필수 준수)
+
+### 절대 금지
+
+1. **인라인 글래스 스타일 금지** — `backdrop-filter`, `backdrop-blur`, `bg-white/N` 등을 개별 요소에 직접 작성 금지. 반드시 `.liquid-glass` 또는 그 변형(`.liquid-glass-on-color`) 클래스를 사용한다.
+2. **인라인 그래디언트 금지** — `style={{ background: "linear-gradient(...)" }}` 금지. CSS 클래스(`.cta-gradient`, `.liquid-gradient-text` 등)를 사용한다.
+3. **색상 해시코드 인라인 금지** — `#7c8aff`, `#a78bfa` 등을 JSX `style` 속성에 직접 사용 금지. CSS 변수(`var(--lg-accent)`)를 참조한다.
+
+### 컴포넌트별 필수 적용
+
+| 요소 유형 | 필수 클래스 | 비고 |
+|-----------|------------|------|
+| 정보 카드 (About, Skills, Solutions) | `liquid-glass` 또는 `GlassCard` | 스펙큘러 + 호버 포함 |
+| Evidence/하위 카드 | `liquid-glass` | 소형 적용 |
+| CTA 배너 | `.cta-gradient` | CSS 변수 기반 그래디언트 |
+| CTA 버튼 (색상 배경 위) | `.liquid-glass-on-color` | 밝은 글래스 변형 |
+| Navigation | `liquid-glass` | 이미 적용됨 |
+| Footer | `liquid-glass` | Navigation과 동일 패턴 |
+| 도트 패턴 | `.dot-pattern` | CSS 클래스 사용 |
+
+### Liquid Glass 변형 목록
+
+| 클래스 | 용도 | 배경 |
+|--------|------|------|
+| `.liquid-glass` | 기본 — 다크/라이트 적응형 | 다크 `rgba(255,255,255,0.05)` / 라이트 `rgba(255,255,255,0.6)` |
+| `.liquid-glass-on-color` | 색상 배경 위의 버튼/요소 | `rgba(255,255,255,0.15)` |
+| `.cta-gradient` | CTA 배너 그래디언트 | `var(--lg-accent)` → `var(--lg-secondary)` → `var(--lg-tertiary)` |
+| `.dot-pattern` | 도트 패턴 오버레이 | 24px 간격 흰색 도트 |

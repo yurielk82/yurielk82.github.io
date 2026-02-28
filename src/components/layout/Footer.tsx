@@ -4,7 +4,7 @@ import { Sparkles } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="relative z-10 border-t border-border/50 py-8">
+    <footer className="relative z-10 liquid-glass border-t border-border/50 py-8 !rounded-none">
       <div className="mx-auto max-w-6xl px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Sparkles className="h-3.5 w-3.5 text-accent-lg" />

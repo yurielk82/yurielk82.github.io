@@ -26,11 +26,7 @@ export function ContactSection() {
       <div className="mx-auto max-w-6xl px-6">
         {/* CTA 배너 */}
         <motion.div
-          className="relative overflow-hidden rounded-3xl p-10 sm:p-16 text-center"
-          style={{
-            background:
-              "linear-gradient(135deg, #7c8aff 0%, #a78bfa 50%, #f0abfc 100%)",
-          }}
+          className="relative overflow-hidden rounded-3xl p-10 sm:p-16 text-center cta-gradient"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
@@ -38,14 +34,7 @@ export function ContactSection() {
           transition={defaultTransition}
         >
           {/* 도트 패턴 오버레이 */}
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage:
-                "radial-gradient(circle, white 1px, transparent 1px)",
-              backgroundSize: "24px 24px",
-            }}
-          />
+          <div className="absolute inset-0 opacity-10 dot-pattern" />
 
           <div className="relative z-10">
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl mb-4">
@@ -69,7 +58,7 @@ export function ContactSection() {
                       ? "noopener noreferrer"
                       : undefined
                   }
-                  className="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-white/15 hover:bg-white/25 backdrop-blur-sm text-white font-medium transition-all duration-200 border border-white/20"
+                  className="group inline-flex items-center gap-3 px-8 py-4 liquid-glass-on-color text-white font-medium"
                   variants={fadeInUp}
                   transition={defaultTransition}
                 >
