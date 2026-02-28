@@ -48,8 +48,8 @@ function ProjectCard({
             <img
               src={project.image}
               alt={`${project.name} 스크린샷`}
-              width={720}
-              height={450}
+              width={1280}
+              height={720}
               className="w-full rounded-xl object-cover"
               loading="lazy"
             />
