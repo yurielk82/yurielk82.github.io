@@ -2,6 +2,11 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.4.3] - 2026-02-28
+
+### Changed
+- About 섹션 title/description 협업 톤으로 교체 ("당신 옆의 빌더")
+
 ## [0.4.2] - 2026-02-28
 
 ### Changed

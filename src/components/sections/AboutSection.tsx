@@ -36,8 +36,8 @@ export function AboutSection() {
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeading
           tag="ABOUT"
-          title="이런 사람이 만듭니다"
-          description="당신의 이야기를 듣고, 기획하고, 디자인하고, 개발하고, 세상에 내놓기까지. 한 사람이 처음부터 끝까지 책임집니다."
+          title="당신 옆의 빌더"
+          description="외주 맡기는 게 아닙니다. 문제를 함께 정의하고, 함께 풀고, 함께 책임집니다. 기획부터 배포까지, 한 사람이 처음부터 끝까지."
         />
 
         <motion.div
