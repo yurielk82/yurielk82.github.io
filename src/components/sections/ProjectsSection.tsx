@@ -2,7 +2,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -184,9 +184,43 @@ function StoryCard({ project }: { project: ProjectConfig }) {
   );
 }
 
+/* ---------- 드래그 스크롤 훅 ---------- */
+function useDragScroll() {
+  const ref = useRef<HTMLDivElement>(null);
+  const drag = useRef({ active: false, startX: 0, scrollLeft: 0 });
+
+  const onMouseDown = useCallback((e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    drag.current = { active: true, startX: e.pageX, scrollLeft: el.scrollLeft };
+    el.style.cursor = "grabbing";
+    el.style.userSelect = "none";
+  }, []);
+
+  const onMouseMove = useCallback((e: React.MouseEvent) => {
+    if (!drag.current.active) return;
+    const el = ref.current;
+    if (!el) return;
+    e.preventDefault();
+    const dx = e.pageX - drag.current.startX;
+    el.scrollLeft = drag.current.scrollLeft - dx;
+  }, []);
+
+  const onMouseUp = useCallback(() => {
+    drag.current.active = false;
+    const el = ref.current;
+    if (!el) return;
+    el.style.cursor = "grab";
+    el.style.removeProperty("user-select");
+  }, []);
+
+  return { ref, onMouseDown, onMouseMove, onMouseUp, onMouseLeave: onMouseUp };
+}
+
 /* ---------- ProjectsSection ---------- */
 export function ProjectsSection() {
   const [filter, setFilter] = useState("all");
+  const scroll = useDragScroll();
 
   const filtered =
     filter === "all"
@@ -227,13 +261,18 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {/* 가로 스크롤 */}
+        {/* 가로 스크롤 (드래그) */}
         <motion.div
           key={`scroll-${filter}`}
-          className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-6 px-6 scrollbar-thin"
+          className="flex gap-6 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 cursor-grab scrollbar-hide"
           initial="hidden"
           animate="visible"
           variants={staggerContainer}
+          ref={scroll.ref}
+          onMouseDown={scroll.onMouseDown}
+          onMouseMove={scroll.onMouseMove}
+          onMouseUp={scroll.onMouseUp}
+          onMouseLeave={scroll.onMouseLeave}
         >
           {sorted.map((project) => (
             <StoryCard key={project.id} project={project} />

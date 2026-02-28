@@ -2,6 +2,12 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.6.3] - 2026-02-28
+
+### Changed
+- WORK 섹션 스크롤바 제거 → 마우스 드래그 스크롤로 전환 (모바일은 터치 스와이프)
+- `scrollbar-hide` 유틸리티 클래스 추가 (`globals.css`)
+
 ## [0.6.2] - 2026-02-28
 
 ### Changed
