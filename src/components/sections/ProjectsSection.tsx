@@ -9,9 +9,8 @@ import { cn } from "@/lib/utils";
 import { projects, projectCategories } from "@/config/projects";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { TechBadge } from "@/components/shared/TechBadge";
-import { FeaturedStoryCard } from "@/components/sections/FeaturedStoryCard";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
-import type { ProjectConfig } from "@/types";
+import type { ProjectConfig, ProjectImpact } from "@/types";
 
 /* 이미지 없는 프로젝트용 폴백 그래디언트 */
 const FALLBACK_GRADIENTS: Record<string, { gradient: string; pattern: string }> = {
@@ -37,91 +36,275 @@ const FALLBACK_GRADIENTS: Record<string, { gradient: string; pattern: string }> 
   },
 };
 
-function ProjectCard({ project }: { project: ProjectConfig }) {
+/* ---------- 이미지 영역 (공통) ---------- */
+function ProjectImage({
+  project,
+  className,
+}: {
+  project: ProjectConfig;
+  className?: string;
+}) {
   const fallback = FALLBACK_GRADIENTS[project.id] ?? FALLBACK_GRADIENTS.csoweb;
   const hasImage = !!project.image;
+
+  return (
+    <div className={cn("relative overflow-hidden", className)}>
+      {hasImage ? (
+        <>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={project.image}
+            alt={`${project.name} 스크린샷`}
+            className="absolute inset-0 w-full h-full object-cover object-top"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-black/10" />
+        </>
+      ) : (
+        <>
+          <div className={`absolute inset-0 bg-gradient-to-br ${fallback.gradient}`} />
+          <div className="absolute inset-0" style={{ background: fallback.pattern }} />
+          <div
+            className="absolute inset-0 opacity-[0.07]"
+            style={{
+              backgroundImage:
+                "radial-gradient(circle, currentColor 1px, transparent 1px)",
+              backgroundSize: "20px 20px",
+            }}
+          />
+        </>
+      )}
+
+      {/* 호버 오버레이 — 링크 */}
+      {project.links.github || project.links.live ? (
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-4">
+          {project.links.live && (
+            <a
+              href={project.links.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan/20 hover:bg-cyan/30 text-white text-sm font-medium transition-colors border border-cyan/30 backdrop-blur"
+            >
+              <ExternalLink className="h-4 w-4" />
+              사이트 보기
+            </a>
+          )}
+          {project.links.github && (
+            <a
+              href={project.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors border border-white/20 backdrop-blur"
+            >
+              <Github className="h-4 w-4" />
+              GitHub
+            </a>
+          )}
+        </div>
+      ) : (
+        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
+          <span className="text-white/60 text-sm font-medium">로컬 전용 프로젝트</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ---------- Impact 숫자 블록 ---------- */
+function ImpactBlock({
+  impacts,
+  size,
+}: {
+  impacts: ProjectImpact[];
+  size: "lg" | "md" | "sm";
+}) {
+  const valueClass = {
+    lg: "text-2xl sm:text-3xl",
+    md: "text-xl",
+    sm: "text-lg",
+  }[size];
+
+  /* sm(일반 카드): 한 줄 배치 */
+  if (size === "sm") {
+    const item = impacts[0];
+    if (!item) return null;
+    return (
+      <>
+        <div className="my-3 border-t border-border/50" />
+        <div className="flex items-baseline gap-2">
+          <span className={cn(valueClass, "font-bold font-mono gradient-text")}>
+            {item.after}
+          </span>
+          <span className="text-xs text-muted-foreground">{item.label}</span>
+        </div>
+        <p className="text-[10px] font-mono text-amber-400/50 line-through mt-0.5">
+          {item.before}
+        </p>
+      </>
+    );
+  }
+
+  /* md/lg(Featured): 여러 항목 가로 배치 + 세로 구분선 */
+  return (
+    <div className="flex gap-6 items-start">
+      {impacts.map((item, i) => (
+        <div key={item.label} className="flex items-start gap-6">
+          {i > 0 && <div className="w-px bg-border/30 self-stretch" />}
+          <div>
+            <p className={cn(valueClass, "font-bold font-mono gradient-text leading-tight")}>
+              {item.after}
+            </p>
+            <p className="text-xs text-muted-foreground mt-0.5">{item.label}</p>
+            <p className="text-[10px] font-mono text-amber-400/50 line-through mt-0.5">
+              {item.before}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ---------- Primary Featured (가로, col-span-2) ---------- */
+function PrimaryFeaturedCard({ project }: { project: ProjectConfig }) {
+  const story = project.story;
+
+  return (
+    <motion.div
+      variants={fadeInUp}
+      transition={defaultTransition}
+      className="md:col-span-2"
+    >
+      <div className="glass-card overflow-hidden group">
+        <div className="grid grid-cols-1 sm:grid-cols-5">
+          {/* 이미지 (2/5) */}
+          <ProjectImage
+            project={project}
+            className="sm:col-span-2 aspect-[16/10] sm:aspect-auto sm:min-h-[320px]"
+          />
+
+          {/* 텍스트 (3/5) */}
+          <div className="sm:col-span-3 p-6 sm:p-8 flex flex-col justify-center gap-4">
+            {/* 헤더 */}
+            <div className="flex items-center gap-3 flex-wrap">
+              <h3 className="text-xl font-bold">{project.name}</h3>
+              <span className="text-xs font-mono text-muted-foreground">
+                v{project.version}
+              </span>
+            </div>
+
+            {/* Tagline */}
+            <p className="text-base sm:text-lg font-semibold gradient-text">
+              {project.tagline}
+            </p>
+
+            {/* Narrative 인용문 */}
+            {story?.narrative && (
+              <blockquote className="border-l-2 border-cyan/30 pl-4 text-sm text-muted-foreground leading-relaxed">
+                {story.narrative}
+              </blockquote>
+            )}
+
+            {/* Impact 대형 숫자 */}
+            {story && <ImpactBlock impacts={story.impact} size="lg" />}
+
+            {/* 기술 스택 */}
+            <div className="flex flex-wrap gap-1.5">
+              {project.techStack.slice(0, 4).map((tech) => (
+                <TechBadge key={tech}>{tech}</TechBadge>
+              ))}
+              {project.techStack.length > 4 && (
+                <TechBadge>+{project.techStack.length - 4}</TechBadge>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ---------- Secondary Featured (세로, col-span-1 + narrative/impact) ---------- */
+function SecondaryFeaturedCard({ project }: { project: ProjectConfig }) {
+  const story = project.story;
+
+  return (
+    <motion.div variants={fadeInUp} transition={defaultTransition}>
+      <div className="glass-card overflow-hidden group h-full flex flex-col">
+        {/* 이미지 */}
+        <ProjectImage project={project} className="aspect-[16/10]" />
+
+        {/* 텍스트 */}
+        <div className="p-5 flex flex-col flex-1 gap-3">
+          {/* 헤더 */}
+          <div className="flex items-center gap-3 flex-wrap">
+            <h3 className="text-lg font-bold">{project.name}</h3>
+            <span className="text-xs font-mono text-muted-foreground">
+              v{project.version}
+            </span>
+          </div>
+
+          {/* Tagline */}
+          <p className="text-sm text-muted-foreground">
+            {project.tagline}
+          </p>
+
+          {/* Narrative 인용문 */}
+          {story?.narrative && (
+            <blockquote className="border-l-2 border-cyan/30 pl-4 text-sm text-muted-foreground leading-relaxed">
+              {story.narrative}
+            </blockquote>
+          )}
+
+          {/* Impact */}
+          {story && (
+            <>
+              <div className="border-t border-border/50" />
+              <ImpactBlock impacts={story.impact} size="md" />
+            </>
+          )}
+
+          {/* 기술 스택 */}
+          <div className="flex flex-wrap gap-1.5 mt-auto pt-2">
+            {project.techStack.slice(0, 4).map((tech) => (
+              <TechBadge key={tech}>{tech}</TechBadge>
+            ))}
+            {project.techStack.length > 4 && (
+              <TechBadge>+{project.techStack.length - 4}</TechBadge>
+            )}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+/* ---------- 일반 카드 (세로, col-span-1) ---------- */
+function RegularCard({ project }: { project: ProjectConfig }) {
   const firstImpact = project.story?.impact[0];
 
   return (
     <motion.div variants={fadeInUp} transition={defaultTransition}>
-      <div className="group relative rounded-2xl overflow-hidden border border-border/50 bg-card transition-all duration-300 hover:border-cyan/20 hover:shadow-[0_0_30px_rgba(6,182,212,0.06)]">
-        {/* 비주얼 영역 */}
-        <div className="relative aspect-[16/10] overflow-hidden">
-          {hasImage ? (
-            <>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={project.image}
-                alt={`${project.name} 스크린샷`}
-                className="absolute inset-0 w-full h-full object-cover object-top"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-black/10" />
-            </>
-          ) : (
-            <>
-              {/* 폴백 그래디언트 배경 */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${fallback.gradient}`} />
-              <div className="absolute inset-0" style={{ background: fallback.pattern }} />
-              <div
-                className="absolute inset-0 opacity-[0.07]"
-                style={{
-                  backgroundImage:
-                    "radial-gradient(circle, currentColor 1px, transparent 1px)",
-                  backgroundSize: "20px 20px",
-                }}
-              />
-            </>
-          )}
+      <div className="glass-card overflow-hidden group h-full flex flex-col">
+        {/* 이미지 */}
+        <ProjectImage project={project} className="aspect-[16/10]" />
 
-          {/* 하단 프로젝트명 (기본 상태) */}
-          <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/60 via-black/20 to-transparent">
-            <h3 className="text-lg font-bold text-white drop-shadow-lg">
-              {project.name}
-            </h3>
-            <p className="text-xs text-white/60 font-mono mt-0.5">
+        {/* 텍스트 */}
+        <div className="p-5 flex flex-col flex-1">
+          {/* 헤더 */}
+          <div className="flex items-center gap-3 flex-wrap mb-2">
+            <h3 className="text-lg font-bold">{project.name}</h3>
+            <span className="text-xs font-mono text-muted-foreground">
               v{project.version}
-            </p>
+            </span>
           </div>
 
-          {/* 호버 오버레이 */}
-          {(project.links.github || project.links.live) ? (
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-4">
-              {project.links.live && (
-                <a
-                  href={project.links.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-cyan/20 hover:bg-cyan/30 text-white text-sm font-medium transition-colors border border-cyan/30 backdrop-blur"
-                >
-                  <ExternalLink className="h-4 w-4" />
-                  사이트 보기
-                </a>
-              )}
-              {project.links.github && (
-                <a
-                  href={project.links.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-medium transition-colors border border-white/20 backdrop-blur"
-                >
-                  <Github className="h-4 w-4" />
-                  GitHub
-                </a>
-              )}
-            </div>
-          ) : (
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-              <span className="text-white/60 text-sm font-medium">로컬 전용 프로젝트</span>
-            </div>
-          )}
-        </div>
-
-        {/* 텍스트 영역 */}
-        <div className="p-5">
-          <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+          {/* Tagline */}
+          <p className="text-sm text-muted-foreground mb-3">
             {project.tagline}
           </p>
+
+          {/* 기술 스택 */}
           <div className="flex flex-wrap gap-1.5">
             {project.techStack.slice(0, 4).map((tech) => (
               <TechBadge key={tech}>{tech}</TechBadge>
@@ -131,17 +314,11 @@ function ProjectCard({ project }: { project: ProjectConfig }) {
             )}
           </div>
 
-          {/* 스토리 힌트: impact 한 줄 */}
+          {/* Impact 한 줄 */}
           {firstImpact && (
-            <>
-              <div className="my-3 border-t border-border/50" />
-              <p className="text-xs font-mono">
-                <span className="text-muted-foreground">{firstImpact.label}:</span>{" "}
-                <span className="text-amber-400">{firstImpact.before}</span>
-                <span className="gradient-text mx-1.5">→</span>
-                <span className="text-emerald-400 font-bold">{firstImpact.after}</span>
-              </p>
-            </>
+            <div className="mt-auto pt-2">
+              <ImpactBlock impacts={[firstImpact]} size="sm" />
+            </div>
           )}
         </div>
       </div>
@@ -149,6 +326,22 @@ function ProjectCard({ project }: { project: ProjectConfig }) {
   );
 }
 
+/* ---------- StoryCard — 통합 분기 ---------- */
+function StoryCard({
+  project,
+  isPrimary,
+  isSecondaryFeatured,
+}: {
+  project: ProjectConfig;
+  isPrimary: boolean;
+  isSecondaryFeatured: boolean;
+}) {
+  if (isPrimary) return <PrimaryFeaturedCard project={project} />;
+  if (isSecondaryFeatured) return <SecondaryFeaturedCard project={project} />;
+  return <RegularCard project={project} />;
+}
+
+/* ---------- ProjectsSection ---------- */
 export function ProjectsSection() {
   const [filter, setFilter] = useState("all");
 
@@ -158,13 +351,19 @@ export function ProjectsSection() {
       : projects.filter((p) => p.category.includes(filter as never));
 
   const sorted = [...filtered].sort((a, b) => a.order - b.order);
-  const featuredProjects = sorted.filter((p) => p.featured);
-  const regularProjects = sorted.filter((p) => !p.featured);
 
   const activeCategories = Object.entries(projectCategories).filter(
     ([key]) =>
       key === "all" || projects.some((p) => p.category.includes(key as never))
   );
+
+  /* 첫 번째 featured = primary, 나머지 featured = secondary */
+  const featuredIds = projects
+    .filter((p) => p.featured)
+    .sort((a, b) => a.order - b.order)
+    .map((p) => p.id);
+  const primaryId = featuredIds[0];
+  const secondaryIds = new Set(featuredIds.slice(1));
 
   return (
     <section id="projects" className="relative z-10 py-24 sm:py-32">
@@ -193,29 +392,23 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {/* Featured 풀와이드 스토리 블록 */}
-        {featuredProjects.length > 0 && (
-          <div className="flex flex-col gap-6 mb-8">
-            {featuredProjects.map((project) => (
-              <FeaturedStoryCard key={project.id} project={project} />
-            ))}
-          </div>
-        )}
-
-        {/* 일반 카드 3컬럼 그리드 */}
-        {regularProjects.length > 0 && (
-          <motion.div
-            key={`regular-${filter}`}
-            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-            initial="hidden"
-            animate="visible"
-            variants={staggerContainer}
-          >
-            {regularProjects.map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
-          </motion.div>
-        )}
+        {/* 통합 그리드 */}
+        <motion.div
+          key={`grid-${filter}`}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          {sorted.map((project) => (
+            <StoryCard
+              key={project.id}
+              project={project}
+              isPrimary={project.id === primaryId}
+              isSecondaryFeatured={secondaryIds.has(project.id)}
+            />
+          ))}
+        </motion.div>
       </div>
     </section>
   );

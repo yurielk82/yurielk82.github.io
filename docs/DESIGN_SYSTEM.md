@@ -62,36 +62,41 @@
 - `cyan`: `bg-cyan/10` + `text-cyan`
 - `amber`: `bg-amber/10` + `text-amber`
 
-### FeaturedStoryCard
+### StoryCard (통합 컴포넌트)
 
-Featured 프로젝트 풀와이드 스토리 블록. `glass-card` 기반.
+3단계 계층으로 분기하는 통합 프로젝트 카드. 모두 `glass-card` 기반.
+
+#### Primary Featured (가로, col-span-2)
 
 ```
-레이아웃: grid grid-cols-1 md:grid-cols-5 (이미지 2col, 텍스트 3col)
-모바일: 이미지 상단, 텍스트 하단 (세로 스택)
+레이아웃: grid grid-cols-1 sm:grid-cols-5 (이미지 2col, 텍스트 3col)
 ```
 
 | 요소 | 스타일 |
 |------|--------|
-| Before(pain) | `text-amber-400/80` + `bg-amber-500/5 border-amber-500/10` |
-| After(outcome) | `text-emerald-400/80` + `bg-emerald-500/5 border-emerald-500/10` |
-| 화살표 `→` | `gradient-text` |
-| Impact Before | `text-muted-foreground line-through` |
-| Impact After | `text-emerald-400 font-bold` |
-| Impact 라벨 | `font-mono text-xs text-muted-foreground uppercase tracking-wider` |
-| FEATURED 뱃지 | `bg-white/10 backdrop-blur-md text-cyan` |
+| Tagline | `text-base sm:text-lg font-semibold gradient-text` |
+| Narrative | `border-l-2 border-cyan/30 pl-4 text-sm text-muted-foreground` |
+| Impact 수치 | `text-2xl sm:text-3xl font-bold font-mono gradient-text` |
+| Impact 라벨 | `text-xs text-muted-foreground` |
+| Impact Before | `text-[10px] font-mono text-amber-400/50 line-through` |
+| 항목 구분 | `w-px bg-border/30 self-stretch` (세로선) |
 
-### 일반 카드 스토리 힌트
+#### Secondary Featured (세로, col-span-1)
 
-일반 ProjectCard 하단에 impact 한 줄 표시.
+| 요소 | 스타일 |
+|------|--------|
+| Tagline | `text-sm text-muted-foreground` |
+| Narrative | `border-l-2 border-cyan/30 pl-4 text-sm text-muted-foreground` |
+| Impact 수치 | `text-xl font-bold font-mono gradient-text` |
 
-```
-구분선: border-t border-border/50
-라벨: text-muted-foreground
-Before: text-amber-400
-화살표: gradient-text
-After: text-emerald-400 font-bold
-```
+#### 일반 카드 (세로, col-span-1)
+
+| 요소 | 스타일 |
+|------|--------|
+| Tagline | `text-sm text-muted-foreground` |
+| Impact 수치 | `text-lg font-bold font-mono gradient-text` |
+| Impact 라벨 | `text-xs text-muted-foreground` |
+| Impact Before | `text-[10px] font-mono text-amber-400/50 line-through` |
 
 ### SectionHeading
 
@@ -133,8 +138,7 @@ Optional desc     ← text-muted-foreground, max-w-2xl, mx-auto
 | 요소 | Mobile (<768) | Tablet (768+) | Desktop (1024+) |
 |------|--------------|---------------|-----------------|
 | Navigation | 햄버거 | 가로 메뉴 | 가로 메뉴 |
-| Projects Featured | 1열 세로 스택 | 풀와이드 (2+3col) | 풀와이드 (2+3col) |
-| Projects 일반 | 1열 | 2열 | 3열 |
+| Projects 그리드 | 1열 (전체 세로) | 2열 (Primary 2칸) | 3열 (Primary 2칸+1) |
 | Skills (역량) | 1열 | 2열 | 2열 |
 | Skills (기술) | 1열 | 2열 | 4열 |
 | 프로젝트 모달 | 풀스크린 | 중앙 Dialog | 중앙 (max-w-2xl) |

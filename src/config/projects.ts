@@ -36,6 +36,8 @@ export const projects: ProjectConfig[] = [
       live: "https://csoweb-iota.vercel.app",
     },
     story: {
+      narrative:
+        "매달 엑셀 수십 개를 분류하며 밤늦게까지 야근하던 정산 업무. 이제 엑셀 하나 올리면 수만 줄 데이터가 자동 분류되고, 정산서 이메일까지 발송됩니다.",
       pain: "매달 반복되는 정산 수작업. 엑셀 수십 개를 업체별로 분류하고, 밤늦게까지 야근.",
       solution:
         "엑셀 하나 올리면 자동 분류. 국세청 API로 사업자 인증. 정산서 이메일까지 자동 발송.",
@@ -43,7 +45,7 @@ export const projects: ProjectConfig[] = [
         "API 연결 후 새 업체 회원 승인만 해주면 끝. 정산 업무가 사라졌습니다.",
       impact: [
         { label: "야근", before: "매달 반복", after: "0" },
-        { label: "무결성", before: "수작업 검증", after: "171건 자동 테스트" },
+        { label: "데이터 처리", before: "수만 줄 수작업", after: "엑셀 1개로 자동화" },
       ],
     },
     featured: true,
@@ -81,6 +83,8 @@ export const projects: ProjectConfig[] = [
       live: "https://kpis-dsr-api.vercel.app",
     },
     story: {
+      narrative:
+        "엑셀 수작업 오류가 반복되는 의약품 보고. 한 번의 실수가 규제 위반인 업무를, 자동 수정과 자동 보고로 실수 자체가 불가능한 환경으로 바꿨습니다.",
       pain: "단순하지만 리스크가 큰 의약품 보고. 엑셀 수작업 오류가 반복되고, 한 번의 실수가 규제 위반.",
       solution:
         "ERP 데이터를 읽어 자동 수정. 지정 시간에 API 자동 보고. 반복 오류 자동 처리.",
@@ -123,6 +127,8 @@ export const projects: ProjectConfig[] = [
       live: "https://my-acc-web.vercel.app",
     },
     story: {
+      narrative:
+        "서버 비용이 부담되는 영업사원에게, Google Sheets를 DB로 활용해 인프라 비용 영원히 0원인 수수료 관리 앱을 만들었습니다.",
       pain: "서버 비용이 부담. 매달 호스팅 비용 없이 수수료를 관리할 방법이 필요.",
       solution:
         "Google Sheets를 DB로 활용. 서버리스 + PWA 구조로 인프라 비용 0원.",
@@ -165,6 +171,8 @@ export const projects: ProjectConfig[] = [
       live: "https://codegear2.vercel.app",
     },
     story: {
+      narrative:
+        "AI 반도체 스타트업의 첫인상을 전할 웹사이트가 없었습니다. 기업 아이덴티티에 맞춘 인터랙티브 웹사이트를 맞춤 제작했습니다.",
       pain: "AI 반도체 스타트업에 첫인상을 전할 웹사이트가 없었습니다.",
       solution:
         "사이트 아이덴티티만 전달받고, 기업 특성에 맞춘 인터랙티브 웹사이트 맞춤 제작.",
@@ -203,6 +211,8 @@ export const projects: ProjectConfig[] = [
     ],
     links: {},
     story: {
+      narrative:
+        "수백 개 업체에 정산서를 하나하나 만들어 개별 발송하던 업무. 엑셀 하나로 분류, PDF 생성, 이메일 발송까지 클릭 한 번으로 끝나도록 자동화했습니다.",
       pain: "수백 개 업체에 정산서를 하나하나 만들어서 개별 발송.",
       solution:
         "엑셀 업로드로 업체별 분류, PDF 자동 생성, 이메일 일괄 발송.",

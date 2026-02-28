@@ -69,6 +69,7 @@ interface ProjectImpact {
 }
 
 interface ProjectStory {
+  narrative: string;  // 감성 서사 한 문장
   pain: string;       // Before — 어떤 고통이 있었는지
   solution: string;   // Process — 어떻게 해결했는지
   outcome: string;    // After — 최종 상태
@@ -111,8 +112,7 @@ interface SkillGroup {
 | Navigation | site.ts (nav) | useActiveSection, useTheme |
 | HeroSection | site.ts (author) | — |
 | AboutSection | — | — |
-| ProjectsSection | projects.ts | — |
-| FeaturedStoryCard | projects.ts (story) | — |
+| ProjectsSection (StoryCard) | projects.ts | — |
 | SkillsSection | skills.ts | — |
 | ContactSection | site.ts (author) | — |
 | AnimatedBackground | — | useReducedMotion |

@@ -2,6 +2,22 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.6.0] - 2026-02-28
+
+### Added
+- `ProjectStory.narrative` 필드 — 프로젝트별 감성 서사 한 문장
+- StoryCard 통합 컴포넌트 — Primary Featured(가로 col-span-2) / Secondary Featured(세로+narrative) / 일반(세로) 3단계 계층
+- Impact 대형 숫자 표시 — gradient-text, font-mono, 세로 구분선 구분
+- Narrative 인용문 — border-l-2 cyan, 좌측선 인용문 스타일
+
+### Changed
+- WORK 섹션 레이아웃 — Featured/일반 분리 렌더링 폐지, 단일 3컬럼 그리드로 통합
+- csoweb impact 교정 — "무결성: 171건 자동 테스트" → "데이터 처리: 수만 줄 수작업 → 엑셀 1개로 자동화"
+- 5개 프로젝트 narrative 데이터 추가
+
+### Removed
+- `FeaturedStoryCard` 컴포넌트 삭제 — `StoryCard`로 통합
+
 ## [0.5.0] - 2026-02-28
 
 ### Added

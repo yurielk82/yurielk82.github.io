@@ -55,6 +55,7 @@ export interface ProjectImpact {
 }
 
 export interface ProjectStory {
+  narrative: string;
   pain: string;
   solution: string;
   outcome: string;
