@@ -62,6 +62,37 @@
 - `cyan`: `bg-cyan/10` + `text-cyan`
 - `amber`: `bg-amber/10` + `text-amber`
 
+### FeaturedStoryCard
+
+Featured 프로젝트 풀와이드 스토리 블록. `glass-card` 기반.
+
+```
+레이아웃: grid grid-cols-1 md:grid-cols-5 (이미지 2col, 텍스트 3col)
+모바일: 이미지 상단, 텍스트 하단 (세로 스택)
+```
+
+| 요소 | 스타일 |
+|------|--------|
+| Before(pain) | `text-amber-400/80` + `bg-amber-500/5 border-amber-500/10` |
+| After(outcome) | `text-emerald-400/80` + `bg-emerald-500/5 border-emerald-500/10` |
+| 화살표 `→` | `gradient-text` |
+| Impact Before | `text-muted-foreground line-through` |
+| Impact After | `text-emerald-400 font-bold` |
+| Impact 라벨 | `font-mono text-xs text-muted-foreground uppercase tracking-wider` |
+| FEATURED 뱃지 | `bg-white/10 backdrop-blur-md text-cyan` |
+
+### 일반 카드 스토리 힌트
+
+일반 ProjectCard 하단에 impact 한 줄 표시.
+
+```
+구분선: border-t border-border/50
+라벨: text-muted-foreground
+Before: text-amber-400
+화살표: gradient-text
+After: text-emerald-400 font-bold
+```
+
 ### SectionHeading
 
 ```
@@ -102,7 +133,8 @@ Optional desc     ← text-muted-foreground, max-w-2xl, mx-auto
 | 요소 | Mobile (<768) | Tablet (768+) | Desktop (1024+) |
 |------|--------------|---------------|-----------------|
 | Navigation | 햄버거 | 가로 메뉴 | 가로 메뉴 |
-| Projects | 1열 | 2열 | 3열 |
+| Projects Featured | 1열 세로 스택 | 풀와이드 (2+3col) | 풀와이드 (2+3col) |
+| Projects 일반 | 1열 | 2열 | 3열 |
 | Skills (역량) | 1열 | 2열 | 2열 |
 | Skills (기술) | 1열 | 2열 | 4열 |
 | 프로젝트 모달 | 풀스크린 | 중앙 Dialog | 중앙 (max-w-2xl) |

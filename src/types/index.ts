@@ -33,6 +33,7 @@ export interface ProjectConfig {
     github?: string;
     live?: string;
   };
+  story?: ProjectStory;
   featured: boolean;
   order: number;
 }
@@ -45,6 +46,19 @@ export type ProjectCategory =
 export interface ProjectMetric {
   label: string;
   value: string;
+}
+
+export interface ProjectImpact {
+  label: string;
+  before: string;
+  after: string;
+}
+
+export interface ProjectStory {
+  pain: string;
+  solution: string;
+  outcome: string;
+  impact: ProjectImpact[];
 }
 
 export interface Capability {

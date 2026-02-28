@@ -2,6 +2,19 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [0.5.0] - 2026-02-28
+
+### Added
+- WORK 섹션 스토리텔링 도입 — 프로젝트별 Before→After 스토리 + Impact 지표
+- `FeaturedStoryCard` 컴포넌트 — Featured 프로젝트 풀와이드 스토리 블록 (이미지+텍스트 그리드)
+- `ProjectStory`, `ProjectImpact` 타입 추가 (`ProjectConfig.story?`)
+- 5개 프로젝트에 `story` 데이터 입력 (pain, solution, outcome, impact)
+
+### Changed
+- WORK 섹션 레이아웃 — Featured 풀와이드 블록 + 일반 3컬럼 카드 분리 렌더링
+- 일반 카드 하단에 impact 한 줄 힌트 추가 (Before→After)
+- SectionHeading description 변경: "사람은 편하고, 시스템은 견고하게."
+
 ## [0.4.4] - 2026-02-28
 
 ### Changed

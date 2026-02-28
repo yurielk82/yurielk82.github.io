@@ -1,3 +1,5 @@
+// Copyright (c) 2026 yurielk82. All rights reserved.
+
 "use client";
 
 import { useState } from "react";
@@ -7,6 +9,7 @@ import { cn } from "@/lib/utils";
 import { projects, projectCategories } from "@/config/projects";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { TechBadge } from "@/components/shared/TechBadge";
+import { FeaturedStoryCard } from "@/components/sections/FeaturedStoryCard";
 import { fadeInUp, staggerContainer, defaultTransition } from "@/lib/animations";
 import type { ProjectConfig } from "@/types";
 
@@ -37,6 +40,7 @@ const FALLBACK_GRADIENTS: Record<string, { gradient: string; pattern: string }> 
 function ProjectCard({ project }: { project: ProjectConfig }) {
   const fallback = FALLBACK_GRADIENTS[project.id] ?? FALLBACK_GRADIENTS.csoweb;
   const hasImage = !!project.image;
+  const firstImpact = project.story?.impact[0];
 
   return (
     <motion.div variants={fadeInUp} transition={defaultTransition}>
@@ -68,15 +72,6 @@ function ProjectCard({ project }: { project: ProjectConfig }) {
                 }}
               />
             </>
-          )}
-
-          {/* Featured 뱃지 */}
-          {project.featured && (
-            <div className="absolute top-4 right-4 z-10">
-              <span className="px-2.5 py-1 rounded-full bg-white/10 backdrop-blur-md text-white text-[10px] font-mono tracking-wider border border-white/20">
-                FEATURED
-              </span>
-            </div>
           )}
 
           {/* 하단 프로젝트명 (기본 상태) */}
@@ -135,6 +130,19 @@ function ProjectCard({ project }: { project: ProjectConfig }) {
               <TechBadge>+{project.techStack.length - 4}</TechBadge>
             )}
           </div>
+
+          {/* 스토리 힌트: impact 한 줄 */}
+          {firstImpact && (
+            <>
+              <div className="my-3 border-t border-border/50" />
+              <p className="text-xs font-mono">
+                <span className="text-muted-foreground">{firstImpact.label}:</span>{" "}
+                <span className="text-amber-400">{firstImpact.before}</span>
+                <span className="gradient-text mx-1.5">→</span>
+                <span className="text-emerald-400 font-bold">{firstImpact.after}</span>
+              </p>
+            </>
+          )}
         </div>
       </div>
     </motion.div>
@@ -149,6 +157,10 @@ export function ProjectsSection() {
       ? projects
       : projects.filter((p) => p.category.includes(filter as never));
 
+  const sorted = [...filtered].sort((a, b) => a.order - b.order);
+  const featuredProjects = sorted.filter((p) => p.featured);
+  const regularProjects = sorted.filter((p) => !p.featured);
+
   const activeCategories = Object.entries(projectCategories).filter(
     ([key]) =>
       key === "all" || projects.some((p) => p.category.includes(key as never))
@@ -160,7 +172,7 @@ export function ProjectsSection() {
         <SectionHeading
           tag="WORK"
           title="이렇게 만들어왔습니다"
-          description="누군가의 일상에서 매일 쓰이고 있는 서비스들. 각각의 이야기가 담겨 있습니다."
+          description="사람은 편하고, 시스템은 견고하게. 각 프로젝트에 담긴 이야기입니다."
         />
 
         {/* 필터 */}
@@ -181,20 +193,29 @@ export function ProjectsSection() {
           ))}
         </div>
 
-        {/* 그리드 */}
-        <motion.div
-          key={filter}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          {filtered
-            .sort((a, b) => a.order - b.order)
-            .map((project) => (
+        {/* Featured 풀와이드 스토리 블록 */}
+        {featuredProjects.length > 0 && (
+          <div className="flex flex-col gap-6 mb-8">
+            {featuredProjects.map((project) => (
+              <FeaturedStoryCard key={project.id} project={project} />
+            ))}
+          </div>
+        )}
+
+        {/* 일반 카드 3컬럼 그리드 */}
+        {regularProjects.length > 0 && (
+          <motion.div
+            key={`regular-${filter}`}
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+          >
+            {regularProjects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
-        </motion.div>
+          </motion.div>
+        )}
       </div>
     </section>
   );

@@ -35,6 +35,17 @@ export const projects: ProjectConfig[] = [
       github: "https://github.com/yurielk82/csoweb",
       live: "https://csoweb-iota.vercel.app",
     },
+    story: {
+      pain: "매달 반복되는 정산 수작업. 엑셀 수십 개를 업체별로 분류하고, 밤늦게까지 야근.",
+      solution:
+        "엑셀 하나 올리면 자동 분류. 국세청 API로 사업자 인증. 정산서 이메일까지 자동 발송.",
+      outcome:
+        "API 연결 후 새 업체 회원 승인만 해주면 끝. 정산 업무가 사라졌습니다.",
+      impact: [
+        { label: "야근", before: "매달 반복", after: "0" },
+        { label: "무결성", before: "수작업 검증", after: "171건 자동 테스트" },
+      ],
+    },
     featured: true,
     order: 1,
   },
@@ -69,6 +80,16 @@ export const projects: ProjectConfig[] = [
       github: "https://github.com/yurielk82/KPIS-DSR-API",
       live: "https://kpis-dsr-api.vercel.app",
     },
+    story: {
+      pain: "단순하지만 리스크가 큰 의약품 보고. 엑셀 수작업 오류가 반복되고, 한 번의 실수가 규제 위반.",
+      solution:
+        "ERP 데이터를 읽어 자동 수정. 지정 시간에 API 자동 보고. 반복 오류 자동 처리.",
+      outcome: "특이건만 알림이 옵니다. 실수할 수 없는 환경.",
+      impact: [
+        { label: "보고 업무", before: "매달 야근", after: "시스템 자동" },
+        { label: "리스크", before: "수작업 오류", after: "제거" },
+      ],
+    },
     featured: true,
     order: 2,
   },
@@ -100,6 +121,15 @@ export const projects: ProjectConfig[] = [
     links: {
       github: "https://github.com/yurielk82/MyAccWeb",
       live: "https://my-acc-web.vercel.app",
+    },
+    story: {
+      pain: "서버 비용이 부담. 매달 호스팅 비용 없이 수수료를 관리할 방법이 필요.",
+      solution:
+        "Google Sheets를 DB로 활용. 서버리스 + PWA 구조로 인프라 비용 0원.",
+      outcome: "서버 비용, 영원히 0원.",
+      impact: [
+        { label: "서버 비용", before: "매달 발생", after: "영원히 ₩0" },
+      ],
     },
     featured: false,
     order: 3,
@@ -134,6 +164,15 @@ export const projects: ProjectConfig[] = [
       github: "https://github.com/yurielk82/codegear2",
       live: "https://codegear2.vercel.app",
     },
+    story: {
+      pain: "AI 반도체 스타트업에 첫인상을 전할 웹사이트가 없었습니다.",
+      solution:
+        "사이트 아이덴티티만 전달받고, 기업 특성에 맞춘 인터랙티브 웹사이트 맞춤 제작.",
+      outcome: "처음 방문한 사람의 마음을 사로잡는 웹사이트가 완성.",
+      impact: [
+        { label: "웹 존재감", before: "없음", after: "브랜드 맞춤 사이트" },
+      ],
+    },
     featured: false,
     order: 4,
   },
@@ -163,6 +202,15 @@ export const projects: ProjectConfig[] = [
       { label: "자동화", value: "PDF+이메일" },
     ],
     links: {},
+    story: {
+      pain: "수백 개 업체에 정산서를 하나하나 만들어서 개별 발송.",
+      solution:
+        "엑셀 업로드로 업체별 분류, PDF 자동 생성, 이메일 일괄 발송.",
+      outcome: "클릭 한 번이면 수백 장의 정산서가 각 업체에 도착합니다.",
+      impact: [
+        { label: "발송", before: "수작업 개별", after: "클릭 한 번" },
+      ],
+    },
     featured: false,
     order: 5,
   },
