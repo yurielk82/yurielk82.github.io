@@ -38,6 +38,7 @@ function ProjectCard({
       {/* 이미지 */}
       <motion.div
         className={`relative ${isEven ? "" : "lg:order-2"}`}
+        initial={false}
         variants={isEven ? slideInLeft : slideInRight}
         transition={defaultTransition}
       >
@@ -65,6 +66,7 @@ function ProjectCard({
       {/* 콘텐츠 */}
       <motion.div
         className={isEven ? "" : "lg:order-1"}
+        initial={false}
         variants={isEven ? slideInRight : slideInLeft}
         transition={defaultTransition}
       >

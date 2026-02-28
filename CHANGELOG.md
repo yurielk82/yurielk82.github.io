@@ -2,6 +2,11 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [1.6.1] - 2026-03-01
+
+### Fixed
+- Featured Projects 이미지/콘텐츠 빈칸 수정 — 자식 `motion.div`에 `initial={false}` 명시하여 SSG 하이드레이션 시 opacity:0 고정 방지
+
 ## [1.6.0] - 2026-03-01
 
 ### Added
