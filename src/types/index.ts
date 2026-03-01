@@ -34,6 +34,7 @@ export interface ProjectConfig {
     live?: string;
   };
   story?: ProjectStory;
+  highlightTech?: string[];
   featured: boolean;
   order: number;
 }

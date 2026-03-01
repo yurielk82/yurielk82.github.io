@@ -102,33 +102,29 @@ function ProjectCard({
             </div>
           )}
 
-          {/* 기술 스택 태그 */}
-          <div className="mt-6 flex flex-wrap gap-2">
+          {/* 기술 스택 + 메트릭 통합 */}
+          <div className="mt-6 flex flex-wrap items-center gap-2">
             {project.techStack.map((tech) => (
               <span
                 key={tech}
-                className="px-2.5 py-1 rounded-md text-xs font-mono bg-secondary/50 text-muted-foreground border border-border/50"
+                className={
+                  project.highlightTech?.includes(tech)
+                    ? "px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-accent-lg/10 text-accent-lg border border-accent-lg/30"
+                    : "px-2.5 py-1 rounded-md text-xs font-mono bg-secondary/50 text-muted-foreground border border-border/50"
+                }
               >
                 {tech}
               </span>
             ))}
+            {project.metrics?.map((m) => (
+              <span
+                key={m.label}
+                className="px-2.5 py-1 rounded-md text-xs font-mono font-medium bg-accent-lg/10 text-accent-lg border border-accent-lg/30"
+              >
+                <span className="font-bold">{m.value}</span> {m.label}
+              </span>
+            ))}
           </div>
-
-          {/* 메트릭 */}
-          {project.metrics && project.metrics.length > 0 && (
-            <div className="mt-5 flex gap-6">
-              {project.metrics.map((m) => (
-                <div key={m.label} className="text-center">
-                  <div className="text-lg font-bold font-mono liquid-gradient-text">
-                    {m.value}
-                  </div>
-                  <div className="text-[10px] text-muted-foreground font-mono tracking-wide uppercase">
-                    {m.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
 
           {/* 링크 */}
           <div className="mt-6 flex gap-3">

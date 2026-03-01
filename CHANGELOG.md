@@ -2,6 +2,13 @@
 
 [Semantic Versioning](https://semver.org/) 준수.
 
+## [1.7.1] - 2026-03-01
+
+### Changed
+- csoweb.png 1280×720 리사이즈 (2:1 → 16:9 표준 비율)
+- Featured Projects 카드 균등화 — techStack + metrics 한 줄 flex-wrap 통합
+- highlightTech 강조 스타일 (accent 컬러 + 보더) 적용
+
 ## [1.7.0] - 2026-03-01
 
 ### Changed
