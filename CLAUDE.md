@@ -38,6 +38,10 @@ npx serve out        # 빌드 결과 로컬 확인
 - 다크 모드 기본, `class` 전략 (Tailwind `dark:` variant)
 - 이미지는 `unoptimized: true` (GitHub Pages 제약)
 
+## 트러블슈팅
+
+<!-- 반복 장애 발생 시 1줄씩 추가: 증상 → 원인 → 해결책 -->
+
 ## Copyright
 
 ```
