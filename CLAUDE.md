@@ -36,3 +36,13 @@ AI Full-Stack Builder 포트폴리오. AI를 활용해 설계부터 배포까지
 - **사용자**: 채용 담당자·협업 잠재 파트너
 - **핵심 컨텐츠**: 프로젝트 쇼케이스·스택·연락처 — 정적 config로 관리
 - **페이지 모델**: 단일 SPA 섹션 스크롤, 클라이언트 라우팅 없음
+
+<!-- AUTO-HISTORY:START -->
+_자동 생성 — `.claude/scripts/sync-claude-md.sh`. 수동 편집 금지 (append-only 로 .claude/SESSION_LOG.md 가 원본)._
+
+## 최근 세션 히스토리
+
+_세션 로그 미생성 — 첫 커밋 후 자동 초기화._
+
+원본: `.claude/SESSION_LOG.md` (append-only)
+<!-- AUTO-HISTORY:END -->
