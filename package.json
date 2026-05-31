@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "NODE_OPTIONS=\"${NODE_OPTIONS:-} --disable-wasm-trap-handler --max-old-space-size=4096\" next build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -13,7 +13,7 @@
     "clsx": "^2.1.1",
     "framer-motion": "^12.34.3",
     "lucide-react": "^0.575.0",
-    "next": "15.5.12",
+    "next": "15.5.18",
     "radix-ui": "^1.4.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -28,7 +28,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.5.12",
+    "eslint-config-next": "15.5.18",
     "lefthook": "^2.1.6",
     "prettier": "^3.8.3",
     "shadcn": "^3.8.5",
