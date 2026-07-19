@@ -1,14 +1,4 @@
-<!-- AUTO-HISTORY:START -->
-_자동 생성 — `.claude/scripts/sync-claude-md.sh`. 수동 편집 금지 (append-only 로 .claude/SESSION_LOG.md 가 원본)._
-
-## 최근 세션 히스토리
-
-_세션 로그 미생성 — 첫 커밋 후 자동 초기화._
-
-원본: `.claude/SESSION_LOG.md` (append-only)
-<!-- AUTO-HISTORY:END -->
-
-<!-- agent-governance:managed:start source=yurielk82-github-io-claude hash=99f5155c305eb4fbcb49828c846d607a727f0ef530e9d47bceb781bb119976bb -->
+<!-- agent-governance:managed:start source=yurielk82-github-io-codex hash=7e13990fb26d6bd328afae1fb532ecb3bbd98bb3ddf5fc6302a3d1540ab6a5d2 -->
 # GitHub 워크스페이스 공통 규칙
 
 ## 범위
@@ -137,7 +127,7 @@ AI Full-Stack Builder 포트폴리오. AI를 활용해 설계부터 배포까지
 - **핵심 컨텐츠**: 프로젝트 쇼케이스·스택·연락처 — 정적 config로 관리
 - **페이지 모델**: 단일 SPA 섹션 스크롤, 클라이언트 라우팅 없음
 
-# yurielk82-github-io Claude adapter
+# yurielk82-github-io Codex adapter
 
-- Apply the shared project layer using Claude Code native project discovery.
+- Apply the shared project layer from this repository's `AGENTS.md`.
 <!-- agent-governance:managed:end -->

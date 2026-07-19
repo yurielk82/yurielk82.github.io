@@ -1,0 +1,4 @@
+# agent-governance owns these byte-stable runtime instruction files.
+AGENTS.md
+CLAUDE.md
+CLAUDE.local.md
