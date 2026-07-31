@@ -1,4 +1,4 @@
-<!-- agent-governance:managed:start source=yurielk82-github-io-codex hash=7e13990fb26d6bd328afae1fb532ecb3bbd98bb3ddf5fc6302a3d1540ab6a5d2 -->
+<!-- agent-governance:managed:start source=yurielk82-github-io-codex hash=dbba274425965a2ab530133e1239640bb75f491c28bcc88c482a1e88dcdb5755 -->
 # GitHub 워크스페이스 공통 규칙
 
 ## 범위
@@ -30,6 +30,10 @@
   연결은 각 어댑터가 책임진다.
 - 완료 보고 전 실행한 명령과 결과를 다시 확인한다. 핵심 검사가 실패했거나 실행 불가하면
   완료라고 부르지 않는다.
+- 사용자 질문이 데이터 값·시스템 상태·동작 여부에 관한 것이면 추측으로 답하지 않는다.
+  조회 가능한 원천(서비스 로그, DB, 생성 산출물, 접속 기록)을 먼저 실측하고 그 결과로 답한다.
+  실측 불가한 미래 동작은 예측임을 명시하고 검증 시점과 방법을 함께 제시한다. 관측 시점이
+  다른 두 값의 차이는 원인을 추측하기 전에 시점 차이부터 확인한다. (오너 지시 2026-07-29)
 - 운영 상태 점검은 `bin/verify-ops.sh`, 거버넌스 결정 일관성 점검은
   `bin/decision_audit.py`의 현재 help와 안전 모드를 확인해 사용한다.
 
