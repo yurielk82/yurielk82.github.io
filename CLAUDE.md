@@ -1,5 +1,5 @@
 
-<!-- agent-governance:managed:start source=yurielk82-github-io-claude hash=424c8318cabf972d61cc588d268866e9ca33ffb6ac2bbf74279450e0ee2acab1 -->
+<!-- agent-governance:managed:start source=yurielk82-github-io-claude hash=82d8420a167b67e526baa136c92113c2bff70396e7d7cfdcf871cc17e14429ad -->
 # GitHub 워크스페이스 공통 규칙
 
 ## 범위
@@ -55,9 +55,15 @@
 
 ## Git 안전
 
-- `main`/`master` 직접 push는 워크스페이스 guard의 보호 대상이다. 자동 완료에서 direct-main과
-  feature branch 중 무엇을 기본으로 할지는 C-009 승인 전까지 공통 원본이 바꾸지 않고 각
-  런타임의 현재 정책을 유지한다.
+- 승인된 구현은 검증 → 자기 변경만 commit → feature branch push → PR 생성 또는 기존 PR 확인
+  → 필수 검사·승인 충족 확인 → PR 머지 → 원격 merged 상태 확인까지 에이전트가 직접 실행한다.
+  사용자에게 머지 명령어 복붙을 넘기거나 branch push만으로 완료하지 않는다. 사용자가 PR까지만
+  요청했거나 저장소에 별도 머지 승인 경계가 있으면 그 제한을 따른다.
+- `main`/`master` 직접 push는 계속 guard의 보호 대상이다. worktree 존재는 PR 머지 차단
+  사유가 아니다. 직접 push와 PR 머지를 구분하고 정상 PR 경로에서 guard override를 쓰지 않는다.
+  충돌, 실패한 필수 검사, 부족한 권한·필수 승인, 대상 불명확은 구체적 증거와 함께 보고한다.
+  대기 중인 검사는 계속 조회하고, 통과 후 head SHA를 다시 확인해 머지한다. merge queue에
+  들어가면 예약을 완료로 보고하지 않고 원격 merged 상태까지 확인한다.
 - 공유·병렬 저장소에서는 파일을 선별 staging한다. 삭제/rename이나 force push는 별도 검토한다.
 - 자세한 방식은 `[topic:workspace/git]`을 따른다.
 
@@ -142,13 +148,13 @@ _자동 생성 — `.claude/scripts/sync-claude-md.sh`. 수동 편집 금지 (ap
 
 ## 최근 세션 히스토리
 
-- `2026-05-03` `01ccfe2` — chore(quality): apply standard quality tooling _(files: 4)_
 - `2026-05-03` _session_ — uncommitted edits: 1, new files: 2
 - `2026-05-03` `ffbb23b` — chore(deps): add quality tooling (lefthook, commitlint, prettier) _(files: 2)_
 - `2026-05-03` `fc20c9b` — chore(quality): use changed-files lint in pre-push (Boy Scout) _(files: 1)_
 - `2026-05-03` `172cdaf` — chore(quality): remove tsc from pre-commit (CI-only) — Boy Scout _(files: 1)_
 - `2026-05-31` `43a3cfd` — chore: update next patch and build guard _(files: 3)_
 - `2026-07-19` `6adba74` — chore(agent-governance): activate shared runtime rules _(files: 4)_
+- `2026-07-31` `728fcf5` — chore(rules): render measured-answers rule via agent-governance promotion _(files: 2)_
 
 원본: `.claude/SESSION_LOG.md` (append-only)
 <!-- AUTO-HISTORY:END -->
