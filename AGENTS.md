@@ -1,4 +1,4 @@
-<!-- agent-governance:managed:start source=yurielk82-github-io-codex hash=459fbbc22b9e602e626d10c040a10acb51dfb3ba39796018b58f409f3ca6f1b0 -->
+<!-- agent-governance:managed:start source=yurielk82-github-io-codex hash=11f4d6697a3789cf289814a5b867c8860dba882cf9d44ac331bffdd1b4b913cc -->
 # GitHub 워크스페이스 공통 규칙
 
 ## 범위
@@ -44,7 +44,7 @@
 
 ## 배포와 live checkout
 
-- 등록 서비스 배포의 단일 진입점은 `/home/ubuntu/GitHub/bin/deploy.sh <project>`이고 등록부는
+- 등록 서비스 배포는 `[topic:workspace/deploy]` 절차(기본 `bin/deploy-main <project>`)만 쓰고 등록부는
   `bin/projects.tsv`다. 직접 서비스 재시작으로 build, artifact 검증, health probe, rollback을
   우회하지 않는다.
 - live `/home/ubuntu/GitHub/*` checkout에서 `.next` 같은 runtime artifact를 쓰는 build는 승인된
