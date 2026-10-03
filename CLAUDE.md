@@ -150,13 +150,13 @@ _자동 생성 — `.claude/scripts/sync-claude-md.sh`. 수동 편집 금지 (ap
 
 ## 최근 세션 히스토리
 
-- `2026-05-03` `172cdaf` — chore(quality): remove tsc from pre-commit (CI-only) — Boy Scout _(files: 1)_
-- `2026-05-31` `43a3cfd` — chore: update next patch and build guard _(files: 3)_
-- `2026-07-19` `6adba74` — chore(agent-governance): activate shared runtime rules _(files: 4)_
 - `2026-07-31` `728fcf5` — chore(rules): render measured-answers rule via agent-governance promotion _(files: 2)_
 - `2026-09-08` `eb576b4` — chore(gitignore): ignore generated tool output _(files: 1)_
 - `2026-09-08` `beb63fd` — chore(rules): commit the rendered governance managed regions _(files: 2)_
 - `2026-09-09` `dd9c6a1` — chore(paseo): run the shared worktree setup script _(files: 1)_
+- `2026-09-27` `b006c9a` — chore: add a generated shared-module catalog _(files: 2)_
+- `2026-09-27` `7a29f00` — fix(deps): patch next and postcss to clear npm audit findings _(files: 2)_
+- `2026-09-27` `5c5cad9` — chore: add a generated shared-module catalog _(files: 2)_
 
 원본: `.claude/SESSION_LOG.md` (append-only)
 <!-- AUTO-HISTORY:END -->
