@@ -40,19 +40,3 @@ AI Full-Stack Builder 포트폴리오. AI를 활용해 설계부터 배포까지
 # yurielk82-github-io Claude 어댑터
 
 - Claude Code 기본 프로젝트 탐색으로 공통 프로젝트 규칙을 적용한다.
-
-<!-- AUTO-HISTORY:START -->
-_자동 생성 — `.claude/scripts/sync-claude-md.sh`. 수동 편집 금지 (append-only 로 .claude/SESSION_LOG.md 가 원본)._
-
-## 최근 세션 히스토리
-
-- `2026-07-31` `728fcf5` — chore(rules): render measured-answers rule via agent-governance promotion _(files: 2)_
-- `2026-09-08` `eb576b4` — chore(gitignore): ignore generated tool output _(files: 1)_
-- `2026-09-08` `beb63fd` — chore(rules): commit the rendered governance managed regions _(files: 2)_
-- `2026-09-09` `dd9c6a1` — chore(paseo): run the shared worktree setup script _(files: 1)_
-- `2026-09-27` `b006c9a` — chore: add a generated shared-module catalog _(files: 2)_
-- `2026-09-27` `7a29f00` — fix(deps): patch next and postcss to clear npm audit findings _(files: 2)_
-- `2026-09-27` `5c5cad9` — chore: add a generated shared-module catalog _(files: 2)_
-
-원본: `.claude/SESSION_LOG.md` (append-only)
-<!-- AUTO-HISTORY:END -->
