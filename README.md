@@ -59,7 +59,7 @@ AI(Claude Code)와 협업하여 프로덕션 레벨의 풀스택 애플리케이
 | devicon 기술 스택 그리드 | 13개 기술 아이콘 카드 (7열 반응형) |
 | OS 테마 연동 | `prefers-color-scheme` 기반 초기 테마 + FOUC 방지 |
 | 설정 기반 데이터 | `src/config/`에서 모든 콘텐츠 관리 |
-| 정적 배포 | GitHub Pages + GitHub Actions 자동 배포 |
+| 정적 배포 | GitHub Pages + GitHub Actions 최종 배포 |
 
 <p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
@@ -97,7 +97,7 @@ npm run build        # 정적 내보내기 (out/)
 npx serve out        # 빌드 결과 로컬 확인
 ```
 
-`main` 브랜치에 push하면 GitHub Actions가 자동으로 GitHub Pages에 배포합니다.
+계획의 구현·통합·인수를 끝낸 뒤 GitHub Actions의 `Deploy to GitHub Pages`를 직접 실행해 최종 배포합니다. 커밋·병합은 배포를 시작하지 않습니다. 워크스페이스 공통 실행기의 GitHub Pages 지원은 아직 연결되지 않았습니다.
 
 <p align="right">(<a href="#readme-top">맨 위로</a>)</p>
 
