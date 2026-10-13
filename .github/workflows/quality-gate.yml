@@ -3,8 +3,11 @@ name: Quality Gate
 on:
   pull_request:
     branches: [main, master]
-  push:
-    branches: [main, master]
+  # PR 에서 통과한 검사를 병합 뒤(main push) 다시 돌리지 않는다(워크스페이스 CI 예산 규칙).
+  # 전수 린트·잠금 파일 전체 스캔은 주 1회(월 03:17 KST)와 수동 실행에서만 돈다.
+  schedule:
+    - cron: '17 18 * * 0'
+  workflow_dispatch:
 
 # 보안 하드닝: 기본 권한 제거. 각 job이 필요한 최소 권한만 명시.
 # pull_request_target 사용 금지 — 포크 PR이 secret에 접근하는 공격 벡터.
@@ -109,8 +112,8 @@ jobs:
             }
           fi
 
-      - name: Full lint (push to main/master)
-        if: github.event_name == 'push'
+      - name: Full lint (주간·수동 실행)
+        if: github.event_name != 'pull_request'
         run: |
           npx eslint . --format json --output-file eslint-report.json || {
             npx eslint .
@@ -237,7 +240,7 @@ jobs:
       upload-sarif: ${{ !github.event.repository.private }}
 
   supply-chain-lockfile-full:
-    if: github.event_name == 'push'
+    if: github.event_name != 'pull_request'
     permissions:
       actions: read
       contents: read
