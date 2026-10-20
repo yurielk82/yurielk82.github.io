@@ -30,7 +30,6 @@ yurielk82.github.io/  (16 files)
 
 ```
 CHANGELOG.md
-CLAUDE.local.md
 CLAUDE.md
 CONTRIBUTING.md
 PROJECT.md
