@@ -1,0 +1,262 @@
+/* 매뉴얼을 공개 홈(DESIGN.md)과 같은 머리말·바닥글·글꼴로 보이게 한다. 색 변수는 문서 head가 data/theme.json에서 낸다.
+   Nextra 유틸리티는 cascade layer 안에 있어 여기 규칙이 언제나 이긴다. 그래서 display는 Nextra의 md(768px) 경계 안에서만 정한다. */
+
+@font-face {
+  font-family: pretendard;
+  src: url(/assets/selected-portfolio/fonts/PretendardVariable.woff2) format("woff2");
+  font-display: swap;
+  font-weight: 100 900;
+}
+@font-face {
+  font-family: "pretendard Fallback";
+  src: local("Arial");
+  ascent-override: 93.76%;
+  descent-override: 23.75%;
+  line-gap-override: 0%;
+  size-adjust: 101.55%;
+}
+@font-face {
+  font-family: pretendardFull;
+  src: url(/assets/selected-portfolio/fonts/PretendardVariable-full.woff2) format("woff2");
+  font-display: swap;
+  font-weight: 100 900;
+}
+
+:root {
+  --nextra-navbar-height: 56px;
+}
+
+body {
+  color: var(--ink);
+  font-family: pretendard, "pretendard Fallback", pretendardFull, sans-serif;
+  word-break: keep-all;
+}
+
+.nextra-border {
+  border-color: var(--line);
+}
+
+/* 홈의 선택 칸(DESIGN.md): 각진 칸에 강조색 1px 테두리. 매뉴얼 안의 둥근 모서리도 홈처럼 없앤다. */
+.docs-current {
+  border-radius: 0;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--signal);
+  color: var(--ink);
+}
+.nextra-sidebar :is(a, button),
+.nextra-mobile-nav :is(a, button),
+.nextra-toc a,
+article button,
+article pre,
+article code,
+article table {
+  border-radius: 0;
+}
+
+.docs-site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  align-items: stretch;
+  height: var(--nextra-navbar-height);
+  background: color-mix(in srgb, var(--stage) 94%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  display: flex;
+}
+.docs-site-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+  border-right: 1px solid var(--line);
+  color: var(--ink);
+  text-decoration: none;
+}
+.docs-site-identity strong {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.docs-site-identity span {
+  font-size: 13px;
+  color: var(--ink-2);
+}
+.docs-site-nav > a {
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color 0.12s linear;
+}
+.docs-site-nav > a:hover,
+.docs-site-nav > a[aria-current] {
+  color: var(--ink);
+}
+.docs-site-nav > a[aria-current] {
+  font-weight: 700;
+}
+.docs-site-search {
+  align-items: center;
+  padding: 0 16px;
+  border-left: 1px solid var(--line);
+}
+.docs-site-search input {
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+.docs-site-search input::placeholder {
+  color: var(--ink-2);
+}
+.docs-site-search input:focus-visible,
+.docs-site-identity:focus-visible,
+.docs-site-nav > a:focus-visible,
+.docs-site-menu:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: -2px;
+}
+.docs-site-menu {
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  border-left: 1px solid var(--line);
+  background: none;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+@media (min-width: 768px) {
+  .docs-site-nav {
+    display: flex;
+    flex: 1;
+    align-items: stretch;
+    padding-left: 10px;
+  }
+  .docs-site-search {
+    display: flex;
+  }
+}
+@media (max-width: 767px) {
+  .docs-site-identity {
+    padding: 0 20px;
+  }
+  .docs-site-menu {
+    display: flex;
+  }
+}
+
+/* 바닥글: 공개 홈(style/_site.scss의 .site-footer)과 같은 시트 한 줄. */
+.docs-site-footer {
+  --inv-bg: var(--invert-bg);
+  --inv-fg: var(--invert-fg);
+  --inv-muted: color-mix(in srgb, var(--invert-fg) 74%, transparent);
+  --footer-line: color-mix(in srgb, var(--inv-fg) 20%, var(--inv-bg));
+  --gutter: 28px;
+  background: var(--inv-bg);
+  color: var(--inv-fg);
+  word-break: keep-all;
+}
+.docs-site-footer a {
+  color: inherit;
+  text-decoration: none;
+}
+.docs-site-footer .footer-sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) repeat(2, minmax(0, 2fr)) minmax(0, 3fr);
+  gap: 1px;
+  background: var(--footer-line);
+}
+.docs-site-footer .footer-sheet > * {
+  padding: clamp(32px, 4.4vw, 56px) var(--gutter);
+  background: var(--inv-bg);
+}
+.docs-site-footer .footer-identity strong {
+  display: block;
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+.docs-site-footer .footer-role {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--inv-muted);
+}
+.docs-site-footer .footer-headline {
+  margin-top: clamp(24px, 3vw, 40px);
+  font-size: clamp(17px, 1.6vw, 20px);
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+}
+.docs-site-footer .footer-column h2 {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.5;
+  color: var(--inv-muted);
+}
+.docs-site-footer .footer-column ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.docs-site-footer .footer-column a {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.docs-site-footer .footer-column a svg {
+  display: inline;
+  margin-left: 2px;
+  vertical-align: -1px;
+}
+.docs-site-footer .footer-column a:hover {
+  text-decoration: underline;
+}
+.docs-site-footer .footer-base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding: 16px var(--gutter);
+  border-top: 1px solid var(--footer-line);
+  font-size: 12px;
+  color: var(--inv-muted);
+}
+.docs-site-footer a:focus-visible {
+  outline: 2px solid var(--inv-fg);
+  outline-offset: 2px;
+}
+@media (max-width: 1080px) {
+  .docs-site-footer .footer-sheet {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .docs-site-footer .footer-identity {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 560px) {
+  .docs-site-footer .footer-sheet {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media print {
+  .docs-site-header,
+  .docs-site-footer {
+    display: none;
+  }
+}
